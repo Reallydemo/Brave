@@ -1,0 +1,106 @@
+﻿@model Models.Goods
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Goods</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsImage1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsImage1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsImage2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsImage2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsImage3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsImage3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grounding)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grounding)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Undercarriage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Undercarriage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodsDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodsDes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numbers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numbers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Classify.ClassifyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Classify.ClassifyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Goods_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

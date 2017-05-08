@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css/bootstrap.css")
+    @Styles.Render("~/css/style.css")
+    @Styles.Render("~/css/responsive.css")
+    @Styles.Render("~/css/font-awesome.css")
+
+
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="header-sticky page-loading ">
+    <div class="boxed">
+        <div class="site-header header-v2">
+            <div class="flat-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="flat-wrapper">
+                            <div class="custom-info">
+                                <span>发现什么问题?</span>
+                                <span><i class="fa fa-reply"></i>tjzxgdk@163.com</span>
+                                <span><i class="fa fa-map-marker"></i>江西师范大学14级3522工作室</span>
+                                <span><i class="fa fa-phone"></i>+ 13037284653</span>
+                            </div>
+                            <div class="social-links">
+                                @if (Session["UserName"] != null)
+                                {
+                                    using (Html.BeginForm("LogOff", "Register", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+
+                                        <a href="#"><img src="@Session["Image"]" /></a>
+                                            <a href="#">[@Session["UserName"]]</a>
+                                            <a>欢迎您登录！</a>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" title="退出">[退出]</a>
+
+
+
+
+
+                                    }
+                                }
+                                else
+                                {
+                                    <a class="woyadengruaheahe" @*href="@Url.Content("~/Register/Register")"*@>
+                                        <i class="fa fa-user"></i>
+
+                                        登录
+
+
+                                    </a>
+
+
+                                        <a href="@Url.Content("~/Register/Register")">
+
+                                            <i class="fa fa-lock"></i>注册
+                                        </a>
+                                        <a href="https://www.qq.com">
+                                            <i class="fa fa-qq"></i>其他
+                                        </a>
+                                }
+                                @{Html.RenderAction("Index", "Login");}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+      
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+    <hr />
+    <!-- /.底部 -->
+    <footer class="footer slate_gray ">
+        <div class="">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <p class="copyright">2017.江西师范大学.14级商务软件3522工作室</p>
+
+
+                    <br>
+                    <p class="social__text">联系电话:13037284653 执行主编： CU001网上不良信息举报电话：(010)52598588-8758</p>
+
+
+                    <br>
+                    <p class="texttt">
+                        版权所有  虎贲网
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- END Footer -->
+
+    @Scripts.Render("~/js/jquery.min.js")
+    @Scripts.Render("~/js/bootstrap.min.js")
+    @Scripts.Render("~/js/main.js")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

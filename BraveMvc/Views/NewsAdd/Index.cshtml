@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Models.News>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmtDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KeyWords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clicks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsVideo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewsPicture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewSection.SectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubmtDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KeyWords)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clicks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsVideo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewsPicture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewSection.SectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.News_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.News_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.News_id })
+        </td>
+    </tr>
+}
+
+</table>

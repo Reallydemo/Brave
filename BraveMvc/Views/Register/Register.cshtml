@@ -1,0 +1,302 @@
+﻿@model Models.Users 
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+@Styles.Render("~/Content/themes/base/jquery-ui.css")
+@Styles.Render("~/Content/Register.css")
+@Styles.Render("~/Content/bootstrap.css")
+@Styles.Render("~/Content/themes/base/jquery-ui.css")
+
+@Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  });
+  $("txtverifcode").keyup(function (e) {
+      if (e.which == 13) {
+          $("#btnlogin").click();
+      }
+  })
+  $(document).ready(function () {
+      var $tab_li = $('#tab ul li');
+      $tab_li.click(function () {
+          $(this).addClass('current').siblings().removeClass('current');
+          var index = $tab_li.index(this);
+          $('div.dad_right > div').eq(index).show().siblings().hide();
+      });
+  });
+
+
+  $(function () {
+
+      // 为看不清楚绑定事件
+      $("#see").click(function () {
+          $("#vimg").attr("src", "@Url.Content("/YZM/GetYZM?")" + Math.random());
+      });
+
+      // 为验证码绑定click与mouseover
+      $("#vimg").mouseover(function () {
+          $(this).css("cursor", "pointer");
+      }).click(function () {
+          $("#see").trigger("click");
+      });
+  });
+
+  function reloadcode() {
+      var verify = document.getElementById('validimg');
+      verify.setAttribute('src', '@Url.Content("/YZM/GetYZM?")' + Math.random());
+  }
+
+  function getFile(obj, inputName) {
+      var file_name = $(obj).val();
+      $("input[name='" + inputName + "']").val(file_name);
+  }
+    //验证注册用户输入的数据
+
+
+
+</script>
+<canvas id="canvas"></canvas>
+<div class="loge-tubiao">
+    <img src="~/Images/logo6.png" />
+</div>
+<div class="woyaodengru">
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">用户登入</a></li>
+            <li><a href="#tabs-2">用户注册</a></li>
+
+        </ul>
+        <div id="tabs-1">
+            @using (Html.BeginForm("Login", "Register", FormMethod.Post, new { id = "loginForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="kuaiz">
+                    <p class="minzi">用户名</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "text", placeholder = "请输入用户名", id = "txtUserName" })
+
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">密码</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "text", placeholder = "请输入密码", type = "password", id = "txtPwd" })
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">验证码</p>
+                    <p class="yanzhenma">
+                        <input id="txtverifcode" name="txtverifcode" class="login_verifcode" placeholder="验证码" type="text" />
+                        <span class="verifcode"><img id="vimg" src="@Url.Action("GetYZM", "YZM")" /><a class="refesh" id="see">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                    </p>
+                </div>
+                <p class="jizhuwwe">
+                    <input type="checkbox" class="choose" id="checksd" checked="checked" />
+                    <label class="remember">记住我</label>
+                    <a class="note">忘记密码?</a>
+                </p>
+                <div class="kuaiz">
+                    <p class="dengrsfda">
+                        <a class="btn_login" href="javascript:document.getElementById('loginForm').submit()" id="btnlogin">登录</a>
+
+                    </p>
+                </div>
+
+            }
+        </div>
+        <div id="tabs-2">
+            @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { id = "RegisterForm", enctype = "multipart/form-data" }))
+            {
+                <div class="kuaiz">
+                    <p class="minzi">用户名</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "text", placeholder = "请输入用户名", id = "txtUserName" })
+
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">账号</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.UserAccount, new { @class = "text", placeholder = "请输入您的手机号", id = "txtUserAccount" })
+
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">密码</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.Password, new { @class = "text", placeholder = "请输入密码", type = "password", id = "txtPwd" })
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">头像</p>
+                    <p class="zhanghao">
+                        @Html.TextBoxFor(model => model.UserImage, new { @class = "textouy", placeholder = "添加头像", id = "copyFile" })
+                        <input type="file" name="file" class="uploadFile" onchange="document.getElementById('copyFile').value = this.value" />
+
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="minzi">验证码</p>
+                    <p class="yanzhenma">
+                        <input id="txtverifcode" name="txtverifcode" class="login_verifcode" placeholder="验证码" type="text" />
+                        <span class="verifcode"><img id="validimg" src="@Url.Action("GetYZM", "YZM")" /><a class="refesh" onclick="reloadcode()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></span>
+                    </p>
+                </div>
+
+                <div class="kuaiz">
+                    <p class="jiedweqze">
+                        <input type="checkbox" class="choose" checked="checked" />
+                        <label class="remember">我已阅读相光用户协议说明及版权声明</label>
+                    </p>
+                </div>
+                <div class="kuaiz">
+                    <p class="dengrsfda">
+                        <a class="btn_login" href="javascript:document.getElementById('RegisterForm').submit()" id="btnlogin">注册</a>
+
+                    </p>
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+
+</div>
+<script src="~/Scripts/register.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script type="text/javascript">
+    $().ready(function () {
+        $("#loginForm").validate({
+
+            rules: {
+                UserName: {
+                    required: true,
+                    minlength:2,
+                    maxlength:8
+                },
+
+                Password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 16
+                },
+
+
+            },
+            messages: {
+                UserName: {
+                    required: "请输入用户名",
+                    minlength: '用户名不能小于6个字符',
+                    maxlength: '用户名不能超过16个字符'
+                },
+
+                Password: {
+                    required: "请输入密码",
+                    minlength: '密码不能小于6个字符',
+                    maxlength: '密码不能超过16个字符'
+                },
+
+            }
+        })
+        $("#RegisterForm").validate({
+            rules: {
+                UserName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 8
+                },
+                UserAccount: {
+                    required: true,
+                    txtaccount: true
+                },
+                Password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 16
+                },
+                UserImage: {
+                    required: true,
+                    accept: true
+                }
+
+            },
+            messages: {
+                UserName: {
+                    required: "请输入用户名",
+                    minlength: '用户名不能小于6个字符',
+                    maxlength: '用户名不能超过16个字符'
+                },
+                UserAccount: {
+                    required: "请输入手机号",
+                    txtaccount: "请输入正确的手机号"
+                },
+                Password: {
+                    required: "请输入密码",
+                    minlength: '密码不能小于6个字符',
+                    maxlength: '密码不能超过16个字符'
+                },
+                UserImage: {
+                    required: "请点击图片路径",
+                    accept: "请输入有效的图片的路径"
+                }
+
+            }
+        })
+    })
+    $().ready(function () {
+        jQuery.validator.addMethod("txtaccount", function (value, element) {
+            var length = value.length;
+
+            var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        },"手机号码格式错误");
+        jQuery.validator.addMethod("txtpwd", function (value, element) {
+            var ped = /^[1-9]\d{6,16}$/;
+            return this.optional(element) || (ped.test(value));
+        }, "密码的格式错误");
+
+    })
+    //$(function () {
+    //    if ($.cookie("txtUserName")) {
+    //        $("#txtUserName").val($.cookie("txtUserName"));
+    //    }
+    //    if ($.cookie("txtPwd")) {
+    //        $("#txtPwd").val($.cookie("txtPwd"));
+    //    }
+    //    $("#btnlogin").bind("click", function () {
+    //        if ($("#checksd").is(":checked")) {
+    //            $cookie("txtPwd", $("txtPwd").val(), {
+    //                path:"/",expires:7
+    //            });
+    //            $.cookie("txtUserName", $("#txtUserName").val(), {
+    //                path:"/",expires:7
+    //            })
+    //        }
+    //        else {
+    //            $.cookie("txtPwd", null, {
+    //                path: "/"
+    //            });
+    //            $.cookie("txtUserName", null, {
+    //                path:"/"
+    //            })
+    //        }
+    //    })
+    //})
+
+
+
+
+</script>
+
+
+

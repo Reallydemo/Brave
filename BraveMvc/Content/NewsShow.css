@@ -1,0 +1,232 @@
+﻿
+.all{
+   
+    height:1700px;
+    width:80%;
+    margin:50px auto;
+
+}
+.pictureShowtitle{
+    background:#3498db;
+    height:4%;
+    width:100%;
+   
+}
+.pictureShowtitle h3{
+    
+    color:white;
+    font-weight:500;
+    padding-top:1%;
+    padding-left:2%;    
+}
+.pictureShow{
+  
+    height:500px;
+    width:100%;  
+
+}
+.pictureWorld{
+    
+    height:35%;
+    width:100%;
+    overflow:hidden; 
+
+}
+   
+
+    /*3D翻转效果*/
+ .demo{
+    padding: 1em 0;
+   
+}
+.box{
+    position: relative;
+    perspective: 1000px;
+    margin-top:1%;
+    margin-bottom:1%;
+  
+   
+   
+}
+.box .box-img{
+    transform: rotateY(0);
+    transition: all 0.50s ease-in-out 0s;
+    
+}
+.box:hover .box-img{
+    transform: rotateY(-90deg);
+}
+.box .box-img img{
+    width: 100%;
+    height: 48%;
+}
+.box .box-content{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 60px 20px;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    transform: rotateY(90deg);
+    transition: all 0.50s ease-in-out 0s;
+}
+.box:hover .box-content{
+    transform: rotateY(0);
+}
+.box .title{
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.box .description{
+    font-size: 14px;
+    line-height: 24px;
+    
+}
+.box .description a{
+    color:white;
+    font-size:large;
+}
+
+.box .title:after,
+.box .description:after{
+    content: "";
+    width: 80%;
+    display: block;
+    border-bottom: 1px solid #fff;
+    margin: 15px auto;
+}
+.box .social-links{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box .social-links li{
+    display: inline-block;
+    margin: 0 10px;
+}
+.box .social-links li a{
+    font-size: 20px;
+    color: #a6a6a6;
+}
+.box .social-links li a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+@media only screen and (max-width: 990px) {
+    .box{  margin-bottom:20px; }
+}
+@media only screen and (max-width: 479px) {
+    .box .box-content{ padding: 20px; }
+}
+/* 手风琴效果*/
+.bellows {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+background:#fff;}
+.bellows__header {
+  position: relative;
+  padding: 15px 20px;
+  border: 1px solid #2980b9;
+  border-width: 0 0 1px;
+  background: #3498db;
+  color: white;
+  -webkit-tap-highlight-color: transparent; }
+
+.bellows__header a{
+    color:white;
+    text-decoration:none;
+}
+    .bellows__header a:hover {
+        color:powderblue;
+        text-decoration:none;
+        
+    }
+  .bellows__header:active {
+    background: #2980b9; }
+  .bellows__header::before, .bellows__header::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    z-index: 2;
+    display: block;
+    width: 16px;
+    height: 4px;
+    margin-top: -2px;
+    background: white;
+    pointer-events: none;
+    -webkit-transition: -webkit-transform 0.25s ease-in-out;
+            transition: transform 0.25s ease-in-out; }
+  .bellows__header::before {
+    content: '';
+    -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  .bellows__header::after {
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg); }
+  .bellows__item.bellows--is-open > .bellows__header::before, .bellows__item.bellows--is-opening > .bellows__header::before {
+    -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+            transform: rotate(180deg); }
+  .bellows__item.bellows--is-open > .bellows__header::after, .bellows__item.bellows--is-opening > .bellows__header::after {
+    -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg); }
+  .bellows__item:last-child > .bellows__header {
+    border-bottom: 0; }
+  .bellows__header h1,
+  .bellows__header h2,
+  .bellows__header h3,
+  .bellows__header h4 {
+    margin: 0; }
+.bellows__content {
+  padding: 20px;
+  height:20%;
+  border: 1px solid #ecf0f1; 
+}
+.bellows__content a{
+    font-size:18px;
+}
+.bellows__content a:hover{
+    text-decoration:none;
+    font-weight:bold;
+}
+  .bellows__content .bellows {
+    margin-top: 20px; }
+
+  /*跳转到分类详情*/
+  .skip{
+     width:100px;
+     float:right;
+     margin-top:1px;
+     
+  }
+  .skip a{
+      color:darkcyan;
+      text-decoration:none;
+  }
+  .skip a:hover{
+     color:red;
+     font-size:18px;
+     font-weight:bold;
+     text-decoration:none;
+  }
+  /* CSS Document */
+.banner{ width:100%; height:500px; overflow:hidden; position:relative;font-size:0}
+.b-img{ height:300px;  position:absolute; left:0; top:0;}
+.b-img a{ display:block; height:500px; float:left;}
+.b-list{ height:40px; padding-top:455px; position:relative; margin:0 auto;z-index:1;}
+.b-list span{ display:block;cursor:pointer; width:14px; height:14px; border-radius:50%; border:3px solid #fff; float:left; margin:0 5px; _margin:0 3px;}
+.b-list .spcss{border:3px solid #14ab04;}
+.bar-left{ position:absolute; z-index:1; display:block; width:80px; height:100%; left:0px; background:none; top:0px; }
+.bar-right{ position:absolute;z-index:1; display:block; width:80px; height:100%; right:0px; background:none; top:0px; }
+.bar-left em{ display:block; width:50px; height:100px; background:url(../images/arrow.png) 0px 0px no-repeat; margin:0 auto; margin-top:235px;}
+.bar-right em{ display:block; width:50px; height:100px; background:url(../images/arrow.png) -50px 0px no-repeat; margin:0 auto; margin-top:235px;}
+.bar-left .emcss{ background-position:0px -100px;}
+.bar-right .emcss{ background-position:-50px -100px;}

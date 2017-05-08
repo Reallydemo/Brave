@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Models.Goods>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsImage1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsImage2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsImage3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grounding)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Undercarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numbers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Classify.ClassifyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodsName)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.GoodsImage1)" />
+           
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.GoodsImage2)" />
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.GoodsImage3)" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grounding)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Undercarriage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodsPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodsDes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numbers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Classify.ClassifyName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Goods_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Goods_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Goods_id })
+        </td>
+    </tr>
+}
+
+</table>

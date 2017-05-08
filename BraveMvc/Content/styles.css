@@ -1,0 +1,38 @@
+﻿body {
+}
+.big-img{
+    width:100px;
+    height:50px;
+}
+.headyoub{
+    width:400px;
+    height:100%;
+    float:right;
+}
+.wenzu{
+    height:100%;
+    width:150px;
+    float:left;
+    text-align:left;
+    display: inline-block;
+    line-height:40px;
+}
+.wenzu a{
+    margin-left:10px;
+  
+    
+}
+.wenzu a:hover{
+    color:red;
+    text-decoration:none;
+    outline:none
+  
+}
+.cart {
+    height: 100%;
+    width: 100px;
+    float: right;
+    line-height: 40px;
+    text-align: right;
+    display: inline-block;
+}

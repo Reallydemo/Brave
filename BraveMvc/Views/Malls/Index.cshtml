@@ -1,0 +1,768 @@
+﻿@using Models
+@model ViewModels.Goodss
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+@Styles.Render("~/Content/Malls.css")
+@Styles.Render("~/Content/bootstrap.css")
+@Styles.Render("~/Content/style.css")
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/stepcarousel.js"></script>
+<script type="text/javascript">
+stepcarousel.setup({
+galleryid: 'mygallery', //id of carousel DIV
+beltclass: 'belt', //class of inner "belt" DIV containing all the panel DIVs
+panelclass: 'panel', //class of panel DIVs each holding content
+panelbehavior: {speed:300, wraparound:false, persist:true},
+autostep: {enable:true, moveby:4, pause:10000},
+defaultbuttons: { enable: true, moveby: 4, leftnav: [ 0, 64], rightnav: [ -11, 64] },
+statusvars: ['statusA', 'statusB', 'statusC'], //register 3 variables that contain current panel (start), current panel (last), and total panels
+contenttype: ['inline'], //content setting ['inline'] or ['external', 'path_to_external_file']
+oninit:function(){
+isloaded=true
+document.getElementById('displaycssbelt').style.visibility="visible";
+document.getElementById('stocklevels').style.visibility="visible";
+}
+})
+</script>
+@*客服*@
+<style type="text/css">
+  .contactusdiyou {position: fixed; right: -230px; bottom: 0px; _position: absolute; width: 230px; height: 100%; background: #009aff; z-index: 99999999999;  _margin-bottom:0px; _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); transition:all .5s ease; }
+.contactusdiyou .hoverbtn{width:30px; height:129px; padding-top:20px; cursor: pointer; position:absolute; top:50%; margin-top:-66px;left:-30px; font-size:14px; color:#fff; background:#009aff; -webkit-border-radius: 3px 0px  0px 3px; -moz-border-radius: 3px 0px  0px 3px; -o-border-radius: 3px 0px  0px 3px;      border-radius: 3px 0px  0px 3px; -moz-box-shadow: -4px 4px 4px -4px #000; -webkit-box-shadow: -4px 4px 4px -4px #000; box-shadow: -4px 4px 4px -4px #000;} .contactusdiyou .hoverbtn span{width:30px; height:19px;line-height: 19px; text-align: center; overflow:hidden; float:left;}
+.contactusdiyou .hoverbtn .hoverimg{width:13px; height:9px; margin:10px 0px 0px 10px; float:left; display:inline;background-repeat: no-repeat;}
+.hoverimg2{background:url(../Images/hoverbtnbg1.gif) no-repeat; } 
+
+.contactusdiyou .conter{width:186px; height:560px; margin-left:22px;   position:absolute; top:55%;*margin-top:-140px;margin-top:-280px;}
+.contactusdiyou .conter .con1{ border-bottom:1px solid #6a6a6a; padding-bottom:22px;}
+.contactusdiyou .conter .con1 dl dt{width:31px; height:31px; float:left;    position: relative;
+    top: 32px;}
+.contactusdiyou  dl .f1{width:142px; height:36px;line-height: 36px; float:right; font-size:14px;_font-size: 14px;*font-size: 15px; color:#fff;vertical-align: top; font-weight: bold;}
+.contactusdiyou  dl .f2{ width:142px; float:right; font-size:12px; color:#fff; height:30px;line-height: 30px; float:right;}
+.kefuQQ a{ background:url(../Images/button-custom-qq.gif)  no-repeat; width:70px; height:20px; display:inline-block; vertical-align:middle;}
+.kefuQQ a:hover{ background:url(../Images/button-custom-qq-h.gif)  no-repeat;}
+.contactusdiyou .conter .con1 dl dd .ph_num{ font:18px 'Microsoft yahei';*font-size: 16px;_font-size: 16px; color:#fff; height:25px;}
+
+.contactusdiyou .qqcall{padding:22px 0px;border-bottom:1px solid #6a6a6a;}
+.contactusdiyou .qqcall dl dt{width:31px; height:31px; float:left; position: relative;
+    top: 32px;}
+
+.contactusdiyou .weixincall{float:right;padding:22px 0; border-bottom:1px solid #6a6a6a;}
+.contactusdiyou .weixincall dl dt{width:31px; height:31px; float:left; position: relative;
+    top: 32px;}
+
+
+.contactusdiyou .weixincall .f3{float: right;width:73px; height:auto; margin-right:69px; display:inline;}
+.contactusdiyou .weixincall .f3 img{width: 73px;height: auto;}
+.contactusdiyou .dytimer{    float: right; width: 160px; height: 40px; padding: 16px 0px 15px 0px; /* background: #007b77; */ margin: 20px 0px 0px 0px;} .contactusdiyou .dytimer span{display:block; height:20px; line-height:20px; font-size:14px; color:#fff;} .diyou{_position: absolute; _bottom: auto;_margin-bottom:0px; z-index:99999999999; _top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));} .diyoumask { position:fixed; left: 0; top: 0; z-index: 100000; width:100%; height:100%; opacity:0.3;filter:alpha(Opacity=30); background:#000; display:none;} .fn_cle:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; } /***联系我们***/
+
+</style>
+<div>
+    <div class="baoguo">
+        <div class="toubu"></div>
+        <div class="tou-title">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid title-qun">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header title-diyi">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="color:#000000">首页</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav" id="title-qita">
+                            <li><a href="@Url.Content("~/Malls/Classify")">战机</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")"> 枪械</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">航空母舰</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">导弹</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">坦克</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">飞行器</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">火炮</a></li>
+                            <li><a href="@Url.Content("~/Malls/Classify")">新型武器</a></li>
+                        </ul>
+
+
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="row lunbo">
+            <div id="banner_box" class="banner_box">
+                <div class="banner_cot">
+                    <!--放轮播页面-->
+                    <div class="banner_list" id="banner_list">
+                        <!--第一个页面  战机模型-->
+                        <div class="page_box show">
+                            <div class="bg_box">
+                                <img src="~/Images/sky_xia.png" class="sky_xia sky_anim2" />
+
+                                <img src="~/Images/bg6.jpg"/>
+
+
+                            </div>
+                            <div class="content">
+                                <div class="main_box">
+                                    <div class="sky_cot sky_anim2">
+
+                                        <img src="~/Images/bg6-1.png" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第二个页面 航空母舰模型-->
+                        <div class="page_box">
+                            <div class="bg_box">
+
+                                <img src="~/Images/bg7.jpg" />
+                            </div>
+                            <div class="content">
+                                <div class="main_box">
+                                    <div class="room_cot">
+                                        <div class="room_anim">
+
+                                            <img src="~/Images/bg1-2.png" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第三个页面 坦克模型-->
+                        <div class="page_box  ">
+                            <div class="bg_box">
+
+                                <img src="~/Images/bg8.jpg" />
+                            </div>
+                            <div class="content">
+                                <div class="main_box">
+                                    <div class="snow_cot snow_anim">
+
+                                        <img src="~/Images/bg8-2.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--第四个页面 卫星模型-->
+                        <div class="page_box ">
+                            <div class="bg_box">
+
+                                <img src="~/Images/bg0.jpg" />
+                            </div>
+                            <div class="content">
+                                <div class="main_box">
+                                    <div class="forest_cot forest_anim">
+                                        <img src="~/Images/bg30.png" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--放浮动链接小图标-->
+                    <div class="product_btns" id="product_btns">
+                        <div class="content">
+                            <div class="btns_box" id="control_box">
+                                <a href="#" class="icon_bg icon_show"></a>
+                                <a href="#" class="icon_bg"></a>
+                                <a href="#" class="icon_bg"></a>
+                                <a href="#" class="icon_bg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div style="right:-230px;" class="contactusdiyou">
+        <div class="hoverbtn">
+            <span>联</span><span>系</span><span>我</span><span>们</span>
+            <img class="hoverimg" src="~/Images/hoverbtnbg.gif" height="9" width="13">
+        </div>
+        <div class="conter">
+            <div class="con1">
+                <dl class="fn_cle">
+                    <dt><img src="~/Images/tel.png" height="31" width="31"></dt>
+                    <dd class="f1">咨询热线：</dd>
+                    <dd class="f2"><span class="ph_num">189-7003-8252</span></dd>
+                </dl>
+            </div>
+            <div class="blank0"></div>
+            <div class="qqcall">
+                <dl class="fn_cle">
+                    <dt><img src="~/Images/zxkfqq.png" height="31" width="31"></dt>
+                    <dd class="f1 f_s14">在线客服：</dd>
+                    <dd class="f2 kefuQQ">
+                        <span>客服一</span>
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1141797433&amp;site=qq&amp;menu=yes"></a>
+                        <span>客服二</span>
+                        
+                    </dd>
+                </dl>
+                <div class="blank0"></div>
+            </div>
+            <div class="blank0"></div>
+            <div class="weixincall">
+                <dl class="fn_cle">
+                    <dt><img src="~/Images/weixin.png" height="31" width="31"></dt>
+                    <dd class="f1">官方微信站：</dd>
+                    <dd class="f3"><img src="~/Images/wechat_code.png" height="73" width="73"></dd>
+                </dl>
+            </div>
+            <div class="blank0"></div>
+            <div class="dytimer">
+                <span style="font-weight: bold;">公司官网：</span>
+                <span><a >www.huben.com</a></span>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="container goods">
+         <div class="row new-goods">
+             <div class="col-xs-12 col-sm-12 col-md-12 new-goods-top" >
+                 <div class="new-goods-top-l">
+                     <img src="~/Images/bg1-5.png" />
+                 </div>
+                
+             </div>
+             <div class="col-xs-12 col-sm-12 col-md-12 new-goods-drow" >
+                 <div class="new-goods-tupian" id="drow">
+                    
+                     <ul id="srcsa1">
+                         @foreach (Goods l in Model.Good6)
+                         {
+                            <li>
+                                <div class="tupian">
+                                    <img src="@l.GoodsImage1" />
+                                </div>
+                            </li>
+                         }
+                        
+                     </ul>
+                     
+                 </div>
+                
+             </div>
+
+         </div>
+        <div class="row">
+            <div class="h-grid3">
+                <!--h-grid3-->
+                <div class="h-grid3-padding">
+                    <h2> </h2>
+                    <div class="col-md-2 col-md-offset-1 h-grid3-all scroll wow zoomIn" data-wow-delay="1.5s">
+                        <a href="#zhanji">
+                            <i><img src="~/Images/bg6-1.png" /></i>
+                            <h4>战机</h4>
+                           
+                        </a>
+                    </div>
+                    <div class="col-md-2 h-grid3-all scroll wow zoomIn" data-wow-delay="1s">
+                        <a href="#qiang">
+                            <i><img src="~/Images/bg31.jpg" /></i>
+                            <h4>枪械</h4>
+                            <p></p>
+                        </a>
+                    </div>
+                    <div class="col-md-2 h-grid3-all scroll wow zoomIn" data-wow-delay="0.4s">
+                     
+                        <a href="#hangmu">
+                            <i><img src="~/Images/bg30.png" /></i>
+                            <h4>航空母舰</h4>
+                            <p></p>
+                        </a>
+                    </div>
+                    <div class="col-md-2 h-grid3-all scroll wow zoomIn" data-wow-delay="1s">
+                        <a href="#feng">
+                            <i><img src="~/Images/bg1-2.png" /></i>
+                            <h4>飞行器</h4>
+                            <p></p>
+                        </a>
+                    </div>
+                    <div class="col-md-2 h-grid3-all scroll wow zoomIn" data-wow-delay="1.5s">
+                        <a href="#tangke">
+                            <i><img src="~/Images/bg8-2.png" /></i>
+                            <h4>坦克</h4>
+                            <p></p>
+                        </a>
+                    </div>
+
+                    <div class="clearfix"> </div>
+                </div>
+            </div><!--//h-grid3-->	
+        </div>
+        <div class="row zhanji-goods" id="zhanji">
+            <div class="col-xs-12 col-sm-12 col-md-12 zhanji-goods-head">
+                <div class="col-xs-1 col-sm-1 col-md-1 zhanji-goods-name "><p>战机模型</p></div>
+                <div class="col-xs-8 col-sm-8 col-md-8 zhanji-goods-gushi"><p>每个模型都有一个属于自己的故事</p></div>
+               
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 zhanji-jiashao">
+                <div class="zhanji-jiashao-img"><img src="~/Images/bg40.jpg" /></div>
+                <div class="zhanji-jiashao-content">
+                    <h3 ><a href="@Url.Content("~/Malls/Classify")"> 查看更多</a></h3>
+                    <p>战斗机装备有重武器和一个轰炸器,作战任务是消灭所有袭击的敌人和登陆的侵略者
+                        除此之外，还需要躲避地面防守塔和火箭发射器的攻击。轰炸器将帮助你进行反击
+                      
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 zhanji-wuping">
+                @foreach (Goods p in Model.Good1)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 zhanji-wuping-img">
+                        <img src="@p.GoodsImage1" />
+                        <h4 style="text-align:center">@p.GoodsName</h4>
+                        <p>
+                            <span style="float:left; margin-left:10px; color:red;font-size:20px">@p.GoodsPrice￥</span>
+                            <span style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; ">
+                                @if (Session["UserName"] != null)
+                                {
+                                    @Html.ActionLink("加入购物车", "AddToCart", "Cart", new { GoodId = @p.Goods_id }, null)
+                                }
+                                else
+                                {
+                                    <a class="woyadengruaheahe">添加购物车</a>
+                                }
+                                @{Html.RenderAction("Index", "Login");}
+                            </span>
+                        </p>
+                        <div class="zhanji-wuping-contents">
+                            <p>@p.GoodsName</p>
+                            <div>
+                            </div>
+                            <p>
+                                @p.Company
+                            </p>
+                        </div>
+                    </div>
+                }
+             
+               
+            </div>
+         
+        </div>
+        <div class="row qiang-goods" id="qiang">
+            <div class="col-xs-12 col-sm-12 col-md-12 zhanji-goods-head">
+                <div class="col-xs-1 col-sm-1 col-md-1 zhanji-goods-name "><p>枪械模型</p></div>
+                <div class="col-xs-8 col-sm-8 col-md-8 zhanji-goods-gushi"><p>每个模型都有一个属于自己的故事</p></div>
+                <div class="col-xs-1 col-sm-1 col-md-1 qiang-goods-more"><p><a href="@Url.Content("~/Malls/Classify")"> MOVE</a></p></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 qiang-goods-img" id="scropad">
+
+                <div id="mygallery" class="stepcarousel">
+                    <div class="belt" id="displaycssbelt">
+                        @foreach (Goods u in Model.Good2)
+                        {
+                            <div class="panel">
+                                <div class="subfeature">
+
+                                    <img src="@u.GoodsImage1" alt="canadian-thanksgiving-in-texas" class="post-image" width="200" height="150" />
+                                    <div class="subfeature-txt">
+                                        <h4 style="text-align:center">@u.GoodsName</h4>
+                                        <p>
+                                            <span style="float:left; margin-left:10px; color:red;font-size:20px">@u.GoodsPrice￥</span>
+                                            <span style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; ">
+                                               立即购买
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mujian-goods" id="hangmu">
+            <div class="col-xs-12 col-sm-12 col-md-12 zhanji-goods-head">
+                <div class="col-xs-1 col-sm-1 col-md-1 zhanji-goods-name "><p>航空母舰模型</p></div>
+                <div class="col-xs-8 col-sm-8 col-md-8 zhanji-goods-gushi"><p>每个模型都有一个属于自己的故事</p></div>
+
+            </div>
+            
+            <div class="col-xs-9 col-sm-9 col-md-9 zhanji-wuping">
+                @foreach (Goods n in Model.Good3)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 zhanji-wuping-img">
+                        <img src="@n.GoodsImage1" />
+                        <h4 style="text-align:center">@n.GoodsName</h4>
+                        <p>
+                            <span style="float:left; margin-left:10px; color:red;font-size:20px">@n.GoodsPrice￥</span>
+                            <span style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; ">
+                            
+                                @if (Session["UserName"] != null)
+                                {
+                                    @Html.ActionLink("加入购物车", "AddToCart", "Cart", new { GoodId = @n.Goods_id }, null)
+                                }
+                                else
+                                {
+                                    <a class="woyadengruaheahe">添加购物车</a>
+                                }
+                                @{Html.RenderAction("Index", "Login");}
+                            </span>
+                        </p>
+                        <div class="zhanji-wuping-contents">
+                            <p>@n.GoodsName</p>
+                            <div>
+                            </div>
+                            <p>
+                                @n.Company
+                            </p>
+                        </div>
+                    </div>
+                }
+              
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 zhanji-jiashao">
+                <div class="zhanji-jiashao-img"><img src="~/Images/bg41.jpg" /></div>
+                <div class="zhanji-jiashao-content">
+                    <h3><a href="@Url.Content("~/Malls/Classify")"> 查看更多</a></h3>
+                    <p>
+                        航空母舰(Aircraft Carrier)，简称“航母”、“空母”。前苏联称之为“载机巡洋舰”。
+                        是一种可以提供军用飞机起飞和降落的军舰。中文“航空母舰”一词来自日文汉字。
+                        航空母舰一般总是一支航空母舰舰队中的核心舰船，有时还作为航母舰队的旗舰。
+                        舰队中的其它船只为它提供保护和供给。航空母舰有多种分类方式。
+                        按舰载机分类，可分为专用航空母舰和多用途航空母舰。
+                        专用航空母舰主要有攻击型航空母舰、反潜航空母舰（或直升机母舰）、训练航空母舰以及护航航空母舰
+
+                    </p>
+                </div>
+            </div>
+        </div>
+      
+        <div class="row daodan-goods" id="feng">
+            <div class="col-xs-12 col-sm-12 col-md-12 zhanji-goods-head">
+                <div class="col-xs-1 col-sm-1 col-md-1 zhanji-goods-name "><p>飞行器模型</p></div>
+                <div class="col-xs-8 col-sm-8 col-md-8 zhanji-goods-gushi"><p>每个模型都有一个属于自己的故事</p></div>
+                <div class="col-xs-1 col-sm-1 col-md-1 qiang-goods-more"><p>MORE</p></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 qiang-goods-img">
+
+                <div class="col-xs-3 col-sm-3 col-md-3 zhanji-jiashao">
+                    <div class="zhanji-jiashao-img"><img src="~/Images/bg1-2.png" /></div>
+                    <div class="zhanji-jiashao-content">
+                        <h3><a href="@Url.Content("~/Malls/Classify")"> 查看更多</a></h3>
+                        <p>
+                            飞行器（flight vehicle）是在大气层内或大气层外空间（太空）飞行的器械。
+                            飞行器分为3类：航空器、航天器、火箭和导弹。
+                            在大气层内飞行的称为航空器，如气球、飞艇、飞机等。
+                            它们靠空气的静浮力或空气相对运动产生的空气动力升空飞行。
+                            在太空飞行的称为航天器，如人造地球卫星、载人飞船、空间探测器、航天飞机等。
+                            它们在运载火箭的推动下获得必要的速度进入太空，然后依靠惯性做与天体类似的轨道运动。[1]  
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 zhanji-wuping">
+                    @foreach (Goods n in Model.Good5)
+                    {
+                        <div class="col-xs-12 col-sm-6 col-md-4 zhanji-wuping-img">
+                            <img src="@n.GoodsImage1" />
+                            <h4 style="text-align:center">@n.GoodsName</h4>
+                            <p>
+                                <span style="float:left; margin-left:10px; color:red;font-size:20px">@n.GoodsPrice￥</span>
+                                <span style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; ">
+                                    @if (Session["UserName"] != null)
+                                    {
+                                        @Html.ActionLink("加入购物车", "AddToCart", "Cart", new { GoodId = @n.Goods_id }, null)
+                                    }
+                                    else
+                                    {
+                                        <a class="woyadengruaheahe">添加购物车</a>
+                                    }
+                                    @{Html.RenderAction("Index", "Login");}
+                                </span>
+                            </p>
+                            <div class="zhanji-wuping-contents">
+                                <p>@n.GoodsName</p>
+                                <div>
+                                </div>
+                                <p>
+                                    @n.Company
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+          
+        </div>
+        <div class="row tanke-goods" id="tangke">
+            <div class="col-xs-12 col-sm-12 col-md-12 zhanji-goods-head">
+                <div class="col-xs-1 col-sm-1 col-md-1 zhanji-goods-name "><p>坦克</p></div>
+                <div class="col-xs-8 col-sm-8 col-md-8 zhanji-goods-gushi"><p>每个模型都有一个属于自己的故事</p></div>
+
+            </div>
+            <div class="col-xs-9 col-sm-9 col-md-9 zhanji-wuping">
+                @foreach (Goods n in Model.Good4)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-4 zhanji-wuping-img">
+                        <img src="@n.GoodsImage1" />
+                        <h4 style="text-align:center">@n.GoodsName</h4>
+                        <p>
+                            <span style="float:left; margin-left:10px; color:red;font-size:20px">@n.GoodsPrice￥</span>
+                            <span style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; ">
+                                @if (Session["UserName"] != null)
+                                {
+                                    @Html.ActionLink("加入购物车", "AddToCart", "Cart", new { GoodId = @n.Goods_id }, null)
+                                }
+                                else
+                                {
+                                    <a class="woyadengruaheahe">添加购物车</a>
+                                }
+                                @{Html.RenderAction("Index", "Login");}
+                            </span>
+                        </p>
+                        <div class="zhanji-wuping-contents">
+                            <p>@n.GoodsName</p>
+                            <div>
+                            </div>
+                            <p>
+                                @n.Company
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 zhanji-jiashao">
+                <div class="zhanji-jiashao-img"><img src="~/Images/bg8-8.jpg" /></div>
+                <div class="zhanji-jiashao-content">
+                    <h3><a href="@Url.Content("~/Malls/Classify")"> 查看更多</a></h3>
+                    <p>
+                        坦克，现代陆上作战的主要武器，有“陆战之王”之美称，
+                        它是一种具有直射火力、越野能力和装甲防护力的履带式装甲战斗车辆，
+                        主要执行与对方坦克或其他装甲车辆作战，也可以压制、消灭反坦克武器、摧毁工事、歼灭敌方陆上力量。
+                        坦克一般装备一门中或大口径火炮（有些现代坦克的火炮甚至可以发射反坦克/直升机导弹）
+                        以及数挺防空（高射）或同轴（并列）机枪。坦克大多使用旋转炮塔，但亦少数使用固定式主炮。
+                        坦克主要由武器系统、瞄准系统、动力系统、通信系统、装甲车体等系统组成。
+
+                    </p>
+                </div>
+            </div>
+        
+          
+        </div>
+   </div>
+ 
+</div>
+@*轮播图滚动*@
+<script>
+        (function () {
+            //2016-13-10 begin
+            var $banner_box = $("#banner_box"),
+                $pages = $("#banner_list").find(".page_box"),
+                  $mainBoxs = $pages.find(".main_box"),
+                   $bgs = $pages.find(".bg_box img"),
+                $controlBox = $("#control_box"),
+                $productBtns = $("#product_btns"),
+                $controls = $controlBox.find("a");
+            var data = {
+                pLength: $pages.length,//记录一共有多少个page_box
+                curP: 0,
+                isCan: true,
+                isOnbtn: false,
+                fColor: [2, 2, 1, 1, 1],
+                dur: 3500,
+                cNum: 0
+            };
+
+            //自动轮播换页函数
+            var cId;
+            var pageChange = function (idx) {
+                if (data.isOnbtn)
+                    return;
+                if (idx >= -1 && idx < data.pLength && idx != data.curP && data.isCan) {
+                    data.isCan = false;
+                    data.cNum++;
+                    clearInterval(cId);//停止动画
+                    idx = idx == -1 ? data.pLength - 1 : idx;//条件表达式 真前假后 指向最后一张
+                    $controls.removeClass("icon_show").eq(idx).addClass("icon_show");
+                    $pages.eq(data.curP).css({ zIndex: 0 });
+                    $pages.eq(idx).addClass("show").css({ opacity: 0, zIndex: 1 }).animate({ opacity: 1 }, 400, function () {
+                        $pages.eq(data.curP).removeClass("show");
+                        $(this).addClass("show");
+                        data.isCan = true;
+                        data.curP = idx;
+                        data.cNum--;
+                        if (data.cNum == 0) {
+                            //setInterval() 方法会不停地调用函数，直到 clearInterval() 被调用或窗口被关闭。
+                            cId = setInterval(function () {
+                                pageChange((data.curP + 1) % data.pLength);
+                                //% 求余数 当要处理 X % Y时, 如果, X < Y 的话, 回传值就是 X 自己 1 % 4 = 1
+                            }, data.dur);//data.dur 是时间
+                        }
+                    });
+                }
+            }
+            //鼠标经过 下方导航
+            $controls.on("mouseenter", function () {
+                data.isCan = true;
+                pageChange($controls.index(this));
+                data.isOnbtn = true;
+            });
+            $controls.on("mouseleave", function () {
+                data.isOnbtn = false;
+            });
+
+            cId = setInterval(function () {
+                pageChange((data.curP + 1) % data.pLength);
+            }, data.dur);
+
+            //网页自由缩放  2016-10-12 调整
+            var isIE6 = navigator.userAgent.indexOf("MSIE 6.0") > 0;//获取浏览器的版本
+            //调整
+            //页面自缩放
+            var resize = function () {
+                var w = $(window).width(),
+                    h = $(window).height();
+
+                $banner_box.height(h);
+                if (w / h < 1920 / 1080) {
+                    $bgs.height(h).css({ width: "auto", margin: -.5 * h + "px 0 0 " + -.5 * 1920 / 1080 * h + "px" });
+
+                } else {
+                    $bgs.width(w).css({ height: "auto", margin: -.5 * w * 1080 / 1920 + "px 0 0 " + -.5 * w + "px" });
+                }
+                resize_img(w, h);//调用函数 改变内容图片大小
+
+                var imgH = $bgs.height();
+                $mainBoxs.height(imgH).css("margin-top", -.5 * imgH + "px");
+                var cls;
+                switch (true) {
+                    case w >= 1600: { cls = "big_view"; break; }
+                    case w < 1600 && w >= 1440: { cls = "mid_view"; break; }
+                    case w < 1440: { cls = "small_view"; break; }
+                }
+                var ws = $banner_box[0].className;
+                if (isIE6 && (ws.indexOf("big") != -1 || ws.indexOf("mid") != -1 || ws.indexOf("small") != -1) && ws.indexOf(cls) == -1)
+                    location.reload();
+                banner_box.className = "banner_box " + cls;
+            };
+            $(window).resize(resize);
+            resize();
+
+            function resize_img(w, h) {
+                var snoww = w * 593 / 1920,
+                   snowh = h * 448 / 1080;
+                var roomw = w * 668 / 1920,
+                    roomh = h * 585 / 1080;
+                var forestw = w * 500 / 1920,
+                    foresth = h * 636 / 1080;
+                var skyw = w * 371 / 1920,
+                    skyh = h * 341 / 1080;
+                if (w / h < 1920 / 1080) {
+                    //$(".snow_cot").height(snowh).css({ width: snowh * 宽 / 高 + "px", margin: "0 0 0" + -.5 * 宽 / 高 * snowh + "px" });
+                    $(".snow_cot").height(snowh).css({ width: snowh * 593 / 448 + "px", margin: "0 0 0" + -.5 * 593 / 448 * snowh + "px" });
+                    $(".room_cot").height(roomh).css({ width: roomh * 668 / 585 + "px", margin: "0 0 0" + -.5 * 400 / 585 * roomh + "px" });
+                    $(".forest_cot").height(foresth).css({ width: foresth * 500 / 636 + "px", margin: "0 0 0" + -.5 * 500 / 636 * foresth + "px" });
+                    $(".sky_cot").height(skyh).css({ width: skyh * 371 / 341 + "px" });
+
+                } else {
+                    //$(".snow_cot").width(snoww).css({ height: snoww * 高 / 宽 + "px", margin: "0 0 0" + -.5 * snoww + "px" });
+                    $(".snow_cot").width(snoww).css({ height: snoww * 448 / 593 + "px", margin: "0 0 0" + -.5 * snoww + "px" });
+                    $(".room_cot").width(roomw).css({ height: roomw * 585 / 668 + "px", margin: "0 0 0" + -.5 * 400 * roomw / 668 + "px" });
+                    $(".forest_cot").width(forestw).css({ height: forestw * 636 / 500 + "px", margin: "0 0 0" + -.5 * forestw + "px" });
+                    $(".sky_cot").width(skyw).css({ height: skyw * 341 / 371 + "px" });
+                }
+
+            }
+        })();
+</script>
+@*新品商品滚动*@
+<script>
+    var drew = document.getElementById("drow");
+    var scrol = document.getElementById("srcsa1");
+    var ilheight = 320;
+    var speed = 1;
+    var time = 2000;
+    var deay;
+    drew.scrollTop =0;
+    scrol.innerHTML += scrol.innerHTML;
+    function startscroll() {
+        deay = setInterval("scrollleft()", speed);
+        drew.scrollTop++;
+    }
+    function scrollleft() {
+        if (drew.scrollTop % ilheight == 0) {
+            clearInterval(deay);
+            setTimeout(startscroll, time);
+        }
+        else {
+            drew.scrollTop++;
+            if (drew.scrollTop >= drew.scrollHeight/2) {
+                drew.scrollTop = 0;
+            }
+        }
+    }
+    setTimeout(startscroll, time);
+</script>
+@*客服*@
+<script type="text/javascript">
+$(function() {
+	$(".contactusdiyou").hover(function() {
+		$(".hoverimg").attr("src","/Images/hoverbtnbg1.gif");
+		$('.diyoumask').fadeIn();
+		$('.contactusdiyou').animate({right:'0'},300);
+	}, function() {
+		$(".hoverimg").attr("src","/Images/hoverbtnbg.gif");
+		$('.contactusdiyou').animate({right:'-230px'},300,function(){});
+		$('.diyoumask').fadeOut();
+	});
+});
+</script>  
+  @*@*左右滚动*@
+   @*<script type="text/javascript">
+     
+      
+   var speed=10;
+   var tab = document.getElementById("scropad");
+   var tab1 = document.getElementById("scrollPic");
+   var tab2 = document.getElementById("scrollPic2");
+   var tab3 = document.getElementById("woyaoscroll")
+   tab2.innerHTML = tab1.innerHTML;
+   var time = 2000;
+   var inwidth = 303;
+   var deay;
+   tab.scrollLeft = 0;
+   function startscroll() {
+       deay = setInterval("scrollleft()", speed);
+       tab.scrollLeft++;
+   }
+   function scrollleft() {
+       if (tab.scrollLeft % inwidth == 0) {
+           clearInterval(deay);
+           setTimeout(startscroll, time);
+       }
+       else {
+           tab.scrollLeft++;
+           if (tab.scrollLeft >= tab.scrollWidth / 3) {
+               tab.scrollLeft = 0;
+           }
+       }
+   }
+   setTimeout(startscroll, time);
+
+</script>*@
+
+   

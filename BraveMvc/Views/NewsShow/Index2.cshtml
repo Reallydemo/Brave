@@ -1,0 +1,138 @@
+﻿@using Models
+@model ViewModels.Cnpagelist
+@{
+    ViewBag.Title = "Index2";
+    Layout = null;
+}
+<link rel="stylesheet" type="text/css" href="~/Content/NewsShow.css" />
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="~/Scripts/banner.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.carousel.js"></script>
+<link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script>
+$(function(){
+$(".bellows__content-wrapper").hide();
+$(".bellows__header").click(function(){
+$(this).next().slideDown()
+$(this).parent(".bellows__item").addClass("bellows--is-open")
+$(".bellows__header").not(this).next().slideUp()
+$(".bellows__header").not(this).parent(".bellows__item").removeClass("bellows--is-open")
+})
+})
+</script>
+
+
+<body>
+    <div class="all">
+        <div class="pictureShow">
+            <div class="banner">
+                <div class="b-img">
+                    @foreach (var item in Model.FindAllNews)
+                    {
+                        <a href="@Url.Action("Detail","NewsShow",new { id=@item.News_id})"  ><img src="@item.NewsPicture" style="height:100%;width:100%;"/></a>
+                    }
+
+
+                </div>
+                <div class="b-list"></div>
+                <a class="bar-left" href="#"><em></em></a><a class="bar-right" href="#"><em></em></a>
+            </div>
+        </div>
+        <div class="pictureShowtitle">
+           <h3>图说天下</h3>
+        </div>
+            <div class="pictureWorld">
+                <div class="demo">
+
+                    <div class="container">
+
+                        <div class="row">
+                            @foreach (var item in Model.FindAllNews)
+                        {
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="box">
+                                        <div class="box-img">
+                                            <img src="@item.NewsPicture" alt="" />
+                                        </div>
+                                        <div class="box-content">
+                                            <h4 class="title">@item.NewsTitle</h4>
+                                            <p class="description"><a href="@Url.Action("Detail","NewsShow",new {id=@item.News_id })">查看更多</a></p>
+                                            <ul class="social-links">
+                                                <li><a href="#" class="fa fa-qq"></a></li>
+                                                <li><a href="#" class="fa fa-weibo"></a></li>
+                                                <li><a href="#" class="fa fa-weixin"></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        <div class="bellows single">
+            <div class="bellows__item">
+                <div class="bellows__header">
+                    <h3><a href="@Url.Action("ClassifyNews","NewsShow", new { id=1})">国内新闻</a></h3>
+                </div>
+                <div class="bellows__content-wrapper">
+                    <div class="bellows__content">
+                        <div style="width:90%;float:left;column-count:2;column-gap:5em;">
+                            @foreach (News item in Model.Findcountrynews)
+                            {
+                                <a href="@Url.Action("Detail","NewsShow", new { id=@item.News_id})"><p> @item.NewsTitle</p></a>
+                            }
+                        </div>
+                        <div class="skip">
+                        <a href="@Url.Action("ClassifyNews","NewsShow", new { id=1})">更多内容>>></a>   
+                        </div> 
+                            
+                </div>
+                </div>
+            </div>
+            <div class="bellows__item">
+                <div class="bellows__header">
+                    <h3><a href="@Url.Action("ClassifyNews","NewsShow", new { id=2})">国际新闻</a></h3>
+                </div>
+                <div class="bellows__content-wrapper">
+                    <div class="bellows__content">
+                        
+                        <div style="width:90%;float:left;column-count:2;column-gap:5em;">
+                            @foreach (News item1 in Model.FindInternationalNews)
+                            {
+                                <a href="@Url.Action("Detail","NewsShow", new { id=@item1.News_id})"><p> @item1.NewsTitle</p></a>
+                            }
+                            </div>
+                         <div class="skip">
+                                <a href="@Url.Action("ClassifyNews","NewsShow", new { id=2})">更多内容>>></a>
+                            </div>
+
+
+                        </div>
+                </div>
+            </div>
+            <div class="bellows__item">
+                <div class="bellows__header">
+                    <h3><a href="@Url.Action("ClassifyNews","NewsShow", new { id=3})">地区热点</a></h3>
+                </div>
+                <div class="bellows__content-wrapper">
+                    <div class="bellows__content">
+                        <div style="width:90%;float:left;column-count:2;column-gap:5em;">
+                            @foreach (News item2 in Model.FindHotNews)
+                            {
+                                <a href="@Url.Action("Detail","NewsShow",new { id=@item2.News_id})"><p> @item2.NewsTitle</p></a>
+                            }
+                            </div>
+                            <div class="skip">
+                                <a href="@Url.Action("ClassifyNews","NewsShow", new { id=3})">更多内容>>></a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>

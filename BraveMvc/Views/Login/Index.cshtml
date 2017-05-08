@@ -1,0 +1,229 @@
+﻿@model Models.Users       
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<style type="text/css">
+    .popup{
+	width:350px; 
+	height:auto;
+	background-color:#fff;
+	position:fixed;
+   
+	z-index:100;
+	border:1px solid #ebeaea;
+	left:400px;
+	top:10px;
+    display:none;
+    border-radius:20px;
+	
+}
+.popup .top_nav{
+	width:350px;
+	height:46px;
+	background-image: url(/Images/popup_top_bj.jpg);
+	border-bottom:1px solid #ebeaea;
+	position:relative;
+	cursor:move;
+}
+.popup .top_nav i{width:35px;height:35px;background:url(/Images/sucai_tubiao.png) -314px -5px;position:absolute;top:6px;left:8px;display:block; }
+.popup .top_nav span{font:18px/18px 'microsoft yahei';color:#707070;display:block;position:absolute;top:13px;left:50px;}
+
+.popup .top_nav a.guanbi { background:url(/Images/popup_guanbi.png) repeat 0px 0px; width:35px; height: 35px; display: block; position:absolute;top:8px;right:10px;cursor:pointer;}
+.popup .top_nav a.guanbi span { display: none;}
+.popup .top_nav a.guanbi:hover { background: url(/Images/popup_guanbi.png) repeat 0px -35px; }
+.popup .min{width:332px;height:auto;padding:10px;}
+
+.tc_login{width:310px;height:240px;background-color:#fff;}
+
+.tc_login .right{width:290px;height:240px;background-color:;float:right;padding-right:10px;}
+
+
+
+.tc_login .right i{font-size:20px;color:#090;float:right;margin:15px 0 0px 0;}
+.tc_login .right a{font:13px/18px 'microsoft yahei';color:#666;float:right;margin:16px 0 0px 6px;}
+.tc_login .right a:hover{color:#06F;text-decoration: underline;}
+.tc_login .right input{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding:0 0 0 34px;
+	margin:10px 0px 0px 10px;
+    transition: background 0.3s ease-in-out;
+    width: 290px;
+	
+}
+.tc_login .right input:focus {
+    outline: none;
+    border-color: #019A0D;
+    box-shadow: 0 0 0px #019A0D;
+}
+.tc_login .right .input_yh{background:url(/Images/tc_login_yonghu.jpg) no-repeat left top;}
+.tc_login .right .input_mm{background:url(/Images/tc_login_mima.jpg) no-repeat left top;}
+.tc_login .right .input_yh:focus{background:url(/Images/tc_login_yonghu2.jpg) no-repeat left top;}
+.tc_login .right .input_mm:focus{background:url(/Images/tc_login_mima2.jpg) no-repeat left top;}
+.tc_login .right .button{
+-webkit-appearance: none;
+    background:#36a803;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    transition: background 0.3s ease-in-out;
+    width: 270px;
+	padding:0 50px 0 50px;
+	font-weight: bold;
+    text-decoration:none;
+    outline:none;
+    line-height:50px;
+	}
+.tc_login .right .button:hover {
+
+    background: #019A0D;
+    text-decoration:none;
+    font-size:30px;
+}
+.zhuce{
+    float:right;
+   
+}
+#gray{width:100%;height:100%;background:rgba(0,0,0,0.3);position:fixed;top:0px;display:none;z-index:99;}
+</style>
+<div id="gray"></div>
+
+<div class="popup" id="popup">
+    <div class="top_nav" id='top_nav'>
+        <div align="center">
+            <span>登录账号</span>
+            <a class="guanbi"></a>
+        </div>
+    </div>
+    <div class="min">
+        <div class="tc_login">
+            <div class="right">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "LoginForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div align="center">
+
+                        <i class="icon-mobile-phone"></i>
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "input_yh", placeholder = "请输入用户名", id = "txtUserName", autocomplete = "off" })
+                        @Html.TextBoxFor(model => model.Password, new { @class = "input_mm", placeholder = "请输入密码", type = "password", id = "txtPwd", autocomplete = "off" })
+                    
+                    </div>
+
+                    <div align="center">
+                        <a class="button" href="javascript:document.getElementById('LoginForm').submit()" id="btnlogin">登录</a>
+                       
+                    </div>
+                }
+                   
+               
+               
+                    <div class="zhuce"><a href="@Url.Action("Register","Register")" target="_blank">立即注册</a></div>
+                
+              
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script type="text/javascript">
+		//窗口效果
+		//点击登录class为tc 显示
+		$(".woyadengruaheahe").click(function(){
+			$("#gray").show();
+			$("#popup").show();//查找ID为popup的DIV show()显示#gray
+			tc_center();
+		});
+		//点击关闭按钮
+		$("a.guanbi").click(function(){
+			$("#gray").hide();
+			$("#popup").hide();//查找ID为popup的DIV hide()隐藏
+		})
+
+		//窗口水平居中
+		$(window).resize(function(){
+			tc_center();
+		});
+
+		function tc_center(){
+			var _top=($(window).height()-$(".popup").height())/8;
+			var _left=($(window).width()-$(".popup").width())/2;
+
+			$(".popup").css({top:_top,left:_left});
+		}
+</script>
+
+<script type="text/javascript">
+		$(document).ready(function(){
+
+			$(".top_nav").mousedown(function(e){
+				$(this).css("cursor","move");//改变鼠标指针的形状
+				var offset = $(this).offset();//DIV在页面的位置
+				var x = e.pageX - offset.left;//获得鼠标指针离DIV元素左边界的距离
+				var y = e.pageY - offset.top;//获得鼠标指针离DIV元素上边界的距离
+				$(document).bind("mousemove",function(ev){ //绑定鼠标的移动事件，因为光标在DIV元素外面也要有效果，所以要用doucment的事件，而不用DIV元素的事件
+
+					$(".popup").stop();//加上这个之后
+
+					var _x = ev.pageX - x;//获得X轴方向移动的值
+					var _y = ev.pageY - y;//获得Y轴方向移动的值
+
+					$(".popup").animate({left:_x+"px",top:_y+"px"},10);
+				});
+
+			});
+
+			$(document).mouseup(function() {
+				$(".popup").css("cursor","default");
+				$(this).unbind("mousemove");
+			});
+		})
+</script>
+<script type="text/javascript">
+    $().ready(function () {
+        $("#LoginForm").validate({
+
+            rules: {
+                UserName: {
+                    required: true,
+                    minlength:2,
+                    maxlength:8
+                },
+
+                Password: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 16
+                },
+
+
+            },
+            messages: {
+                UserName: {
+                    required: "请输入用户名",
+                    minlength: '用户名不能小于2个字符',
+                    maxlength: '用户名不能超过8个字符'
+                },
+
+                Password: {
+                    required: "请输入密码",
+                    minlength: '密码不能小于6个字符',
+                    maxlength: '密码不能超过16个字符'
+                },
+
+            }
+        })
+    })
+</script>

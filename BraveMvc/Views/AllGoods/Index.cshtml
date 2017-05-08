@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<Models.Goods>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+  
+    <style type="text/css">
+        .page-list {
+            margin-top: 10px;
+        }
+        .pageje{
+            margin-top:3%;
+        }
+            
+       
+    
+    </style>
+
+    </head>
+<body>
+    <div class="row classify-wuping" id="classifywuping">
+
+
+        @foreach (var item in Model)
+        {
+            
+            <div class="col-xs-6 col-sm-4 col-md-4 classify-wuping-list">
+
+                <div class="classify-wuping-img" id="maximg">
+                    <img src="@item.GoodsImage1" />
+                </div>
+
+                <div class="classify-wuping-content">
+                    <h4 style="text-align:center">@item.GoodsName</h4>
+                    <p>
+                        <span style="float:left; margin-left:10px; color:red;font-size:20px">@item.GoodsPrice￥</span>
+                     
+                         <div class="jiarugouwucart" style="float:right;height:30px;line-height:30px; width:100px;background-color:red;color:white;margin-right:10px; border-radius:5px; padding-left:20px; cursor:pointer; color:white" >
+                             @*@if (Session["UserName"] != null)
+                             {
+                                 using (Html.BeginForm("AddCart", "Cart", FormMethod.Post, new {  id = "addcart", enctype = "multipart/form-data" }))
+                                 {
+                                     <input id="goodsid" name="goodsid" type="hidden" value="@item.Goods_id" />
+                                     <input id="price" name="price" type="hidden" value="@item.GoodsPrice" />
+
+
+                                     <a href="javascript:document.getElementById('addcart').submit()">加入购物车</a>
+                                 }
+                                 @Html.ActionLink("立即购买", "AddCart", "Cart", new { GoodId = @item.Goods_id, GoodPrice = @item.GoodsPrice }, null)
+                             }
+                             else
+                             {
+                                 <a class="woyadengruaheahe">立即购买</a>
+                             }
+                             @{Html.RenderAction("Index", "Login");}*@
+                             <a href="@Url.Action("Detail","Malls", new { id = @item.Goods_id,classid=@item.Classify_id })">立即购买</a>
+                         </div>   
+                      
+                           
+                      
+                    </p>
+                </div>
+
+            </div>
+            <div class="classify-wuping-largeimg" id="largeimg">
+                <img src="@item.GoodsImage1" />
+            </div>
+        }
+       
+
+
+
+
+
+
+
+    </div>
+    <div class="row page-list">
+        <div class="col-xs-4 col-sm-6 col-md-6 pagejiye"></div>
+
+        <div class="col-xs-6 col-sm-4 col-md-4 pagejiye">
+         @Html.PagedListPager(Model, page => Url.Action("Classify", "Malls", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+           
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 pageje">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        </div>
+    </div>
+
+</body>
+</html>
+   

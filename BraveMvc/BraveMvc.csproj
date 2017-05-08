@@ -1,0 +1,1389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F671DA3-A74F-4EA5-AADD-7866FB12D632}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BraveMvc</RootNamespace>
+    <AssemblyName>BraveMvc</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="X.PagedList, Version=5.3.0.21888, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.5.3.0.5300\lib\portable-net45+wp8+win8\X.PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllGoodsController.cs" />
+    <Compile Include="Controllers\AllNewsController.cs" />
+    <Compile Include="Controllers\BraveController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MallsController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsShowController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\YZMController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Models\AccountViewModels.cs" />
+    <Compile Include="Controllers\Models\IdentityModels.cs" />
+    <Compile Include="Controllers\Models\ManageViewModels.cs" />
+    <Compile Include="ManagerControllers\GoodsController.cs" />
+    <Compile Include="ManagerControllers\NewsAddController.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ueditor\net\App_Code\Config.cs" />
+    <Compile Include="ueditor\net\App_Code\ConfigHandler.cs" />
+    <Compile Include="ueditor\net\App_Code\CrawlerHandler.cs" />
+    <Compile Include="ueditor\net\App_Code\Handler.cs" />
+    <Compile Include="ueditor\net\App_Code\ListFileHandler.cs" />
+    <Compile Include="ueditor\net\App_Code\NotSupportedHandler.cs" />
+    <Compile Include="ueditor\net\App_Code\PathFormater.cs" />
+    <Compile Include="ueditor\net\App_Code\UploadHandler.cs" />
+    <Compile Include="ViewModels\Brave.cs" />
+    <Compile Include="ViewModels\Clasaifymenu.cs" />
+    <Compile Include="ViewModels\Cnpagelist.cs" />
+    <Compile Include="ViewModels\GoodsDetail.cs" />
+    <Compile Include="ViewModels\Goodss.cs" />
+    <Compile Include="ViewModels\MallsCart.cs" />
+    <Compile Include="ViewModels\Paging.cs" />
+    <Compile Include="YZM\ValidateCode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\BLL.dll" />
+    <Content Include="bin\BraveMvc.dll" />
+    <Content Include="bin\BraveMvc.pdb" />
+    <Content Include="bin\DAL.dll" />
+    <Content Include="bin\DALFactory.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\IDAL.dll" />
+    <Content Include="bin\Models.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\X.PagedList.Mvc.dll" />
+    <Content Include="bin\zh-Hans\EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Helpers.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Carts.css" />
+    <Content Include="Content\ClassifyNews.css" />
+    <Content Include="Content\Malls.css" />
+    <Content Include="Content\NewsDetail.css" />
+    <Content Include="Content\NewsShow.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Register.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\001国产航母.jpg" />
+    <Content Include="Images\052D型导弹驱逐舰长沙舰.jpg" />
+    <Content Include="Images\arrow.png" />
+    <Content Include="Images\bg0.jpg" />
+    <Content Include="Images\bg1-2.png" />
+    <Content Include="Images\bg1-5.png" />
+    <Content Include="Images\bg2.jpg" />
+    <Content Include="Images\bg21.jpg" />
+    <Content Include="Images\bg22.jpg" />
+    <Content Include="Images\bg23.jpg" />
+    <Content Include="Images\bg3-3.jpg" />
+    <Content Include="Images\bg3.jpg" />
+    <Content Include="Images\bg30.jpg" />
+    <Content Include="Images\bg30.png" />
+    <Content Include="Images\bg31.jpg" />
+    <Content Include="Images\bg35.jpg" />
+    <Content Include="Images\bg36.jpg" />
+    <Content Include="Images\bg40.jpg" />
+    <Content Include="Images\bg41.jpg" />
+    <Content Include="Images\bg6-1.png" />
+    <Content Include="Images\bg6.jpg" />
+    <Content Include="Images\bg7.jpg" />
+    <Content Include="Images\bg7-7.jpg" />
+    <Content Include="Images\bg8-2.png" />
+    <Content Include="Images\bg8-8.jpg" />
+    <Content Include="Images\bg8.jpg" />
+    <Content Include="Images\butt-left.gif" />
+    <Content Include="Images\butt-right.gif" />
+    <Content Include="Images\button-custom-qq-h.gif" />
+    <Content Include="Images\button-custom-qq.gif" />
+    <Content Include="Images\C919试飞.jpg" />
+    <Content Include="Images\closehdtipper.png" />
+    <Content Include="Images\daohanglan.jpg" />
+    <Content Include="Images\erweima.jpg" />
+    <Content Include="Images\F-22拦截图95.jpg" />
+    <Content Include="Images\F-35.jpg" />
+    <Content Include="Images\goods\1.jpg" />
+    <Content Include="Images\goods\2.jpg" />
+    <Content Include="Images\goods\3.jpg" />
+    <Content Include="Images\goods\4.jpg" />
+    <Content Include="Images\goods\5.jpg" />
+    <Content Include="Images\goods\air1-1.jpg" />
+    <Content Include="Images\goods\air1.jpg" />
+    <Content Include="Images\goods\air10-1.jpg" />
+    <Content Include="Images\goods\air10.jpg" />
+    <Content Include="Images\goods\air11.jpg" />
+    <Content Include="Images\goods\air2.jpg" />
+    <Content Include="Images\goods\air3-1.jpg" />
+    <Content Include="Images\goods\air3-2.jpg" />
+    <Content Include="Images\goods\air3.jpg" />
+    <Content Include="Images\goods\air4-1.jpg" />
+    <Content Include="Images\goods\air4-2.png" />
+    <Content Include="Images\goods\air4.jpg" />
+    <Content Include="Images\goods\air5-1.jpg" />
+    <Content Include="Images\goods\air5-2.jpg" />
+    <Content Include="Images\goods\air5.jpg" />
+    <Content Include="Images\goods\air6-1.jpg" />
+    <Content Include="Images\goods\air6-2.jpg" />
+    <Content Include="Images\goods\air6.jpg" />
+    <Content Include="Images\goods\air7.jpg" />
+    <Content Include="Images\goods\air8.jpg" />
+    <Content Include="Images\goods\air9.jpg" />
+    <Content Include="Images\goods\craft1-1.jpg" />
+    <Content Include="Images\goods\craft1.jpg" />
+    <Content Include="Images\goods\craft2-1.jpg" />
+    <Content Include="Images\goods\craft2-2.jpg" />
+    <Content Include="Images\goods\craft2.jpg" />
+    <Content Include="Images\goods\craft3-1.jpg" />
+    <Content Include="Images\goods\craft3.jpg" />
+    <Content Include="Images\goods\craft4.jpg" />
+    <Content Include="Images\goods\craft5-1.jpg" />
+    <Content Include="Images\goods\craft5-2.jpg" />
+    <Content Include="Images\goods\craft5.jpg" />
+    <Content Include="Images\goods\craft6-1.jpg" />
+    <Content Include="Images\goods\craft6-2.jpg" />
+    <Content Include="Images\goods\craft6.jpg" />
+    <Content Include="Images\goods\craft7-1.jpg" />
+    <Content Include="Images\goods\craft7.jpg" />
+    <Content Include="Images\goods\craft8-1.jpg" />
+    <Content Include="Images\goods\craft8-2.jpg" />
+    <Content Include="Images\goods\craft8.jpg" />
+    <Content Include="Images\goods\hang1-1.jpg" />
+    <Content Include="Images\goods\hang1.jpg" />
+    <Content Include="Images\goods\hang2.jpg" />
+    <Content Include="Images\goods\hang3.jpg" />
+    <Content Include="Images\goods\hang4.jpg" />
+    <Content Include="Images\goods\hang5.jpg" />
+    <Content Include="Images\goods\hang6-1.jpg" />
+    <Content Include="Images\goods\hang6-2.jpg" />
+    <Content Include="Images\goods\hang6.jpg" />
+    <Content Include="Images\goods\hang7-1.jpg" />
+    <Content Include="Images\goods\hang7-2.jpg" />
+    <Content Include="Images\goods\hang7.jpg" />
+    <Content Include="Images\goods\spear1.jpg" />
+    <Content Include="Images\goods\spear10.png" />
+    <Content Include="Images\goods\spear11.png" />
+    <Content Include="Images\goods\spear12-1.jpg" />
+    <Content Include="Images\goods\spear12.jpg" />
+    <Content Include="Images\goods\spear2.jpg" />
+    <Content Include="Images\goods\spear3.png" />
+    <Content Include="Images\goods\spear4.png" />
+    <Content Include="Images\goods\spear5.jpg" />
+    <Content Include="Images\goods\spear6-1.jpg" />
+    <Content Include="Images\goods\spear6-2.jpg" />
+    <Content Include="Images\goods\spear6.jpg" />
+    <Content Include="Images\goods\spear7.jpg" />
+    <Content Include="Images\goods\spear8.jpg" />
+    <Content Include="Images\goods\spear9.png" />
+    <Content Include="Images\goods\tank1-1.jpg" />
+    <Content Include="Images\goods\tank1.jpg" />
+    <Content Include="Images\goods\tank2-1.jpg" />
+    <Content Include="Images\goods\tank2.jpg" />
+    <Content Include="Images\goods\tank3-1.jpg" />
+    <Content Include="Images\goods\tank3-2.png" />
+    <Content Include="Images\goods\tank3.jpg" />
+    <Content Include="Images\goods\tank4.jpg" />
+    <Content Include="Images\goods\tank5-1.png" />
+    <Content Include="Images\goods\tank5.jpg" />
+    <Content Include="Images\goods\tank6.jpg" />
+    <Content Include="Images\hbbg.png" />
+    <Content Include="Images\hoverbtnbg.gif" />
+    <Content Include="Images\hoverbtnbg1.gif" />
+    <Content Include="Images\icon_big.png" />
+    <Content Include="Images\icon_big_1.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo1.jpg" />
+    <Content Include="Images\logo2.jpg" />
+    <Content Include="Images\logo2.png" />
+    <Content Include="Images\logo5.png" />
+    <Content Include="Images\logo6.png" />
+    <Content Include="Images\logo_white.png" />
+    <Content Include="Images\popup_guanbi.png" />
+    <Content Include="Images\popup_top_bj.jpg" />
+    <Content Include="Images\refresh-1.png" />
+    <Content Include="Images\sky_cot2.png" />
+    <Content Include="Images\sky_shang.png" />
+    <Content Include="Images\sky_xia.png" />
+    <Content Include="Images\sucai_tubiao.png" />
+    <Content Include="Images\tc_login_mima.jpg" />
+    <Content Include="Images\tc_login_mima2.jpg" />
+    <Content Include="Images\tc_login_yonghu.jpg" />
+    <Content Include="Images\tc_login_yonghu2.jpg" />
+    <Content Include="Images\tel.png" />
+    <Content Include="Images\users\2.jpg" />
+    <Content Include="Images\users\3.jpg" />
+    <Content Include="Images\users\4.png" />
+    <Content Include="Images\users\5.jpg" />
+    <Content Include="Images\wechat_code.png" />
+    <Content Include="Images\weixin.png" />
+    <Content Include="Images\zxkfqq.png" />
+    <Content Include="Images\“出云”号直升机驱逐舰.jpg" />
+    <Content Include="Images\“多能尖兵”向宽祥.jpg" />
+    <Content Include="Images\东风-41导弹打击范围及时间.jpg" />
+    <Content Include="Images\中国海军远航访问编队.jpg" />
+    <Content Include="Images\中国超算.jpg" />
+    <Content Include="Images\习近平视察南部战区.jpg" />
+    <Content Include="Images\习近平视察南部战区1.jpg" />
+    <Content Include="Images\伊拉克.jpg" />
+    <Content Include="Images\伊朗核设施.jpg" />
+    <Content Include="Images\利剑突击队.jpg" />
+    <Content Include="Images\北约军演.jpg" />
+    <Content Include="Images\南京边防检查站小柯.jpg" />
+    <Content Include="Images\卡尔文森航母.jpeg" />
+    <Content Include="Images\台军特种部队.jpg" />
+    <Content Include="Images\国产大型客机C919.jpg" />
+    <Content Include="Images\大兴安岭发生森林火灾.jpg" />
+    <Content Include="Images\天舟1号发射瞬间.jpg" />
+    <Content Include="Images\密歇根号潜艇.png" />
+    <Content Include="Images\库尔德武装.jpg" />
+    <Content Include="Images\德联邦国防军.jpg" />
+    <Content Include="Images\日本出云号.jpg" />
+    <Content Include="Images\日本自卫队阅兵式.jpg" />
+    <Content Include="Images\朝鲜导弹车.jpg" />
+    <Content Include="Images\朝鲜试射导弹.jpg" />
+    <Content Include="Images\杜特尔特获赠中国军舰模型.jpg" />
+    <Content Include="Images\歼20.jpeg" />
+    <Content Include="Images\民兵-3洲际导弹.png" />
+    <Content Include="Images\水上救援水陆两栖飞机AG600.jpg" />
+    <Content Include="Images\永暑礁医院.jpg" />
+    <Content Include="Images\海军陆战队.jpg" />
+    <Content Include="Images\火箭军.jpg" />
+    <Content Include="Images\王英武劳模创新工作室.jpg" />
+    <Content Include="Images\疑似东风41导弹发射车.png" />
+    <Content Include="Images\第六代战机.jpg" />
+    <Content Include="Images\美军B1B战略轰炸机.jpg" />
+    <Content Include="Images\美军B1B轰炸机与战斗机联合演练.jpg" />
+    <Content Include="Images\美韩联合军演.jpeg" />
+    <Content Include="Images\萨德反导范围.jpg" />
+    <Content Include="Images\首飞机组成员.jpg" />
+    <Content Include="Images\驻韩美军.jpg" />
+    <Content Include="Images\驻韩美军战机.jpg" />
+    <Content Include="img\bg-parallax1.png" />
+    <Content Include="img\blog\1.jpg" />
+    <Content Include="img\blog\2.jpg" />
+    <Content Include="img\blog\3.jpg" />
+    <Content Include="img\blog\4.jpg" />
+    <Content Include="img\blog\5.jpg" />
+    <Content Include="img\blog\b1.jpg" />
+    <Content Include="img\blog\b2.jpg" />
+    <Content Include="img\blog\b3.jpg" />
+    <Content Include="img\collapse-active.png" />
+    <Content Include="img\collapse.png" />
+    <Content Include="img\content\article.jpg" />
+    <Content Include="img\content\article2.jpg" />
+    <Content Include="img\content\banner.jpg" />
+    <Content Include="img\content\circle.png" />
+    <Content Include="img\content\comment.png" />
+    <Content Include="img\content\news1.jpg" />
+    <Content Include="img\content\news10.jpg" />
+    <Content Include="img\content\news11.jpg" />
+    <Content Include="img\content\news12.jpg" />
+    <Content Include="img\content\news13.jpg" />
+    <Content Include="img\content\news2.jpg" />
+    <Content Include="img\content\news3.jpg" />
+    <Content Include="img\content\news4.jpg" />
+    <Content Include="img\content\news5.jpg" />
+    <Content Include="img\content\news6.jpg" />
+    <Content Include="img\content\news7.jpg" />
+    <Content Include="img\content\news8.jpg" />
+    <Content Include="img\content\news9.jpg" />
+    <Content Include="img\content\slide1.jpg" />
+    <Content Include="img\content\slide2.jpg" />
+    <Content Include="img\content\spec1.jpg" />
+    <Content Include="img\content\spec2.jpg" />
+    <Content Include="img\content\spec3.jpg" />
+    <Content Include="img\content\spec4.jpg" />
+    <Content Include="img\content\twitter_fon.jpg" />
+    <Content Include="img\faq.png" />
+    <Content Include="img\icon\arrow.png" />
+    <Content Include="img\icon\caret.png" />
+    <Content Include="img\icon\preloader.gif" />
+    <Content Include="img\imagebox\1.jpg" />
+    <Content Include="img\imagebox\2.jpg" />
+    <Content Include="img\imagebox\3.jpg" />
+    <Content Include="img\img_1.jpg" />
+    <Content Include="img\img_2.jpg" />
+    <Content Include="img\img_3.jpg" />
+    <Content Include="img\img_4.jpg" />
+    <Content Include="img\img_5.jpg" />
+    <Content Include="img\img_6.jpg" />
+    <Content Include="img\jingdian.jpg" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\logo1.png" />
+    <Content Include="img\logo2.png" />
+    <Content Include="img\logo3.png" />
+    <Content Include="img\logo4.png" />
+    <Content Include="img\news\1.jpg" />
+    <Content Include="img\news\2.jpg" />
+    <Content Include="img\news\3.jpg" />
+    <Content Include="img\news\4.jpg" />
+    <Content Include="img\png-sprite\96dpi\sprite.png" />
+    <Content Include="img\qianxleft.png" />
+    <Content Include="img\qianxleft1.png" />
+    <Content Include="img\qianxr.png" />
+    <Content Include="img\qianxr1.png" />
+    <Content Include="img\RedSpots\1.jpg" />
+    <Content Include="img\RedSpots\2.jpg" />
+    <Content Include="img\RedSpots\3.jpg" />
+    <Content Include="img\weapNormal.png" />
+    <Content Include="img\weapOver.png" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\main.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontello.eot" />
+    <Content Include="fonts\fontello.ttf" />
+    <Content Include="fonts\fontello.woff" />
+    <Content Include="fonts\HYJinChangTiJ.ttf" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\register.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\stepcarousel.js" />
+    <Content Include="Scripts\vue.js" />
+    <Content Include="Scripts\vue.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="ueditor\dialogs\background\background.css" />
+    <Content Include="ueditor\dialogs\background\background.html" />
+    <Content Include="ueditor\dialogs\background\background.js" />
+    <Content Include="ueditor\dialogs\background\images\bg.png" />
+    <Content Include="ueditor\dialogs\background\images\success.png" />
+    <Content Include="ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="ueditor\dialogs\charts\charts.css" />
+    <Content Include="ueditor\dialogs\charts\charts.html" />
+    <Content Include="ueditor\dialogs\charts\charts.js" />
+    <Content Include="ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="ueditor\dialogs\help\help.css" />
+    <Content Include="ueditor\dialogs\help\help.html" />
+    <Content Include="ueditor\dialogs\help\help.js" />
+    <Content Include="ueditor\dialogs\image\image.css" />
+    <Content Include="ueditor\dialogs\image\image.html" />
+    <Content Include="ueditor\dialogs\image\image.js" />
+    <Content Include="ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="ueditor\dialogs\image\images\bg.png" />
+    <Content Include="ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="ueditor\dialogs\image\images\icons.png" />
+    <Content Include="ueditor\dialogs\image\images\image.png" />
+    <Content Include="ueditor\dialogs\image\images\progress.png" />
+    <Content Include="ueditor\dialogs\image\images\success.gif" />
+    <Content Include="ueditor\dialogs\image\images\success.png" />
+    <Content Include="ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="ueditor\dialogs\internal.js" />
+    <Content Include="ueditor\dialogs\link\link.html" />
+    <Content Include="ueditor\dialogs\map\map.html" />
+    <Content Include="ueditor\dialogs\map\show.html" />
+    <Content Include="ueditor\dialogs\music\music.css" />
+    <Content Include="ueditor\dialogs\music\music.html" />
+    <Content Include="ueditor\dialogs\music\music.js" />
+    <Content Include="ueditor\dialogs\preview\preview.html" />
+    <Content Include="ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="ueditor\dialogs\table\dragicon.png" />
+    <Content Include="ueditor\dialogs\table\edittable.css" />
+    <Content Include="ueditor\dialogs\table\edittable.html" />
+    <Content Include="ueditor\dialogs\table\edittable.js" />
+    <Content Include="ueditor\dialogs\table\edittd.html" />
+    <Content Include="ueditor\dialogs\table\edittip.html" />
+    <Content Include="ueditor\dialogs\template\config.js" />
+    <Content Include="ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="ueditor\dialogs\template\template.css" />
+    <Content Include="ueditor\dialogs\template\template.html" />
+    <Content Include="ueditor\dialogs\template\template.js" />
+    <Content Include="ueditor\dialogs\video\images\bg.png" />
+    <Content Include="ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="ueditor\dialogs\video\images\icons.png" />
+    <Content Include="ueditor\dialogs\video\images\image.png" />
+    <Content Include="ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="ueditor\dialogs\video\images\progress.png" />
+    <Content Include="ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="ueditor\dialogs\video\images\success.gif" />
+    <Content Include="ueditor\dialogs\video\images\success.png" />
+    <Content Include="ueditor\dialogs\video\video.css" />
+    <Content Include="ueditor\dialogs\video\video.html" />
+    <Content Include="ueditor\dialogs\video\video.js" />
+    <Content Include="ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="ueditor\index.html" />
+    <Content Include="ueditor\lang\en\en.js" />
+    <Content Include="ueditor\lang\en\images\addimage.png" />
+    <Content Include="ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="ueditor\lang\en\images\background.png" />
+    <Content Include="ueditor\lang\en\images\button.png" />
+    <Content Include="ueditor\lang\en\images\copy.png" />
+    <Content Include="ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="ueditor\lang\en\images\listbackground.png" />
+    <Content Include="ueditor\lang\en\images\localimage.png" />
+    <Content Include="ueditor\lang\en\images\music.png" />
+    <Content Include="ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="ueditor\lang\en\images\upload.png" />
+    <Content Include="ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.dll" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.pdb" />
+    <Content Include="ueditor\net\Bin\Newtonsoft.Json.xml" />
+    <Content Include="ueditor\net\net.sln" />
+    <Content Include="ueditor\net\upload\image\20160507\6359825815045099293410685.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834587792768282104777.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834589920086545473533.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834610196077436294845.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834620321427552362400.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834639886091808187856.jpg" />
+    <Content Include="ueditor\net\upload\image\20160508\6359834659326680284728529.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359839938501592975409566.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359840381584472232799728.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359840396345399444605375.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359840457135802828952803.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359840468167917811213377.jpg" />
+    <Content Include="ueditor\net\upload\image\20160509\6359840509378054024250206.jpg" />
+    <Content Include="ueditor\net\upload\image\20160510\6359851867062105449062919.PNG" />
+    <Content Include="ueditor\net\upload\image\20160511\6359854988274195195136889.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359855099162639808469332.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359855133385723231515946.jpg" />
+    <Content Include="ueditor\net\upload\image\20160511\6359855147187624756283586.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359855240469996721634274.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359855312847485866281236.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858129028880381621354.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858196704805974603751.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858439231442287772131.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858537920226576338840.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858595476819067767008.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858637960703931108640.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858692570271754074382.png" />
+    <Content Include="ueditor\net\upload\image\20160511\6359858764733468444107965.png" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769831529288190450.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769852543158661499.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769858747267876652.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769867252904146640.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769873156943361793.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769880661826875119.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936769884264212861027.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779716481234660251.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779762311679115675.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779798635699773693.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779831657573973220.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779844165806701699.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779853672177673515.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936779865579991401993.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936854225067118661878.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936859112006185969539.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936862410292353058608.jpg" />
+    <Content Include="ueditor\net\upload\image\20160520\6359936865277993096095329.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944631877122733045293.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944722954238413496035.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944723072276516038249.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728277387941598615.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728306224988812234.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728335124832727682.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728388893299627504.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728454636287026559.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728503727165711227.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728646047134710398.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728735373497566410.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728771176868224428.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728792769868695477.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728811121465937281.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728828229254651667.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728843476259136808.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728864849845309685.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728904995286251783.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728928014338479495.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944728948809628950544.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944738157152732082508.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944747666254343468711.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944754339673833948792.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944754369215619689829.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765624019994306354.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765640806033020740.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765649059929763311.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765662353976721034.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765671089304463605.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765677693432206175.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765692271908163899.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765702227289135715.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765707501863649040.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765714485352864193.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765721607139606764.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765753605949577046.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765785122535249156.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765797436867977635.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765827949167947917.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765839213723148978.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765847785038418966.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765853446224404874.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765859447353620027.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765868518618890015.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944765874858208105168.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944775667518077489712.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944781889514455515324.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944781974448213385428.jpg" />
+    <Content Include="ueditor\net\upload\image\20160521\6359944782046674328999636.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952508259268778352042.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952508288151806565662.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513688351559497603.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513709400099968652.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513749180197681505.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513775709547367707.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513785873686866940.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513798817859595418.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513813287696553142.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513826951543510866.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513839181136239344.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513849139782509332.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513859009436710393.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513868295352980381.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513877571233952197.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513887606284924013.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513896513815895829.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513904674433638399.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952513914258884610215.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952517911791301494078.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952521174983572626957.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952526784559051957124.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952532982403952053196.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533002535532524245.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533010940679266816.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533020614991238631.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533029121102210447.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533036542575723773.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533040605931709680.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533050669462681496.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533058952883653312.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533067996598923300.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952533077028342367698.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952538679665812482712.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952546291056054896851.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952555489107387529582.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952564547736858217977.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952570076106215663948.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952576268320276544867.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952581397275186679528.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952581418746635677994.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952586358274006656232.gif" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952596032112623498562.gif" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952603191742968160059.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952852292353753278865.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952865513520318252416.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359952865621652969822814.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953049119904871657402.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953049134097547615126.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953049140456732128451.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953049204477121000089.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953049222502678714475.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058627442123043605.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058644651911757991.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058661285026243132.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058676425406430101.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058693683589442660.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058709915249629629.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058722225043358107.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058750100551571727.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953058786344476527917.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953064909702053954946.gif" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953070103640345786834.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953084939670085963351.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953090099756044595711.gif" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953095229863423257789.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953146177698116306758.png" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953151645896016637754.png" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953151674023894851374.png" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953151682792105823190.png" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953151686156727579852.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953151694348455322423.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953163002273178311351.jpg" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953174909784292565419.png" />
+    <Content Include="ueditor\net\upload\image\20160522\6359953181446357637559655.jpg" />
+    <Content Include="ueditor\net\upload\image\20160603\6360056891814178895564137.PNG" />
+    <Content Include="ueditor\net\upload\image\20160603\6360056892792052949912875.PNG" />
+    <Content Include="ueditor\net\upload\image\20160603\6360056909725535666244529.PNG" />
+    <Content Include="ueditor\net\upload\image\20160603\6360056992721931221355614.PNG" />
+    <Content Include="ueditor\net\upload\image\20160603\6360057089490973696249965.PNG" />
+    <Content Include="ueditor\net\upload\image\20160603\6360057149565580287790040.PNG" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893719395198164701.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893731794061893180.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893744866837850903.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893752680025593474.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893763023966565290.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893772830556064523.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893781336223807093.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893794388216535572.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893803020027507388.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893812395568479204.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893821771324749192.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080893831146805721007.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905221800939121550.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905231507361093365.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905246717495578507.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905258925688306985.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905268231989278801.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905275536728493954.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905282241256236524.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905432805662978266.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905442181103950082.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905449523781692652.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905459100106962640.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905469006697934456.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905922691948916343.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905935700605874067.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905946307675373300.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905957415039574361.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905968122239073595.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905980930732802073.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080905991637827003134.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080906011451054244938.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080906045273681673711.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080906057982084402189.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080906098909335344287.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080906121018809044581.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918819035825949454.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918830820368677933.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918838827366420503.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918850805631621564.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918860813801120798.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918870185072092614.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918886064246577755.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918899773663535478.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918909279648805466.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918924684778992435.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918937185762720914.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080918943435696234239.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921849437448456396.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921855807652969721.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921861211447955629.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921867215407170782.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921872919241684107.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921877293083440770.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921885039871183340.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921889167886169248.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921894020082155156.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921900119851370309.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921903959683126972.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080921909761726640297.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929501187612812632.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929508992889555203.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929515697258770356.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929520800644756264.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929525904088269589.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929531307644255497.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929535010216012160.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929540313775227313.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929545717241213221.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929550120276199129.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929555123602185037.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080929561727905698362.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938022878477878281.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938032384648850097.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938039889643363422.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938045693512578575.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938053999043550391.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938064606108820379.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938075413304021440.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938083718809291428.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938090723508506581.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938100730169478397.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938110636768977630.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080938116640828192784.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953416323215621177.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953451831501577367.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953458200849792520.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953467577631764336.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953480396044492814.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953496044128977955.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953518283202205667.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953566468665592164.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953589283984590630.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953610998228290924.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953631511988761973.jpg" />
+    <Content Include="ueditor\net\upload\image\20160606\6360080953652425913462268.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360125960467047437757590.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126037653564308112097.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126175475464343558965.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126210618529841297832.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126682155851013690883.PNG" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126811918298535025805.png" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878223082659861480.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878231173707604050.png" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878235508763589958.png" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878237960075346621.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878238960225346621.jpg" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126878239960158575866.jpg" />
+    <Content Include="ueditor\net\upload\image\20160619\6360197204103080218407740.jpg" />
+    <Content Include="ueditor\net\upload\image\20160619\6360197204107282961164403.jpg" />
+    <Content Include="ueditor\net\upload\image\20160619\6360197204110685296150311.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200788352134538970400.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200836633173586569377.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200836637073526853457.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200836639573451082702.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200836641173464311947.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200836642673402839365.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200872078835068548389.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360200872083235134534297.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360201049658530462299339.jpg" />
+    <Content Include="ueditor\net\upload\image\20160620\6360201049676530388541143.jpg" />
+    <Content Include="ueditor\themes\default\css\ueditor.css" />
+    <Content Include="ueditor\themes\default\css\ueditor.min.css" />
+    <Content Include="ueditor\themes\default\dialogbase.css" />
+    <Content Include="ueditor\themes\default\images\anchor.gif" />
+    <Content Include="ueditor\themes\default\images\arrow.png" />
+    <Content Include="ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="ueditor\themes\default\images\charts.png" />
+    <Content Include="ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="ueditor\themes\default\images\filescan.png" />
+    <Content Include="ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="ueditor\themes\default\images\icons.gif" />
+    <Content Include="ueditor\themes\default\images\icons.png" />
+    <Content Include="ueditor\themes\default\images\loaderror.png" />
+    <Content Include="ueditor\themes\default\images\loading.gif" />
+    <Content Include="ueditor\themes\default\images\lock.gif" />
+    <Content Include="ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="ueditor\themes\default\images\scale.png" />
+    <Content Include="ueditor\themes\default\images\sortable.png" />
+    <Content Include="ueditor\themes\default\images\spacer.gif" />
+    <Content Include="ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="ueditor\themes\default\images\upload.png" />
+    <Content Include="ueditor\themes\default\images\videologo.gif" />
+    <Content Include="ueditor\themes\default\images\word.gif" />
+    <Content Include="ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="ueditor\themes\iframe.css" />
+    <Content Include="ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="ueditor\third-party\video-js\video-js.css" />
+    <Content Include="ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="ueditor\third-party\video-js\video.js" />
+    <Content Include="ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="ueditor\ueditor.all.js" />
+    <Content Include="ueditor\ueditor.all.min.js" />
+    <Content Include="ueditor\ueditor.config.js" />
+    <Content Include="ueditor\ueditor.parse.js" />
+    <Content Include="ueditor\ueditor.parse.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Malls\Index.cshtml" />
+    <Content Include="Views\Malls\About.cshtml" />
+    <Content Include="Views\Malls\Classify.cshtml" />
+    <Content Include="ueditor\.DS_Store" />
+    <Content Include="ueditor\net\config.json" />
+    <Content Include="ueditor\net\controller.ashx" />
+    <Content Include="ueditor\net\README.md" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833297229594709885.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833312187005965780.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833323197021166841.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833331539172138657.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833336363952422737.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833340914027408645.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833375596134837418.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833405341266280283.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833409749742266191.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833414082434022853.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833423605913522087.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833428171259980577.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833432370555966485.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833436474766250565.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833440578063709056.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833444911788694963.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833449216828979043.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833453807924964951.jpg-a" />
+    <Content Include="ueditor\net\upload\image\20160611\6360126833458109959950859.jpg-a" />
+    <Content Include="ueditor\net\Web.config" />
+    <Content Include="ueditor\third-party\.DS_Store" />
+    <Content Include="ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="Views\Goods\Create.cshtml" />
+    <Content Include="Views\Goods\Delete.cshtml" />
+    <Content Include="Views\Goods\Details.cshtml" />
+    <Content Include="Views\Goods\Index.cshtml" />
+    <Content Include="Views\Goods\Edit.cshtml" />
+    <Content Include="Views\Malls\aboutss.cshtml" />
+    <Content Include="Views\AllGoods\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Malls\Detail.cshtml" />
+    <Content Include="Views\Brave\Index.cshtml" />
+    <Content Include="Views\Malls\Reply.cshtml" />
+    <Content Include="Views\Malls\SelectReply.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_Layoutmall.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AllNews\" />
+    <Folder Include="Views\NewsAdd\" />
+    <Folder Include="Views\NewsShow\" />
+    <Folder Include="Views\YZM\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{4bb476e4-af81-4cee-9ec3-2370fa1ec1af}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALFactory\DALFactory.csproj">
+      <Project>{b56ce6f8-e341-41d9-87de-9735535356b8}</Project>
+      <Name>DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{a7ae6a71-f332-4fc8-b529-3cb9b5861871}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDAL\IDAL.csproj">
+      <Project>{28ec714d-1292-418e-842f-478337f0a101}</Project>
+      <Name>IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{ab7bbd4c-3601-4e14-b67a-5e62142854ea}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52968</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52968/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

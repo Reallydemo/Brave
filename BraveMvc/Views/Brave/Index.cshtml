@@ -1,0 +1,771 @@
+﻿@using Models
+@model ViewModels.Brave
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ <!-- header slider -->
+<div class="slate_gray">
+    <div class="container">
+        <div class="row header_news_panel">
+
+            <!-- Tab panes -->
+            <div class="col-sm-8 tab-content tab-content_mob-p0">
+               
+                <div class="tanone">
+                    <img src="~/img/content/slide1.jpg"  >
+                    <div class="header_news_text tab-pane__block">
+                        <p class="tab-pane__category yel_line">虎贲网</p>
+                        <a class="tab-pane__title">获取最前沿新闻资讯</a>
+                        <p class="tab-pane__text">对我而言，过去平淡无奇，而有了虎贲，世界却是绚烂缤纷</p>
+                    </div>
+                </div>
+              @foreach (var n in Model.new1)
+              {
+                <div role="tabpanel" class="tab-pane fade " id="home">
+                    <img src="~/@n.NewsPicture" alt="main img" class="tab-pane__img">
+                    <div class="header_news_text tab-pane__block">
+                       
+                        <p class="tab-pane__text">@n.NewsTitle</p>
+                    </div>
+                </div>
+              }
+
+            </div>
+            <!-- END Tab panes -->
+            <!-- Nav tabs -->
+            <div class="col-sm-4 news-tabs">
+                <p class="news-tabs__title h2 "><em>最新 资讯</em></p>
+                <ul class="news-tabs__nav nav nav-tabs shadow_text" id="shiyan1" role="tablist">
+                    <div class="but" style="float:left;width:5px;">
+                        <p>
+                            <span></span>
+                        </p>
+                    </div>
+               @foreach (var e in Model.new1)
+               {
+                    <li>
+                        <a href="#" class="active">
+                            <span class="time">@e.SubmtDate</span>
+                            @e.NewsTitle
+                        </a>
+
+                    </li>
+               }
+                </ul>
+            </div>
+            <!-- END Nav tabs -->
+        </div>
+    </div>
+</div>
+<!-- END header slider -->
+<!-- 网上谈兵-->
+<div class="flat-row bg-scheme pad-top0px pad-bottom0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="promobox style1 style2 clearfix">
+                    <h5 class="promobox-title">虎贲环球特约评论视频</h5>
+                    <a class="button black sm" href="contact.html">了解更多<i class="fa fa-chevron-right"></i></a>
+                </div>
+            </div><!-- /.col-md-12 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div><!-- /.flat-row -->
+<!-- Flat imagebox -->
+<div class="flat-row parallax-style parallax1">
+    <div class="overlay bg-scheme1"></div>
+    <div class="container">
+        <div class="row">
+            <div class="flat-wrapper">
+                <div class="flat-imagebox clearfix">
+                    <div class="flat-item item-three-column">
+                        <div class="imagebox">
+                            <div class="box-wrapper">
+                                <div class="box-image">
+                                    <img src="~/img/imagebox/1.jpg" alt="images">
+                                </div>
+                                <div class="box-header">
+                                    <h5 class="box-title">
+                                        <a href="services-detail.html">单仁平：泛滥的“言论自由奖”都想傍中国 ?</a>
+                                    </h5>
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-desc">中国的高速发展正在产生综合效应，影响了中西之间意识形态纷争的形势，一些深刻的变化似乎正在酝酿之中。 </div>
+                                    <div class="box-button">
+                                        <a class="button bg-scheme3" href="about.html">观看详情 <i class="fa fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.imagebox -->
+                    </div><!-- /.item-three-column -->
+
+                    <div class="flat-item item-three-column">
+                        <div class="imagebox">
+                            <div class="box-wrapper">
+                                <div class="box-image">
+                                    <img src="~/img/imagebox/2.jpg" alt="images">
+                                </div>
+                                <div class="box-header">
+                                    <h5 class="box-title">
+                                        <a href="services-detail-v1.html">单仁平：泛滥的“言论自由奖”都想傍中国 ?</a>
+                                    </h5>
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-desc">中国的高速发展正在产生综合效应，影响了中西之间意识形态纷争的形势，一些深刻的变化似乎正在酝酿之中。</div>
+                                    <div class="box-button">
+                                        <a class="button bg-scheme3" href="about.html">观看详情 <i class="fa fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.imagebox -->
+                    </div><!-- /.item-three-column -->
+
+                    <div class="flat-item item-three-column">
+                        <div class="imagebox">
+                            <div class="box-wrapper">
+                                <div class="box-image">
+                                    <img src="~/img/imagebox/3.jpg" alt="images">
+                                </div>
+                                <div class="box-header">
+                                    <h5 class="box-title">
+                                        <a href="services-detail-v2.html">单仁平：泛滥的“言论自由奖”都想傍中国 ?</a>
+                                    </h5>
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-desc">中国的高速发展正在产生综合效应，影响了中西之间意识形态纷争的形势，一些深刻的变化似乎正在酝酿之中。</div>
+                                    <div class="box-button">
+                                        <a class="button bg-scheme3" href="about.html">观看详情 <i class="fa fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.imagebox -->
+                    </div>
+                    <div class="flat-item item-three-column">
+                        <div class="imagebox">
+                            <div class="box-wrapper">
+                                <div class="box-image">
+                                    <img src="~/img/imagebox/3.jpg" alt="images">
+                                </div>
+                                <div class="box-header">
+                                    <h5 class="box-title">
+                                        <a href="services-detail-v2.html">单仁平：泛滥的“言论自由奖”都想傍中国 ?</a>
+                                    </h5>
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-desc">中国的高速发展正在产生综合效应，影响了中西之间意识形态纷争的形势，一些深刻的变化似乎正在酝酿之中。.</div>
+                                    <div class="box-button">
+                                        <a class="button bg-scheme3" href="about.html">观看详情 <i class="fa fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.imagebox -->
+                    </div><!-- /.item-three-column -->
+                </div><!-- /.flat-imagebox -->
+            </div><!-- /.flat-wrapper -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</div><!-- /.flat-row -->
+
+
+
+
+
+
+<section class="wrap wrap_gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="block-title col-sm-12">
+                        <h2 class="block-title__h2">
+                            <i class="fa fa-video-camera"></i>  最新军事影像
+                            <a class="block-title__view-all" href="#" data-hover="查看更多">查看更多</a>
+                        </h2>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail thumbnail_small">
+                            <a href="news.html" class="thumbnail__link">
+                                <img src="img/content/news10.jpg" height="153" width="270" alt="News">
+                            </a>
+                            <div class="caption thumbnail__caption">
+                                <div class="news caption__news">
+                                    <i class="icon-play fa fa-play"></i>
+                                    <p class="news__category yellow-line">微影像</p>
+                                    <a href="news.html" class="news__link">
+                                        <p class="news__text">今天 女水兵集体出镜为中国海军代言</p>
+                                    </a>
+                                </div>
+                                <div class="posted">
+                                    <span class="posted__date">today, 12:30</span>
+                                    <ul class="posted__icon">
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-comment"></i>29
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-eye"></i>4.4k
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail thumbnail_small">
+                            <a href="news.html" class="thumbnail__link">
+                                <img src="img/content/news10.jpg" height="153" width="270" alt="News">
+                            </a>
+                            <div class="caption thumbnail__caption">
+                                <div class="news caption__news">
+                                    <i class="icon-play fa fa-play"></i>
+                                    <p class="news__category yellow-line">微影像</p>
+                                    <a href="news.html" class="news__link">
+                                        <p class="news__text">今天 女水兵集体出镜为中国海军代言</p>
+                                    </a>
+                                </div>
+                                <div class="posted">
+                                    <span class="posted__date">today, 12:30</span>
+                                    <ul class="posted__icon">
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-comment"></i>29
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-eye"></i>4.4k
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail thumbnail_small">
+                            <a href="news.html" class="thumbnail__link">
+                                <img src="img/content/news10.jpg" height="153" width="270" alt="News">
+                            </a>
+                            <div class="caption thumbnail__caption">
+                                <div class="news caption__news">
+                                    <i class="icon-play fa fa-play"></i>
+                                    <p class="news__category yellow-line">微影像</p>
+                                    <a href="news.html" class="news__link">
+                                        <p class="news__text">今天 女水兵集体出镜为中国海军代言</p>
+                                    </a>
+                                </div>
+                                <div class="posted">
+                                    <span class="posted__date">today, 12:30</span>
+                                    <ul class="posted__icon">
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-comment"></i>29
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="fa fa-eye"></i>4.4k
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="block-title col-sm-12">
+                        <h2 class="block-title__h2">
+                            <i class="fa fa-plane"></i>   最新军备模型
+                            <a class="block-title__view-all" href="#" data-hover="查看更多">查看更多</a>
+                        </h2>
+                    </div>
+                    @foreach(Goods w in Model.Good1)
+
+                    {  <div class="col-sm-4">
+                        <div class="imagebox">
+                            <div class="box-wrapper wuqiimg">
+                                <div class="box-image">
+                                    <img src="@w.GoodsImage1" alt="images">
+                                </div>
+                                <div class="box-header">
+                                    <h5 class="box-title">
+                                        <a href="services-detail.html">@w.GoodsName</a>
+                                    </h5>
+                                </div>
+                                <div class="box-content">
+                                    <div class="box-desc">@w.Company </div>
+                                    <div class="box-button">
+                                        <a class="button bg-scheme3" href="about.html">立即购买 <i class="fa fa-chevron-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.imagebox -->
+                    </div>
+                    }
+                   
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="block-title">
+                    <h2 class="block-title__h2"><i class="fa fa-file"></i>   热门军事历史<a class="block-title__view-all" href=#>获取更多</a></h2>
+                </div>
+                <div class="wrap-redaction  wrap-redaction_white">
+                    <div class="content" id="newscontent">
+
+                        <div class="ranks-tab" id="ranks-tab">
+                            <ul>
+
+
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="imghidden">
+                                            <img alt="#)" src="img/img_1.jpg">
+                                        </div>
+                                        <b></b>
+                                        <i>12</i>
+                                        <span>战史4月21日:毛泽东发布向全国进军的命令</span>
+                                        <p>12.50</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- top news-->
+<section>
+    <!-- top news -->
+    <!-- title -->
+    <div class="wrap wrap_white">
+        <div class="container title">
+            <h1 class="title__h1 underscore">
+                <i class="fa fa-rocket"></i> 大 国 利 器
+                <span style="font-size:18px">---为天下军迷，倾力打造环球第一兵器数据引擎！</span>
+                <span></span>
+
+            </h1>
+
+
+        </div>
+    </div>
+    <!-- END title -->
+    <!-- 兵器 begin-->
+    <div class="container">
+        <div class="weapons ">
+            <ul style="width: 9999px; position: relative; left: 0px;">
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor1">
+                            <div class="weapOver weapOver1" style="display: none;">
+                                <a href="#" target="_blank" title="飞行器" class="weapOver weapOver1" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35172" class="admin_block" blockid="35172">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/fokker_f27_50" target="_blank">福克50运输机肯尼亚坠毁</a>
+                                    <a href="http://weapon.huanqiu.com/the_mig_3" target="_blank">二战名机修复后重返天空</a>
+                                    <a href="http://weapon.huanqiu.com/cy_25_frogfoot" target="_blank">迅速武装伊拉克政府军的苏25</a>
+                                    <a href="http://weapon.huanqiu.com/t_50_golden_eagle" target="_blank">将亮相珠海航展T50教练机</a>
+                                    <a href="http://weapon.huanqiu.com/f_22" target="_blank">日本人口中以1击20的F22</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/aircraft" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor2">
+                            <div class="weapOver weapOver2" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/warship" target="_blank" title="舰船舰艇" class="weapOver weapOver2" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35174" class="admin_block" blockid="35174">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/cvn_73" target="_blank">在南海动作频频的华盛顿号航母</a>
+                                    <a href="http://weapon.huanqiu.com/daishandao_866" target="_blank">世界首艘超万吨级大型专业医院船</a>
+                                    <a href="http://weapon.huanqiu.com/soryu_clss_aip" target="_blank">日本二战后最大潜艇</a>
+                                    <a href="http://weapon.huanqiu.com/053_053h2g" target="_blank">变化多端的053</a>
+                                    <a href="http://weapon.huanqiu.com/pohang" target="_blank">韩海军数量最多战舰</a>
+                                    <a href="http://weapon.huanqiu.com/054a" target="_blank">054A型</a>
+                                    <a href="http://weapon.huanqiu.com/shijiazhuang_116" target="_blank">石家庄号</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/warship" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor3">
+                            <div class="weapOver weapOver3" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/guns" target="_blank" title="枪械单兵" class="weapOver weapOver3" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35186" class="admin_block" blockid="35186">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/js9" target="_blank">JS9型冲锋枪</a>
+                                    <a href="http://weapon.huanqiu.com/snayperskayavintovkadragunova" target="_blank">充满传奇色彩：德拉格诺夫狙击枪</a>
+                                    <a href="http://weapon.huanqiu.com/qjy_88" target="_blank">88式通用机枪：水平先进</a>
+                                    <a href="http://weapon.huanqiu.com/m_4" target="_blank">M4：真正的卡宾枪</a>
+                                    <a href="http://weapon.huanqiu.com/mg_34" target="_blank">MG34：世界第一种通用机枪</a>
+                                    <a href="http://weapon.huanqiu.com/cz_52" target="_blank">CZ 52手枪</a>
+                                    <a href="http://weapon.huanqiu.com/pf_98_atr" target="_blank">PF98式反坦克火箭</a>
+                                    <a href="http://weapon.huanqiu.com/astra357" target="_blank">阿斯特拉357警用转轮手枪</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/guns" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor4">
+                            <div class="weapOver weapOver4" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/tank" target="_blank" title="坦克装甲" class="weapOver weapOver4" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35187" class="admin_block" blockid="35187">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/mbt2000" target="_blank">MBT-2000：中巴合作典范</a>
+                                    <a href="http://weapon.huanqiu.com/59_type" target="_blank">中国的第一代主战坦克</a>
+                                    <a href="http://weapon.huanqiu.com/ztz_99_type" target="_blank">陆战王牌99式</a>
+                                    <a href="http://weapon.huanqiu.com/96a" target="_blank">96A主战坦克</a>
+                                    <a href="http://weapon.huanqiu.com/92_wz551" target="_blank">92式轮式装甲车</a>
+                                    <a href="http://weapon.huanqiu.com/btr_80_armored_personnel_carriers" target="_blank">BTR-80</a>
+                                    <a href="http://weapon.huanqiu.com/zbd_04" target="_blank">ZBD-04式步兵战车</a>
+                                    <a href="http://weapon.huanqiu.com/m1a1" target="_blank">M1A1/M1A2</a>
+                                    <a href="http://weapon.huanqiu.com/type_89_armoured_personnel_carrier" target="_blank">89式装甲输送车</a>
+                                    <a href="http://weapon.huanqiu.com/zbd_09_type" target="_blank">ZBD-09式</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/tank" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor5">
+                            <div class="weapOver weapOver5" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/artillery" target="_blank" title="火炮武器" class="weapOver weapOver5" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35188" class="admin_block" blockid="35188">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/bm_30" target="_blank">BM-30龙卷风</a>
+                                    <a href="http://weapon.huanqiu.com/240mm_k3_howitzer" target="_blank">K3加榴炮</a>
+                                    <a href="http://weapon.huanqiu.com/94_type" target="_blank">94式轻迫击炮</a>
+                                    <a href="http://weapon.huanqiu.com/sh_1_155mm" target="_blank">SH-1型车载火炮</a>
+                                    <a href="http://weapon.huanqiu.com/gecal_50" target="_blank">GAU－19航空机枪</a>
+                                    <a href="http://weapon.huanqiu.com/minigun" target="_blank">M134迷你炮</a>
+                                    <a href="http://weapon.huanqiu.com/t_86_152" target="_blank">86式加农炮</a>
+                                    <a href="http://weapon.huanqiu.com/vulcan_m61" target="_blank">火神M61</a>
+                                    <a href="http://weapon.huanqiu.com/ws_2" target="_blank">WS-2 多管火箭炮</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/artillery" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor6">
+                            <div class="weapOver weapOver6" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/missile" target="_blank" title="导弹武器" class="weapOver weapOver6" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35189" class="admin_block" blockid="35189">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/aam_5" target="_blank">威胁中国军机的日本F15上挂载的就是它——04式</a>
+                                    <a href="http://weapon.huanqiu.com/guided_missile_2" target="_blank">巨浪-2与094</a>
+                                    <a href="http://weapon.huanqiu.com/rbs_70portableairdefensemissile" target="_blank">RBS-70</a>
+                                    <a href="http://weapon.huanqiu.com/lj_7" target="_blank">蓝箭-7</a>
+                                    <a href="http://weapon.huanqiu.com/hellfire_type" target="_blank">地狱火</a>
+                                    <a href="http://weapon.huanqiu.com/low_altitude_air_defense_missile" target="_blank">红旗-7（FM-90/FM-80）</a>
+                                    <a href="http://weapon.huanqiu.com/aa_8_aphid" target="_blank">R-60(AA-8)</a>
+                                    <a href="http://weapon.huanqiu.com/aa_6_sinister" target="_blank">R-40(AA-6)</a>
+                                    <a href="http://weapon.huanqiu.com/rf_9_lradms" target="_blank">红旗-9</a>
+                                    <a href="http://weapon.huanqiu.com/c_125" target="_blank">S-125</a>
+                                    <a href="http://weapon.huanqiu.com/sa_6" target="_blank">立方</a>
+                                    <a href="http://weapon.huanqiu.com/sa_7" target="_blank">箭-2</a>
+                                    <a href="http://weapon.huanqiu.com/sum_16_anti_aircraft_missile" target="_blank">针-1</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/missile" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor7">
+                            <div class="weapOver weapOver7" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/spaceship" target="_blank" title="太空装备" class="weapOver weapOver7" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35190" class="admin_block" blockid="35190">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/yutu_rover" target="_blank">“玉兔号”月球车</a>
+                                    <a href="http://weapon.huanqiu.com/luna_3" target="_blank">月神3号</a>
+                                    <a href="http://weapon.huanqiu.com/pioneer_10" target="_blank">先驱者10号</a>
+                                    <a href="http://weapon.huanqiu.com/salyut_1" target="_blank">“礼炮1号”空间站</a>
+                                    <a href="http://weapon.huanqiu.com/iss" target="_blank">国际空间站</a>
+                                    <a href="http://weapon.huanqiu.com/buran_space_shuttle" target="_blank">暴风雪号</a>
+                                    <a href="http://weapon.huanqiu.com/chang_e_2" target="_blank">嫦娥二号</a>
+                                    <a href="http://weapon.huanqiu.com/alliance_tma" target="_blank">“联盟”号宇宙飞船</a>
+                                    <a href="http://weapon.huanqiu.com/changzheng_5" target="_blank">长征五号</a>
+                                    <a href="http://weapon.huanqiu.com/tiangong_2" target="_blank">天宫二号</a>
+                                    <a href="http://weapon.huanqiu.com/s_sbi" target="_blank">SBIRS（天基红外系统）</a>
+                                    <a href="http://weapon.huanqiu.com/proton" target="_blank">质子号</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/spaceship" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 116px;">
+                    <div class="weapItem">
+                        <div class="weapSub weapNor8">
+                            <div class="weapOver weapOver8" style="display: none;">
+                                <a href="http://weapon.huanqiu.com/weaponlist/explosive" target="_blank" title="爆炸物" class="weapOver weapOver8" style="display: none;"></a>
+                            </div>
+                        </div>
+                        <div class="weapMain">
+                            <div id="block_id_35191" class="admin_block" blockid="35191">
+                                <div class="weapInner">
+                                    <a href="http://weapon.huanqiu.com/agm_154_joint_standoff_weapon" target="_blank">联合防区外武器</a>
+                                    <a href="http://weapon.huanqiu.com/m18_a1" target="_blank">M18A1阔刀地雷</a>
+                                    <a href="http://weapon.huanqiu.com/79" target="_blank">火箭手榴弹</a>
+                                    <a href="http://weapon.huanqiu.com/b_28_nuclear_bomb" target="_blank">B28核炸弹</a>
+                                    <a href="http://weapon.huanqiu.com/malafon" target="_blank">“玛拉丰”舰潜导弹</a>
+                                    <a href="http://weapon.huanqiu.com/xiaonanhai" target="_blank">“小男孩”</a>
+                                    <a href="http://weapon.huanqiu.com/type_99_anti_tank_grenades_magnetic" target="_blank">磁性手榴弹</a>
+                                    <a href="http://weapon.huanqiu.com/ninety_seven_grenades" target="_blank">九七式手榴弹</a>
+                                    <a href="http://weapon.huanqiu.com/250_1_type" target="_blank">国产航空子母弹</a>
+                                    <a href="http://weapon.huanqiu.com/jdam_precision_guided_bombs" target="_blank">JDAM</a>
+                                    <a href="http://weapon.huanqiu.com/the_thunder_2_laser_guided_bomb_lt_2" target="_blank">雷霆-2</a>
+                                    <a href="http://weapon.huanqiu.com/yu_4" target="_blank">鱼-4</a>
+                                    <a href="http://weapon.huanqiu.com/pangzi" target="_blank">“胖子”核弹</a>
+                                    <a href="http://weapon.huanqiu.com/weaponlist/explosive" target="_blank">更多</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <!-- 兵器 end-->
+
+    </div>
+    <!-- /container-->
+</section>
+<!-- /top news -->
+
+<div class="wrap wrap_white">
+    <div class="container title">
+        <h1 class="title__h1 underscore">
+            <i class="fa fa-tree"></i> 军事景点
+            <span style="font-size:18px">---红色景点 军事遗址 军事博物馆 </span>
+            <a class="block-title__view-all" href="#" data-hover="查看更多">查看更多</a>
+
+        </h1>
+
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (RedSpots r in Model.spots1)
+        {
+        <div class="col-md-4 col-sm-6">
+            <div class="box spotsimg">
+                <img src="~/@r.RedImage">
+                <div class="boxContent">
+                    <h3 class="title">@r.RedSpotsName</h3>
+                    <span class="post">@r.RedAbstract</span>
+                    <a class="button bg-scheme3" href="#">查看详情</a>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+
+<div id="faq-area" class="faq-area bg-white pt-90 pb-60">
+    <div class="container">
+        <!-- Section Title -->
+        <div class="row">
+            <div class="section-title text-center col-xs-12 mb-45">
+                <h3 class="heading">看看最新分享</h3>
+                <div class="excerpt">
+                    <p>军事迷们对军事景点的印象究竟如何呢？让我们走进他们的世界</p>
+                </div>
+                <i class="fa fa-copy"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="panel-group" id="faq">
+                    @foreach (RedShare s in Model.Share)
+                    { 
+                    <li class="panel panel-default  ">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="#faq-1">
+                                    @s.RedShareTime | @s.RedShareName
+                                </a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse  ">
+                            <div class="faq-1-img">
+                                <a href="#">
+                                    <img src="@s.Users.UserImage">
+                                </a>
+                                <p><a href="#">@s.Users.UserName</a></p>
+
+                            </div>
+                            <div class="panel-body">
+
+                                <p>
+                                   @s.RedShareD
+                                    <a href="#">查看全文</a>
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                    }
+                    
+
+                </ul>
+            </div>
+            <div class="faq-image col-md-6">
+                <img src="~/img/jingdian.jpg" alt="" />
+                <div class="banner__box">
+                    <p class="banner__text first-text">你也有旅游见闻和经验？</p>
+                    <p class="banner__text second-text">看这边</p>
+                    <a href="#" class="banner__link">立即分享</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /.底部 -->
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="partner">
+                <p class="h2h2">友情链接</p>
+                <div class="con">
+                    <a target="_blank" href="http://www.milzx.com">军事在线</a> <a target="_blank" href="http://mil.chinanews.com/">中新网军事</a> <a target="_blank" href="http://www.armystar.com">环球军事网</a> <a target="_blank" href="http://navy.81.cn/">中国海军网</a> <a target="_blank" href="http://www.cannews.com.cn/">中国航空新闻网</a> <a target="_blank" href="http://military.china.com.cn/">中国网军事</a> <a target="_blank" href="http://www.top81.com.cn">鼎盛军事</a> <a target="_blank" href="http://www.fyjs.cn/bbs/">飞扬军事</a> <a target="_blank" href="http://mil.qianlong.com/">千龙网军事</a> <a target="_blank" href="http://www.juntx.com">军天下网</a> <a target="_blank" href="http://v.ifeng.com/mil/">凤凰视频军事</a> <a target="_blank" href="http://www.warchina.com">亚东军事网</a> <a target="_blank" href="http://youth.chinamil.com.cn/">青年军事</a> <a target="_blank" href="http://www.chinaiiss.com">战略网</a> <a target="_blank" href="http://js.voc.com.cn/">华声军事</a> <a target="_blank" href="http://mil.youth.cn/">中青网军事</a> <a target="_blank" href="http://www.js7tv.cn/">中国军视网</a> <a target="_blank" href="http://www.saonianw.com/">火箭军事网</a> <a target="_blank" href="http://www.sanjun.com/">三军情报</a><a target="_blank" href="http://www.militaryy.cn">全球军事网</a> <a target="_blank" href="http://www.qianyan001.com">军事前沿</a> <a target="_blank" href="http://www.xunleimil.com">迅雷军事</a> <a target="_blank" href="http://www.xinjunshi.com/">环球新军事网</a> <a target="_blank" href="http://www.js811.com">军事网站导航</a> <a target="_blank" href="http://www.gggjs.com/">3G军事网</a> <a target="_blank" href="http://123.sogou.com/yule/mil.html">搜狗军事导航</a> <a target="_blank" href="http://www.huangpujs.cn">黄埔军事网</a> <a target="_blank" href="http://www.gobetter.com.cn">高博特军工网</a> <a target="_blank" href="http://www.miercn.com/">米尔网</a><a target="_blank" href="http:///www.micai.com/">迷彩虎军事</a><a target="_blank" href="http://www.jb.mil.cn/">中国军事博物馆</a> <a target="_blank" href="http://www.kongjun.com/">空军网</a> <a target="_blank" href="http://www.junshi81.com/">八一军事网</a><a target="_blank" href="http://www.newtotem.com.cn/">新图腾</a><a target="_blank" href="http://www.hangkong.com/">航空网</a> <a target="_blank" href="http://www.afwing.com/">空军之翼</a><a target="_blank" href="http://www.cnrexue.com/">热血军事</a> <a target="_blank" href="http://www.yiqianyan.com/junshi/">壹军事</a><a target="_blank" href="http://www.yidianzixun.com/home?page=channel&amp;id=c7">一点军事</a><a target="_blank" href="http://www.thjunshi.com">太行军事网</a><a target="_blank" href="http://www.junmeng.com/">军盟网</a> <a target="_blank" href="http://www.liangjan.com/">亮剑军事网</a> <a target="_blank" href="http://www.junpin360.com">战甲网</a>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

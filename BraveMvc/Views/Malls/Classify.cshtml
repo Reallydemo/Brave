@@ -1,0 +1,99 @@
+﻿@using Models
+@model ViewModels.Clasaifymenu
+
+@using X.PagedList
+@using X.PagedList.Mvc
+@{
+    ViewBag.Title = "Classify";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+
+}
+@Styles.Render("~/Content/Malls.css")
+@Styles.Render("~/Content/bootstrap.css")
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<style>
+    .imgmaclarge{
+        display:block;
+         margin-left:30%
+    }
+</style>
+<div class="container classify-quanbu">
+    <div class="row classify-weizhi">
+        <span>当前位置>>虎贲商城>>分类</span>
+    </div>
+    <div class="row classify-fenlei">
+       <div class="col-xs-4 col-sm-3 col-md-3 classify-title">
+        
+               @Ajax.ActionLink("全部商品模型", "Classify", "Malls", null)
+               @foreach (Classify c in Model.Classify1)
+               {
+                @Ajax.ActionLink(c.ClassifyName, "Classify", "Malls", new {classifyInfoFrom = c.ClassifyName }, new AjaxOptions()
+               {
+                   UpdateTargetId = "classifywuping",
+                  
+               })
+               
+               }
+          
+       </div>
+        <div class="col-xs-8 col-sm-9 col-md-9 classify-paixuwuping">
+            <div class="row classify-paixu">
+                <p>商品筛选</p>
+                <div class="col-xs-3 col-sm-6 col-md-6"></div>
+                
+                    <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                        @Ajax.ActionLink("价格", "Classify", "Malls", new { SortInfoFrom = "价格降序" }, new AjaxOptions()
+               {
+                   UpdateTargetId = "classifywuping",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+               })
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </div>
+                <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                    @Ajax.ActionLink("价格", "Classify", "Malls", new { SortInfoFrom = "价格升序" }, new AjaxOptions()
+           {
+               UpdateTargetId = "classifywuping",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET"
+           })
+                    <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                </div>
+                <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                    @Ajax.ActionLink("更新时间", "Classify", "Malls", new { SortInfoFrom = "更新时间" }, new AjaxOptions()
+               {
+                   UpdateTargetId = "classifywuping",
+                   InsertionMode = InsertionMode.Replace,
+                   HttpMethod = "GET"
+               })
+                    <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                </div>
+
+            
+         @{Html.RenderAction("Index", "AllGoods");}
+       
+        </div>
+       
+    </div>
+</div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    //$(".classify-wuping-img").hover(function () {
+    //    $("#largeimg").addClass("imgmaclarge")
+       
+    //},
+    //function () {
+    //    $("#largeimg").removeClass("imgmaclarge")
+    //}
+    //)
+
+    
+</script>

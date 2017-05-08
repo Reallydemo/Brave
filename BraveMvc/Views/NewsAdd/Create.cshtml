@@ -1,0 +1,114 @@
+﻿@model Models.News
+<script src="~/ueditor/ueditor.config.js"></script>
+<script src="~/ueditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editorOption = {
+        initialFrameWidth: 784,
+        initialFrameHeight: 400
+    };
+    var editor = new baidu.editor.ui.Editor(editorOption);
+    editor.render('NewsContent');
+</script>
+@{
+    ViewBag.Title = "Create";
+}
+<h2>Create</h2>
+@using (Html.BeginForm()) 
+{
+
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>News</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new{ @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SubmtDate,"提交时间", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBox("SubmtDate")
+                @*@Html.EditorFor(model => model.SubmtDate,new { htmlAttributes = new {  @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.SubmtDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Author,"作者",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsTitle,"新闻标题", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewsTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewsTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsContent, "新闻内容", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.NewsContent, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextAreaFor(model => model.NewsContent,"NewsContent")
+                @Html.ValidationMessageFor(model => model.NewsContent, "", new { @class = "text-danger" })
+            </div>
+
+           
+          
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Section_id, "板块ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Section_id, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.DropDownList("Section_id", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(model => model.Section_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KeyWords,"关键词", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KeyWords, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KeyWords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Clicks,"点击", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Clicks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Clicks, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewsVideo,"新闻视频", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewsVideo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewsVideo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" >
+            @Html.LabelFor(model => model.NewsPicture,"新闻图片", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NewsPicture, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NewsPicture, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="创建" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+    @*<meta charset="utf-8">*@
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta content="" name="军事 铁血 武器 历史">
+    <meta content="" name="这是一个军事网站">
+    <title>虎贲网</title>
+    <!-- 手机缩放级别-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   
+    @*<!-- Bootstrap  -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <!-- 主要css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <!--font-awesomecss -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">*@
+    @Styles.Render("~/css/bootstrap.css")
+   @Styles.Render("~/css/style.css")
+   @Styles.Render("~/css/responsive.css")
+    @Styles.Render("~/css/font-awesome.css")
+
+
+
+@Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body class="header-sticky page-loading ">
+
+    <div class="boxed">
+        <div class="site-header header-v2">
+            <div class="flat-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="flat-wrapper">
+                            <div class="custom-info">
+                                <span>发现什么问题?</span>
+                                <span><i class="fa fa-reply"></i>tjzxgdk@163.com</span>
+                                <span><i class="fa fa-map-marker"></i>江西师范大学14级3522工作室</span>
+                                <span><i class="fa fa-phone"></i>+ 13037284653</span>
+                            </div>
+                            <div class="social-links">
+                                @if (Session["UserName"] != null)
+                                {
+                                    using (Html.BeginForm("LogOff", "Register", FormMethod.Post, new { id = "logoutForm" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                      
+                                            <a href="#"><img src="@Session["Image"]" /></a>
+                                            <a href="#">[@Session["UserName"]]</a>
+                                        <a>欢迎您登录！</a>
+                                            <a href="javascript:document.getElementById('logoutForm').submit()" title="退出">[退出]</a>
+
+
+
+
+
+                                    }
+                                }
+                                else
+                                {
+                                    <a class="woyadengruaheahe" @*href="@Url.Content("~/Register/Register")"*@>
+                                        <i class="fa fa-user"></i>
+                                      
+                                            登录
+                                    
+
+                                        </a>
+    
+
+                                        <a href="@Url.Content("~/Register/Register")">
+    
+                                            <i class="fa fa-lock"></i>注册
+                                        </a>
+                                    <a href="https://www.qq.com">
+                                        <i class="fa fa-qq"></i>其他
+                                    </a>
+                                }
+                                @{Html.RenderAction("Index", "Login");}
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <header id="header" class="header">
+                <div class="header-wrap">
+                    <div id="logo" class="logo">
+                        <a href="index.html">
+                            <img src="~/img/logo4.png" alt="images">
+                        </a>
+                    </div><!-- /.logo -->
+                    <div class="btn-menu">
+                        <span></span>
+                    </div><!-- //手机端菜单 -->
+
+                    <div class="nav-wrap">
+                        <nav id="mainnav" class="mainnav">
+                            <div class="menu-extra">
+                                <ul>
+                                    <!--//查询框 点击search-box时向 <div class="submenu top-search">添加show属性-->
+                                    <li id="s" class="search-box">
+                                        <a href="#search" class="flat-search"><i class="fa fa-search"></i></a>
+                                        <div class="submenu top-search">
+                                            <div class="widget widget_search">
+                                                <form class="search-form">
+                                                    <input type="search" class="search-field" placeholder="Search …">
+                                                    <input type="submit" class="search-submit">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="shopping-cart">
+                                        <a href="#">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <span class="shopping-cart-items-count"></span>
+                                        </a>
+
+                                    </li>
+                                </ul>
+
+                            </div><!-- /.menu-extra -->
+                            <ul class="menu">
+                                <li><a href="index.html">首页</a></li>
+
+                                <li><a href="about.html">军事前线</a></li>
+                                <li class="weather">
+                                    <a href="services.html">大国利器<i class="fa fa-sort-down" style="vertical-align: text-top"></i></a>
+                                    <div class="weather__city__list">
+                                        <ul style="float: none">
+                                            <li class="active">
+                                                <a href="#">指点江山</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Moscow</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Kiev</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="weather">
+                                    <a href="portfolio.html">指点江山 <i class="fa fa-sort-down" style="vertical-align: text-top"></i></a>
+                                    <div class="weather__city__list">
+                                        <ul style="float: none">
+                                            <li class="active">
+                                                <a href="#">指点江山</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Moscow</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Kiev</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="blog.html">网上谈兵</a> </li>
+                                <li><a href="shop.html">铸剑为犁</a></li>
+                                <li><a href="contact.html">红色景点</a></li>
+                            </ul><!-- /.menu -->
+                        </nav><!-- /.mainnav -->
+                    </div><!-- /.nav-wrap -->
+                </div><!-- /.header-wrap -->
+            </header>
+        </div>
+
+        @RenderBody()
+        </div>
+
+
+
+
+
+
+
+
+        
+        <hr />
+        <!-- /.底部 -->
+        <footer class="footer slate_gray ">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="copyright">2017.江西师范大学.14级商务软件3522工作室</p>
+
+
+                        <br>
+                        <p class="social__text">联系电话:13037284653 执行主编： CU001网上不良信息举报电话：(010)52598588-8758</p>
+
+
+                        <br>
+                        <p class="texttt">
+                            版权所有  虎贲网
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+
+        @Scripts.Render("~/js/jquery.min.js")
+        @Scripts.Render("~/js/bootstrap.min.js")
+        @Scripts.Render("~/js/main.js")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>
+

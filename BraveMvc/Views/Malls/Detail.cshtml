@@ -1,0 +1,612 @@
+﻿@using Models
+@model ViewModels.GoodsDetail
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layoutmall.cshtml";
+
+
+}
+@Styles.Render("~/Content/Malls.css")
+@Styles.Render("~/Content/bootstrap.css")
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<div class="row detail-header">
+    <div class="col-sm-2 col-md-2"></div>
+    <div class="col-xs-4 col-sm-2 col-md-2 detail-header-zhinan" style="background-color:red">商品详情</div>
+    <div class="col-xs-4 col-sm-2 col-md-2 detail-header-zhinan"><a href="@Url.Content("~/Malls/Index")">商城首页</a> </div>
+    <div class="col-xs-4 col-sm-2 col-md-2 detail-header-zhinan"><a href="@Url.Content("~/Malls/Classify")">模型专区</a> </div>
+    <div class="col-sm-4 col-md-4"></div>
+</div>
+<div class="container">
+    <div class="row detail-weizhi">
+        当前位置>>商城>>@Model.Goodss.GoodsName
+    </div>
+    <div class="row detail-xiangqing">
+        <div class="col-xs-4 col-sm-5 col-md-5 detail-xiangqing-kuang">
+            <div class="row detail-xiangqing-img">
+                <img src="@Model.Goodss.GoodsImage1" />
+                <div class="mask"></div>
+            </div>
+            <div class="row detail-xiangqing-minimg">
+                <span class="left disable">&lt;</span>
+                <div class="wrapSamllImg">
+                    <ul>
+                        <li class="current"><img src="@Model.Goodss.GoodsImage1" alt="" /></li>
+                        <li><img src="@Model.Goodss.GoodsImage2" alt="" /></li>
+                        <li><img src="@Model.Goodss.GoodsImage3" alt="" /></li>
+                        <li><img src="@Model.Goodss.GoodsImage1" alt="" /></li>
+                       
+                       
+                    </ul>
+                </div>
+                <span class="right">&gt;</span>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 detail-content">
+            <div class="detail-xiangqing-largimg">
+                <img src="@Model.Goodss.GoodsImage1" alt="" />
+            </div>
+            <div class="row detail-content-name">
+             <span>@Model.Goodss.GoodsName</span>
+                <hr  style="border:1px solid #778877"/>
+            </div>
+            <div class="row detail-content-price">
+              <span style="color:#888888 ">价格:</span>  <span style="color:red;font-size:28px;">￥@Model.Goodss.GoodsPrice</span>
+                <hr style="border:1px solid #778877" />
+            </div>
+            <div class="row">
+               <span style="color:#888888">上架时间:</span><span style="font-weight:800;color:#444444;font-size:24px">
+                @if (System.DateTime.Now>@Model.Goodss.Grounding)
+                { <span>一周内</span>}
+                else
+                {
+                    <span>一周以前</span>
+                }
+
+                     </span>
+                <hr style="border:1px solid #778877" />
+              
+           </div>
+            <div class="row detail-content-kucun">
+               <span style="color:#888888">库存量:</span><span style="font-weight:800;color:#444444;font-size:24px">@Model.Goodss.Numbers</span>
+                <hr style="border:1px solid #778877" />
+            </div>
+            @if (Session["User_id"] != null)
+            {
+              using (Html.BeginForm("AddCart", "Cart", FormMethod.Post, new { id = "addcart", enctype = "multipart/form-data" }))
+            {
+                <div class="row">
+                    <div class="col-xs-4 col-sm-2 col-md-2" style="color:#888888 ">数量:</div>
+
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <a class="num_oper num_min" href="javascript:jQuery.reduce('#J_Amount');">-</a>
+
+                        <input name="Jm_Amount" id="J_Amount" class="input_txt" type="text" maxlength="6" value="1" onkeyup="jQuery.modify('#J_Amount');" style="width:40px;" />
+
+                        <a class="num_oper num_plus" href="javascript:jQuery.add('#J_Amount')">+</a>
+                        <p class="caution_tips" id="J_Tip" style="display:none;"></p>
+                        <input id="nAmount" type="hidden" value='@Model.Goodss.Numbers' />
+                    </div>
+                    <input id="goodsid" name="goodsid" type="hidden" value="@Model.Goodss.Goods_id" />
+                    <input id="price" name="price" type="hidden" value="@Model.Goodss.GoodsPrice" />
+
+
+                </div>
+                <hr style="border:1px solid #778877" />
+                
+                    <div class="row ">
+                        <div class="col-sm-1 col-md-1"></div>
+                        <a>
+                            <div class="col-xs-6 col-sm-3 col-md-3 detail-content-buy">
+                                <span style="">立即购买</span>
+                            </div>
+                        </a>
+                        <div class="col-sm-1 col-md-1"></div>
+                        <a href="javascript:document.getElementById('addcart').submit()">
+                            <div class="col-xs-6 col-sm-4 col-md-4 detail-content-add">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> <span>加入购物车</span>
+                            </div>
+                        </a>
+                        <div class="col-sm-3 col-md-3">
+
+                        </div>
+                    </div>
+
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-xs-4 col-sm-2 col-md-2" style="color:#888888 ">数量:</div>
+
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <a class="num_oper num_min" href="javascript:jQuery.reduce('#J_Amount');">-</a>
+
+                        <input name="Jm_Amount" id="J_Amount" class="input_txt" type="text" maxlength="6" value="1" onkeyup="jQuery.modify('#J_Amount');" style="width:40px;" />
+
+                        <a class="num_oper num_plus" href="javascript:jQuery.add('#J_Amount')">+</a>
+                        <p class="caution_tips" id="J_Tip" style="display:none;"></p>
+                        <input id="nAmount" type="hidden" value='@Model.Goodss.Numbers' />
+                    </div>
+                    <input id="goodsid" name="goodsid" type="hidden" value="@Model.Goodss.Goods_id" />
+                    <input id="price" name="price" type="hidden" value="@Model.Goodss.GoodsPrice" />
+
+
+                </div>
+                <hr style="border:1px solid #778877" />
+                <div class="row ">
+                    <div class="col-sm-1 col-md-1"></div>
+                    <a class="woyadengruaheahe">
+                        <div class="col-xs-6 col-sm-3 col-md-3 detail-content-buy">
+                            <span style="">立即购买</span>
+                        </div>
+                    </a>
+                    <div class="col-sm-1 col-md-1"></div>
+                    <a class="woyadengruaheahe">
+                        <div class="col-xs-6 col-sm-4 col-md-4 detail-content-add" style="cursor:pointer">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> <span>加入购物车</span>
+                        </div>
+                    </a>
+                    <div class="col-sm-3 col-md-3">
+
+                    </div>
+                </div>
+            }
+
+          
+       
+          <div class="fangdajing">
+              <img src="" />
+          </div>     
+           
+                 
+    </div>
+        <div class="col-xs-4 col-sm-3 col-md-3 detail-recommend">
+            <div class="row detail-recommend-see">
+             <span>猜你喜欢</span>
+               
+            </div>
+            <div class="row detail-recommend-kuang" id="dakuan">
+                <ul id="imgScroller">
+                    @foreach(Goods p in Model.Goods11)
+                    {
+                        <li id="tupianimg">
+                            <a href="@Url.Action("Detail","Malls", new { id = @p.Goods_id,classid=@p.Classify_id })"><img src="@p.GoodsImage1" /></a>
+                            <p>￥@p.GoodsPrice</p>
+                        </li>
+                      
+                    }
+                </ul>
+            </div>
+        </div>
+</div>
+    
+    <div class="row detail-neirong">
+        <div class="row detail-nerong-biao">
+            <div class="col-sm-3 col-md-3 detail-neirong-title1">
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3 detail-neirong-title1" id="goods-detail">
+                <span class="yangse-contents">商品详情</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3 detail-neirong-title2" id="goods-punlin">
+                <span>商品评论</span>
+            </div>
+            <div class="col-sm-3 col-md-3 detail-neirong-title1">
+            </div>
+        </div>
+          
+      <div class="row detail-neirong-contents">
+          <div class="col-xs-12 col-sm-12 col-md-12" id="shangping-content">
+             <div class="row detail-content-contents">
+                 <p><span> 商品名称：</span> <span style="color:#778877">@Model.Goodss.GoodsName</span></p>
+
+             </div>
+              <div class="row detail-content-neurong">
+                  <p>商品参数</p>
+                  <span>商品公司：</span>
+                   <span>
+                      @Model.Goodss.Company
+                   </span>
+                  <p>@Model.Goodss.GoodsDes</p>
+              </div>
+          </div>
+          <div class="row" id="shangping-pinglun">
+              <div class="row">
+                  <div class="col-xs-2 col-sm-2 col-md-2 detail-goods-touxing">
+                      @if (Session["User_id"] != null)
+                      {
+                          <img src="@Session["Image"]" />
+
+                      }
+                      else
+                      {
+                          <img src="~/Images/tc_login_yonghu.jpg" />
+                      }
+
+                  </div>
+                  @using (Html.BeginForm("addComment", "Malls", FormMethod.Post, new { id = "addComment" }))
+                  {
+                      <div class="col-xs-8 col-sm-8 col-md-8 detail-goods-woyaopunn">
+
+
+                          <input type="text" name="detail-goods-comment" id="detail-goods-comment" />
+                          <input type="hidden" value="@Model.Goodss.Goods_id" name="detail-goodsName" />
+
+
+
+
+                      </div>
+                      <div class="col-xs-2 col-sm-2 col-md-2 detail-goods-fabaio">
+                          @if (Session["User_id"] != null)
+                          {
+                              <a href="javascript:document.getElementById('addComment').submit()">发表</a>
+                          }
+                          else
+                          {
+                              <a class="woyadengruaheahe">发表</a>
+                          }
+                      </div>
+                  }
+              </div>
+           
+              <div class="row detail-goods-qunbu">
+                  <p>全部评论</p>
+              </div>
+              <div class="row">
+                  <div class="col-sm-1 col-md-1"></div>
+                  <div class="col-xs-12 col-sm-9 col-md-9 comment-qunbu">
+                      @foreach (CommentGoods l in Model.Comment1)
+                      {
+                          <div class="row comment-qunbu-mouren">
+                              <img src="@l.Users.UserImage" />
+                             
+                              <span style="font-size:x-large">@l.Users.UserName</span>                              
+                              <span>发表于</span>
+                              <span>@l.CommentTime</span>
+                              <p>@l.Content 
+                              @if (Session["User_id"] != null)
+                              {
+                                <span style="float:right;color:#778877;cursor:pointer" class="reply-moren">
+                                    回复
+                                </span>
+                                @*@Ajax.ActionLink("回复","Reply", "Malls",new { commendid=l.CommentGoods_id}, new AjaxOptions() {
+                               UpdateTargetId = "reply-detail-goods",
+                               InsertionMode = InsertionMode.Replace,
+                               HttpMethod = "get"
+
+
+
+                           })*@
+                               
+                              }
+                              else
+                              {
+                                  <a style="float:right;color:#778877;cursor:pointer;text-decoration:none" class="woyadengruaheahe">回复</a>
+                              }
+                            
+                              
+                              </p>
+                              
+                          </div>
+                          
+                        <div class="row reply-detail-goods" id="reply-detail-goods">
+                            @using (Ajax.BeginForm("Reply", "Malls",new AjaxOptions() { UpdateTargetId= "chakangeng",HttpMethod="Post"}))
+                            {
+                                <div class="col-sm-1 col-md-1"></div>
+                                <div class="col-xs-12 col-sm-9 col-md-9 reply-detail-more">
+                                    <textarea name="replaygoods"></textarea>
+                                    <input type="hidden" name="commendid" value="@l.CommentGoods_id" />
+
+                                </div>
+                                <div class="col-sm-2 col-md-2 btn-reply">
+                                    <input type="submit" value="回复" />
+                                </div>
+                            }
+                        </div>
+                        <div class="row reply-detail-comment" id="chakangeng">
+
+                        </div>
+                        <div class="row">
+                          @Ajax.ActionLink("查看回复", "SelectReply","Malls",new { commendid=l.CommentGoods_id}, new AjaxOptions {
+                       
+                         InsertionMode = InsertionMode.Replace,
+                         HttpMethod = "GET"
+                     })
+                        </div>
+                       
+                            <hr style="border:1px dashed  #666666" />
+
+                            }
+
+                        </div>
+                  <div class="col-sm-2 col-md-2"></div>
+              </div>
+          </div>
+       </div>
+
+   </div>
+   
+</div>
+@{ Html.RenderAction("Index", "Login"); }
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+
+@*放大镜*@
+<script type="text/javascript">
+    $(function () {
+        var smallImgLi = $('.wrapSamllImg ul li');
+        var smallimgul = $('.wrapSamllImg ul');
+        var smallimgliWidth = smallImgLi.outerWidth(true);
+        var leftBtn = $('span.left');
+        var rightBtn = $('span.right');
+        var now = 0;
+        var zoomMiddlDiv = $('.detail-xiangqing-img');
+        var zoomMiddlDivimg = $('.detail-xiangqing-largimg img');
+        zoomMiddlDiv.mousemove(function (e) {
+            $('.mask').show();
+            $('.detail-xiangqing-largimg').show();
+            zoomMiddlDivOffset = zoomMiddlDiv.offset();
+            var x = e.pageX - zoomMiddlDivOffset.left - $('.mask').width() / 2;
+            var y = e.pageY - zoomMiddlDivOffset.top - $('.mask').height() / 2;
+
+            if (x <= 0) {
+                x = 0;
+            }
+            else if (x >= zoomMiddlDiv.width() - $('.mask').width()) {
+                x = zoomMiddlDiv.width() - $('.mask').width();
+            }
+            if (y <= 0) {
+                y = 0;
+            }
+            else if (y >= zoomMiddlDiv.height() - $('.mask').height()) {
+                y = zoomMiddlDiv.height() - $('.mask').height();
+            }
+            var percenttageX = x / (zoomMiddlDiv.width() - $('.mask').width());
+            var percenttageY = y / (zoomMiddlDiv.height() - $('.mask').height());
+            $('.detail-xiangqing-largimg img').css(
+                    {
+                        'left': -percenttageX * (600 - $('.detail-xiangqing-largimg').width()),
+                        'top': -percenttageY * (600 - $('.detail-xiangqing-largimg').height())
+                    }
+            )
+            $('.mask').css({
+                'left': x + 'px',
+                'top': y + 'px'
+            })
+        })
+        zoomMiddlDiv.mouseout(function () {
+            $('.mask').hide();
+            $('.detail-xiangqing-largimg').hide();
+        })
+
+        smallImgLi.mouseover(function () {
+
+            $(this).addClass('current').siblings().removeClass('current');
+            var thissrc = $(this).children('img').attr('src');
+
+            $('.detail-xiangqing-img img').attr('src', thissrc);
+            zoomMiddlDivimg.attr('src', thissrc);
+        })
+        rightBtn.click(function () {
+            leftBtn.removeClass('disable');
+            if (now == 2) {
+                now = 2;
+            }
+            else {
+
+                now++;
+                if (now == 2) {
+                    $(this).addClass('disable');
+                }
+                smallimgul.animate({ 'left': -now * smallimgliWidth + 'px' }, 500);
+            }
+        })
+        leftBtn.click(function () {
+            rightBtn.removeClass('disable');
+            if (now == 0) {
+                now = 0;
+            }
+            else {
+                now--;
+                if (now == 0) {
+                    $(this).addClass('disable');
+                }
+                smallimgul.animate({ 'left': -now * smallimgliWidth + 'px' }, 500);
+            }
+        })
+
+    })
+</script>
+ @*数量加减*@
+<script>
+    jQuery.extend( {
+    min : 1,
+    reg : function(x) {
+        jQuery('#J_Tip').html("");
+        jQuery('#J_Tip').hide();
+        return new RegExp("^[1-9]\\d*$").test(x);
+    },
+    amount : function(obj, mode) {
+        var x = jQuery(obj).val();
+        if (this.reg(parseInt(x))) {
+            if (mode) {
+                x++;
+            } else {
+                x--;
+            }
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>请输入正确的数量！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
+        }
+        return x;
+    },
+    reduce : function(obj) {
+        var x = this.amount(obj, false);
+        if (parseInt(x) >= this.min) {
+            jQuery(obj).val(x);
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>商品数量最少为" + this.min
+                    + "！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
+        }
+    },
+    add : function(obj) {
+        var x = this.amount(obj, true);
+        var max = jQuery('#nAmount').val();
+        if (parseInt(x) <= parseInt(max)) {
+            jQuery(obj).val(x);
+        } else {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(max == 0 ? 1 : max);
+            jQuery(obj).focus();
+        }
+    },
+    modify : function(obj) {
+        var x = jQuery(obj).val();
+        var max = jQuery('#nAmount').val();
+        if (!this.reg(parseInt(x))) {
+            jQuery(obj).val(1);
+            jQuery(obj).focus();
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>请输入正确的数量！");
+            jQuery('#J_Tip').show();
+            return;
+        }
+        var intx = parseInt(x);
+        var intmax = parseInt(max);
+        if (intx < this.min) {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>商品数量最少为" + this.min
+                    + "！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(this.min);
+            jQuery(obj).focus();
+        } else if (intx > intmax) {
+            jQuery('#J_Tip').html("<i class=\"ico\"></i>您所填写的商品数量超过库存！");
+            jQuery('#J_Tip').show();
+            jQuery(obj).val(max == 0 ? 1 : max);
+            jQuery(obj).focus();
+        }
+    }
+    });
+</script>
+@*同类推荐*@
+<script>
+    var drew = document.getElementById("dakuan");
+    var scrol = document.getElementById("imgScroller");
+    var liimg = document.getElementById("tupianimg");
+    var ilheight = 540;
+    var speed = 1;
+    var time = 4000;
+    var deay;
+    drew.scrollTop =0;
+    scrol.innerHTML += scrol.innerHTML;
+    function startscroll() {
+        deay = setInterval("scrollleft()", speed);
+        drew.scrollTop++;
+    }
+    function scrollleft() {
+        if (drew.scrollTop % ilheight == 0) {
+            clearInterval(deay);
+            setTimeout(startscroll, time);
+        }
+        else {
+            drew.scrollTop++;
+            if (drew.scrollTop >= drew.scrollHeight/2) {
+                drew.scrollTop = 0;
+            }
+        }
+    }
+    liimg.onmouserover = function () {
+        clearInterval(deay);
+    }
+    liimg.onmouseout = function () {
+        setTimeout(startscroll, time);
+    }
+    setTimeout(startscroll, time);
+</script>
+@*图片显示*@
+<script>
+    var objimg = $("#imgScroller li a");
+    var fangdakuang = $(".fangdajing")
+    var fangda = $(".fangdajing img")
+    objimg.mouseover(function () {
+        
+        fangdakuang.show();
+        var imgsrc = $(this).children('img').attr('src');
+        fangda.attr('src', imgsrc);
+         childoffset=$(this).children('img').offset()
+        var _left=-childoffset.left*0.1;
+        var _top=childoffset.top*0.4;
+        fangda.css({
+            'left': _left + 'px',
+            'top':_top+'px'
+        })
+    })
+    objimg.mouseout(function () {
+        fangdakuang.hide();
+    })
+</script>
+<script type="text/javascript">
+    $("#goods-detail").click(function () {
+        $("#shangping-content").show()
+           
+        $("#shangping-pinglun").hide()
+          
+        $("#goods-detail").css({
+            'background-color': 'red',
+            'color': 'white'
+        })
+        $("#goods-punlin").css({
+            'background-color': 'white',
+            'color': 'black',
+           
+        })
+    })
+    $("#goods-punlin").click(function () {
+        $("#shangping-content").hide()
+           
+        $("#shangping-pinglun").show()
+        $("#goods-punlin").css({
+            'background-color':'red',
+            'color':'white'
+        })
+        $("#goods-detail").css({
+            'background-color':'white',
+            'color':'black',
+           
+      
+        })
+          
+    })
+</script>
+@*回复隐藏*@
+<script>
+    var rep = $(".reply-moren");
+    var flat=true;
+    rep.click(function () {
+        if (flat == true) {
+            $(".comment-qunbu").find("div").show();
+            
+            flat = false;
+        }
+        else {
+          
+            $(".reply-detail-goods").hide();
+            flat = true;
+        }
+       
+    })
+</script>
+

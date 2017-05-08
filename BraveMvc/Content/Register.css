@@ -1,0 +1,178 @@
+﻿body{
+    background: #000;
+    margin:0px;
+}
+#canvas{
+	position:absolute;
+	
+   
+}
+.loge-tubiao {
+    width: 400px;
+    height: 150px;
+   margin-top:5%;
+    margin-left:50px;
+    position: fixed;
+   
+}
+.loge-tubiao img{
+    width:100%;
+    height:100%;
+}
+  /*登入注册*/
+.woyaodengru{
+    width:33%;
+    height:70%;
+    background-color:white;
+    position:fixed;
+   margin-left:65%;
+   margin-top:5%;
+   opacity:0.8;
+   border-radius:20px;
+}
+#tabs-1{
+    margin-top:40px;
+}
+
+
+.kuaiz{
+    width:100%;
+    height:50px;
+   
+}
+.minzi{
+    float: left;
+    width:80px;
+    height:100%;
+   display: inline-block;
+   
+   font-size: 14px;
+  line-height: 50px;
+ 
+ margin-left:3%;
+   
+}
+.zhanghao{
+   float: left;
+   height:100%;
+   width: 300px;
+
+   
+  margin-bottom: 15px;
+   
+}
+.text{
+       width:100%;
+       height:50px;
+       line-height: 20px;
+     
+       padding: 10px 11px;
+     
+      border: 1px solid #e0e0e0;
+     border-radius: 3px;
+}
+.textouy{
+     width:200px;
+     height:50px;
+     line-height: 20px;
+     
+       padding: 10px 11px;
+     
+      border: 1px solid #e0e0e0;
+     border-radius: 3px;
+}
+.uploadFile{
+    position: absolute;
+    top:53%;
+   right:-1%;
+   
+    width:150px;
+    height:50px;
+    overflow: hidden;
+   cursor: pointer;
+  
+}
+ .yanzhenma{
+       height:50px;
+       
+      
+  }
+  .login_verifcode{
+      height:50px;
+      width:140px;
+    margin-left:1%;
+    
+  }
+  .verifcode img{
+      height:50px;
+      
+       
+  }
+  .refesh{
+    background: url(/Images/refresh-1.png) center center no-repeat;
+    display: inline-block;
+    display: inline;
+    zoom: 1;
+    width: 34px;
+    height: 34px;
+    vertical-align: middle;
+    cursor: pointer;
+    text-indent: -200%;
+    overflow: hidden;
+}
+   .dengrsfda{
+      height:50px;
+      width:240px;
+      margin-left:130px;
+      background-color:#6495ed;
+      font-size:x-large;
+      text-align: center;
+      border-radius: 3px;
+      line-height:50px;
+     
+   
+  }
+   .btn_login{
+        text-decoration:none;
+      outline:none;
+   }
+   .btn_login:hover{
+        text-decoration:none;
+         outline:none;
+         font-size:30px;
+         color:white;
+   }
+   
+    .jiedweqze{
+       margin-left:80px;
+       height:50px;
+      width:300px;
+    
+      margin-top:60px;
+  }
+    .choose{
+       margin-top:70px;
+      width: 16px;
+    height: 16px;
+    vertical-align: -3px;
+    cursor: pointer;
+}
+    .jizhuwwe{
+         margin-left:120px;
+       height:50px;
+      width:240px;
+      margin-top:60px;
+    }
+   .note{
+        float:right;
+        text-decoration: underline;
+        color: #666;
+    }
+
+    
+
+
+ 
+ 
+ 
+  /*登入注册*/

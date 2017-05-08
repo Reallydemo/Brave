@@ -1,0 +1,21 @@
+﻿@using Models
+@model ViewModels.GoodsDetail
+@{
+    ViewBag.Title = "SelectReply";
+    Layout = null;
+}
+@*<div class="row reply-detail-goods" id="chakangeng">*@
+<div>
+    @foreach (ReplyGoods m in Model.Reply1)
+    {
+        <div class="row comment-qunbu-mouren">
+            <img src="@m.Users.UserImage" />
+
+            <span style="font-size:x-large">@m.Users.UserName</span>
+            <span>回复</span>
+            <span>@m.ReplyTime</span>
+            <p>@m.Content</p>
+        </div>
+    }
+</div>
+ @*</div>*@

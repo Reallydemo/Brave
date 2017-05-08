@@ -1,0 +1,105 @@
+﻿
+.Cart-gouwu {
+    margin-top:8%;
+   
+  
+}
+.Cart-gouwu :first-child{
+    border-bottom:1px solid #000000;
+    height:14px;
+}
+.Cart-gouwu :nth-child(2){
+    color:red;
+    text-align:center;
+    font-size:large;
+}
+.Cart-gouwu :last-child{
+    border-bottom:1px solid #000000;
+      height:14px;
+}
+.Cart-title{
+    height:50px;
+    background-color:#808080;
+    margin-top:5%;
+}
+.Cart-title div{
+    color:white;
+    line-height:50px;
+    text-align:center;
+}
+.Cart-allgoods{
+     margin-top:3%;
+}
+.Cart-goods{
+    margin-top:2%;
+    border:1px solid #808080;
+    height:100px;
+}
+.Cart-goods div{
+    text-align:center;
+    height:100%;
+  
+  
+}
+.Cart-goods div span{
+    margin-top:20%;
+}
+.Cart-goods div label{
+    margin-top:20%;
+}
+.Cart-goods-img{
+    height:100%;
+}
+.Cart-goods-img img{
+     height:100%;
+     cursor:pointer;
+}
+.Cart-goods-num input{
+    margin-top:20%;
+    width:40%;
+    height:10%;
+}
+.Cart-AllTotal{
+    background-color:#dddddd;
+    margin-top:5%;
+    height:50px;
+}
+.Cart-AllTotal div{
+    text-align:center;
+    cursor:pointer;
+}
+.Cart-AllTotal div label{
+    margin-top:15%;
+}
+.Cart-allcheeck input{
+    margin-top:10%;
+}
+.Catr-account input{
+     height:50px;
+     width:100%;
+     border:none;
+     background-color:red;
+     color:white;
+     font-size:28px;
+}
+.Cart-AllTotal div p{
+  margin-top:10%;
+}
+#larg-img{
+    width:600px;
+    height:500px;
+    top:0;
+    left:0;
+    float:right;
+    position:absolute;
+    z-index:200;
+    display:none;
+}
+#larg-img img{
+    width:100%;
+    height:100%;
+    position:absolute;
+    z-index:200;
+    top:0;
+    left:0;
+}

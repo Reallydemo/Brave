@@ -1,0 +1,132 @@
+﻿@model ViewModels.MallsCart
+@using Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+
+}
+
+@Styles.Render("~/Content/Carts.css")
+@Styles.Render("~/Content/bootstrap.css")
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<div class="container">
+    <div class="row Cart-gouwu">
+        <div class="col-xs-4 col-sm-5 col-md-5"></div>
+        <div class="col-xs-4 col-sm-2 col-md-1">购物车</div>
+        <div class="col-xs-4 col-sm-5 col-md-6"></div>
+    </div>
+    <div class="row Cart-title">
+        <div class="col-xs-4 col-sm-4 col-md-4">商品信息</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">单价</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">数量</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">总金额</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">编辑</div>
+    </div>
+    <div class="row Cart-allgoods" id="cart">
+        @foreach (Cart i in Model.Carts1)
+        {
+            <div class="row Cart-goods">
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="col-xs-3 col-sm-2 col-md-2">
+                        <input type="checkbox" />
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-4 Cart-goods-img">
+                        <img src="@i.Goods.GoodsImage1" />
+                    </div>
+                    <div class="col-xs-3 col-sm-4 col-md-4"><label>@i.Goods.GoodsName</label></div>
+                    <div class="col-sm-2 col-md-2"></div>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2"><label>@i.Price</label></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 Cart-goods-num">
+                    
+                    <a v-on:>-</a>
+                    <input type="text" value="@i.CartCount" />
+                    <a>+</a>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2"><label >@i.Total</label></div>
+                <div class="col-xs-2 col-sm-2 col-md-2"><span class="glyphicon glyphicon-trash"></span></div>
+            </div>
+        }
+   
+    </div>
+    <div class="row Cart-AllTotal">
+        <div class="col-xs-2 col-sm-2 col-md-2 Cart-allcheeck">
+            <input type="checkbox" />全选
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            <p>取消全选</p>
+        
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+        
+            <p> 删除</p>
+           
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            共<label></label>件商品
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2">
+            合计：<label></label>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 Catr-account">
+            <input type="button" value="结算" />
+        </div>
+       
+    </div>
+    <div id="larg-img">
+        <img src="" />
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script>
+    var minimg = $(".Cart-goods-img");
+    var largkuan = $("#larg-img")
+    var largimg = $("#larg-img img");
+    minimg.hover(function () {
+        largkuan.show();
+        var imgsrcc = $(this).children('img').attr('src');
+        largimg.attr('src', imgsrcc);
+        childoffset = $(this).children('img').offset()
+        var _left = childoffset.left+120;
+        var _top = childoffset.top*0.4;
+       
+        largimg.css({
+            'top': _top + 'px',
+            'left': _left + 'px'
+        })
+    },
+    function () {
+        largkuan.hide();
+    }
+    )
+</script>
+<script src="~/Scripts/vue.min.js"></script>
+<script>
+    var im = new Vue({
+        el: "#cart",
+        data: {
+
+        },
+        filters: {
+
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+
+            });
+        },
+        methods: {
+
+        }
+    });
+    Vue.filter({
+
+
+
+    })
+
+    
+</script>
+

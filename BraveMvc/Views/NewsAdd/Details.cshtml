@@ -1,0 +1,90 @@
+﻿@model Models.News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmtDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmtDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyWords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyWords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clicks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clicks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsVideo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsVideo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewsPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewsPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewSection.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewSection.SectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.News_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
