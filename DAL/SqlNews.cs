@@ -41,6 +41,12 @@ namespace DAL
             var data = db.News;
             return data;
         }
+        public IEnumerable<News> SelectNews(string keyword)
+        {
+            var data = db.News;
+            return data;
+
+        }
     }
 
 

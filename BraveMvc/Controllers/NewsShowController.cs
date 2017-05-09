@@ -33,12 +33,12 @@ namespace BraveMvc.NewsControllers
             int Bi = id - 1;
             var detail = NewsManage.FindDetailNews(id);
             var FindNext = NewsManage.FindDetailNews(Si);                   
-            var FindBefore = NewsManage.FindDetailNews(Bi);
+            var FindBefore = NewsManage.FindDetailNews(Bi);           
          
             ViewModels.Cnpagelist index = new ViewModels.Cnpagelist();
             index.FindDetailNews = detail;
             index.FindNext = FindNext;
-            index.FindBefore = FindBefore;            
+            index.FindBefore = FindBefore;                  
             return View(index);
         }
        public ActionResult ClassifyNews()

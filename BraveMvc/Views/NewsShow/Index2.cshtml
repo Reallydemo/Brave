@@ -29,7 +29,7 @@ $(".bellows__header").not(this).parent(".bellows__item").removeClass("bellows--i
         <div class="pictureShow">
             <div class="banner">
                 <div class="b-img">
-                    @foreach (var item in Model.FindAllNews)
+                    @foreach (News item in Model.FindAllNews)
                     {
                         <a href="@Url.Action("Detail","NewsShow",new { id=@item.News_id})"  ><img src="@item.NewsPicture" style="height:100%;width:100%;"/></a>
                     }

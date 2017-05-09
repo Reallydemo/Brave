@@ -1317,6 +1317,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ueditor\net\upload\image\20170426\" />
+    <Folder Include="ueditor\net\upload\image\20170503\" />
+    <Folder Include="ueditor\net\upload\image\20170505\" />
+    <Folder Include="ueditor\net\upload\image\20170507\" />
     <Folder Include="Views\YZM\" />
   </ItemGroup>
   <ItemGroup>
