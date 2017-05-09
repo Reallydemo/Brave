@@ -14,7 +14,7 @@ namespace IDAL
         IEnumerable<News> FindInternationalNews();
         IEnumerable<News> FindHotNews();
         News FindDetailNews(int id);
-        IEnumerable<News> FindClassifyNews(int id);
+        IEnumerable<News> FindClassifyNews();
 
 
     }

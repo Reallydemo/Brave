@@ -33,9 +33,9 @@ namespace BLL
         {
             return news.FindDetailNews(id);
         }
-        public static IEnumerable<News> FindClassifyNews(int id)
+        public static IEnumerable<News> FindClassifyNews()
         {
-            return news.FindClassifyNews(id);
+            return news.FindClassifyNews();
         }
     }
 }

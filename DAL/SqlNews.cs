@@ -36,9 +36,9 @@ namespace DAL
             var data = db.News.Find(id);
             return data;
         }
-        public IEnumerable<News> FindClassifyNews(int id)
+        public IEnumerable<News> FindClassifyNews()
         {
-            var data = db.News.Where(p => p.Section_id == id);
+            var data = db.News;
             return data;
         }
     }

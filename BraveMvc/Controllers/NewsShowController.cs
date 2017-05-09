@@ -41,11 +41,10 @@ namespace BraveMvc.NewsControllers
             index.FindBefore = FindBefore;            
             return View(index);
         }
-       public ActionResult ClassifyNews(int id,int ? page)
+       public ActionResult ClassifyNews()
         {
-            int pageSize = 8;
-            int pageNumber = (page ?? 1);
-            var classify = NewsManage.FindClassifyNews(id).OrderByDescending(p=>p.News_id).ToPagedList(pageSize, pageNumber) ;                                 
+            var classify = NewsManage.FindClassifyNews().Where(p => p.Section_id == 1).OrderByDescending(p => p.News_id);
+                                         
             return View(classify);
         }
     }

@@ -1305,12 +1305,18 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_Layoutmall.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
+    <Content Include="Views\NewsShow\ClassifyNews.cshtml" />
+    <Content Include="Views\NewsShow\Detail.cshtml" />
+    <Content Include="Views\NewsShow\Index2.cshtml" />
+    <Content Include="Views\NewsAdd\Create.cshtml" />
+    <Content Include="Views\NewsAdd\Delete.cshtml" />
+    <Content Include="Views\NewsAdd\Details.cshtml" />
+    <Content Include="Views\NewsAdd\Edit.cshtml" />
+    <Content Include="Views\NewsAdd\Index.cshtml" />
+    <Content Include="Views\AllNews\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AllNews\" />
-    <Folder Include="Views\NewsAdd\" />
-    <Folder Include="Views\NewsShow\" />
     <Folder Include="Views\YZM\" />
   </ItemGroup>
   <ItemGroup>
