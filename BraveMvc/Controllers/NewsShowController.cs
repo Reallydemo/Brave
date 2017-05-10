@@ -29,22 +29,23 @@ namespace BraveMvc.NewsControllers
         public ActionResult Detail(int id)
         {
 
-            int Si = id + 1;
-            int Bi = id - 1;
-            var detail = NewsManage.FindDetailNews(id);
-            var FindNext = NewsManage.FindDetailNews(Si);                   
-            var FindBefore = NewsManage.FindDetailNews(Bi);           
-         
+            var detail = NewsManage.FindDetailNews(id);                       
+            var FindBefore = NewsManage.FindDetailNews(id-1);
+            var FindNext = NewsManage.FindDetailNews(id + 1);                     
             ViewModels.Cnpagelist index = new ViewModels.Cnpagelist();
-            index.FindDetailNews = detail;
-            index.FindNext = FindNext;
-            index.FindBefore = FindBefore;                  
+            index.FindDetailNews = detail;         
+            index.FindBefore = FindBefore;
+            index.FindNext = FindNext;                       
             return View(index);
+        }
+        public ActionResult Details(string keyword)
+        {
+            var selectnews = NewsManage.SelectNews(keyword);
+            return View(selectnews);
         }
        public ActionResult ClassifyNews()
         {
-            var classify = NewsManage.FindClassifyNews().Where(p => p.Section_id == 1).OrderByDescending(p => p.News_id);
-                                         
+            var classify = NewsManage.FindClassifyNews().Where(p => p.Section_id == 1).OrderByDescending(p => p.News_id);                                                     
             return View(classify);
         }
     }

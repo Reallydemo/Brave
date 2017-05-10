@@ -10,12 +10,12 @@ namespace BraveMvc.Controllers
     public class AllNewsController : Controller
     {
         // GET: AllNews
-        public ActionResult Index(string current,int?page)
+        public ActionResult Index(int?page)
         {
-            var news = NewsManage.FindClassifyNews().Where(p=>p.Section_id==1).OrderByDescending(p=>p.News_id);
-            int pageSize = 9;
+            var news = NewsManage.FindClassifyNews().Where(p=>p.Section_id==1).OrderByDescending(p=>p.SubmtDate);
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
-            return View(news.ToPagedList(pageSize,pageNumber));
+            return View(news.ToPagedList(pageNumber, pageSize));
         }
     }
 }

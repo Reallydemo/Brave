@@ -6,20 +6,26 @@
 }
 <link href="~/Content/ClassifyNews.css" rel="stylesheet" />
 
-<h2>Index</h2>
 <div class="classify">
-    @foreach (var p in Model)
-    {
+   
         <div class="classifydiv">
+@foreach (var p in Model)
+{
             <a href="@Url.Action("Detail","NewsShow",new { id=@p.News_id})">@p.NewsTitle</a>
             <a href="@Url.Action("Detail","NewsShow",new { id=@p.News_id})"><img style="height:300px;width:100%;" src="@p.NewsPicture" /></a>
-        </div>
 
-    }
+}
+          </div>
+</div>
+<div class="row page-list" style="margin-bottom:1%;">
+    <div class="col-xs-4 col-sm-6 col-md-6 pagejiye"></div>
 
+    <div class="col-xs-6 col-sm-4 col-md-4 pagejiye">
+        @Html.PagedListPager(Model, page => Url.Action("ClassifyNews", "NewsShow", new { page }))
 
-    @Html.PagedListPager(Model, page => Url.Action("ClassifyNews", "NewsShow", new { page, }))
-
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 pageje">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
 </div>
 

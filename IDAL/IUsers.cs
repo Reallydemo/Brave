@@ -9,9 +9,10 @@ namespace IDAL
 {
     public interface IUsers
     {
-        IQueryable<Users> Findname(Users user);
+        Users Findname(Users user);
         void Register(Users user);
         Users Login(Users user);
+
 
     }
 }

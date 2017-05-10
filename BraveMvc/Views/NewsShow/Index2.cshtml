@@ -12,15 +12,15 @@
 <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script>
-$(function(){
-$(".bellows__content-wrapper").hide();
-$(".bellows__header").click(function(){
-$(this).next().slideDown()
-$(this).parent(".bellows__item").addClass("bellows--is-open")
-$(".bellows__header").not(this).next().slideUp()
-$(".bellows__header").not(this).parent(".bellows__item").removeClass("bellows--is-open")
-})
-})
+    $(function(){
+        $(".bellows__content-wrapper").hide();
+        $(".bellows__header").click(function(){
+            $(this).next().slideDown()
+            $(this).parent(".bellows__item").addClass("bellows--is-open")
+            $(".bellows__header").not(this).next().slideUp()
+            $(".bellows__header").not(this).parent(".bellows__item").removeClass("bellows--is-open")
+        })
+    })
 </script>
 
 

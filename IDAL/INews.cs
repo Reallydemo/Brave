@@ -15,8 +15,7 @@ namespace IDAL
         IEnumerable<News> FindHotNews();
         News FindDetailNews(int id);
         IEnumerable<News> FindClassifyNews();
-        IEnumerable<News> SelectNews(string keyword);
-
-
+        IList<News> SelectNews(string keyword);
+                 
     }
 }

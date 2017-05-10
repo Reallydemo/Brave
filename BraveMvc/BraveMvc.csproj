@@ -614,6 +614,7 @@
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
+    <Content Include="Scripts\banner.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -1314,6 +1315,7 @@
     <Content Include="Views\NewsAdd\Edit.cshtml" />
     <Content Include="Views\NewsAdd\Index.cshtml" />
     <Content Include="Views\AllNews\Index.cshtml" />
+    <Content Include="Views\NewsShow\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

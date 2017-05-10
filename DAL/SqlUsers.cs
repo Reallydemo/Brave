@@ -25,9 +25,9 @@ namespace DAL
            return db.Users.Where(o => o.UserName == user.UserName).Where(o => o.Password == user.Password).FirstOrDefault();
         
         }
-        public IQueryable<Users> Findname(Users user)
+        public Users Findname(Users user)
         {
-          return db.Users.Where(o => o.UserName == user.UserName);
+          return db.Users.Where(o => o.UserName == user.UserName).FirstOrDefault();
           
         }
     }

@@ -37,5 +37,10 @@ namespace BLL
         {
             return news.FindClassifyNews();
         }
+        public static IList<News> SelectNews(string keyword)
+        {
+            return news.SelectNews(keyword);
+        }
+    
     }
 }

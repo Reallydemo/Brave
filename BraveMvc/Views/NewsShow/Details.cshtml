@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Models.News>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@foreach (var item in Model)
+{
+   <p>@item.NewsTitle;</p>
+}

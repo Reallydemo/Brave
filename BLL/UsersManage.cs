@@ -21,7 +21,7 @@ namespace BLL
         {
             return usee.Login(user);
         }
-        public static IQueryable<Users> Findname(Users user)
+        public static Users Findname(Users user)
         {
            return usee.Findname(user);
         }

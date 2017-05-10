@@ -41,12 +41,12 @@ namespace DAL
             var data = db.News;
             return data;
         }
-        public IEnumerable<News> SelectNews(string keyword)
+        public IList<News> SelectNews(string keyword)
         {
-            var data = db.News;
-            return data;
-
-        }
+            var data = db.News.Where(p => p.KeyWords.Contains(keyword));
+            return data.ToList() ;
+        }     
+       
     }
 
 
