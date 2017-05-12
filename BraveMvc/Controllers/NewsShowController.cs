@@ -40,8 +40,9 @@ namespace BraveMvc.NewsControllers
         }
         public ActionResult Details(string keyword)
         {
+
             var selectnews = NewsManage.SelectNews(keyword);
-            return View(selectnews);
+            return PartialView("Details",selectnews);
         }
        public ActionResult ClassifyNews()
         {

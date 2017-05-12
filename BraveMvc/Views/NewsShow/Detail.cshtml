@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 <link href="~/Content/NewsDetail.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <!DOCTYPE html>
@@ -33,10 +34,26 @@
                 <div class="form-group">
                     <input type="text"  name="keyword" class="form-control" placeholder="Search    ">                   
                 </div>
-                <button class="btn btn-default">搜索新闻</button>
+                <button id="btn1" class="btn btn-default">搜索新闻</button>
             </form>
            <div>
               
+               <a id="text">@{Html.RenderAction("Details");}</a>
+              <script type="text/javascript">
+                  $(document).ready(function () {
+                      $("#btn1").click(function () {
+                          var kw=$("#keyword").val();
+                          $.ajax({ 
+                              type:"get", //提交的类型 
+                              url: "Details",//提交地址 
+                              data:{keyword:kw},//参数 
+                              success: function(){ //回调方法 
+                                  $('#text').load('/Views/NewsShow/Details.cshtml'); 
+                              } 
+                          
+                      })
+                  })
+              </script>
            </div>
         </div>
     </div>
