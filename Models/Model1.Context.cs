@@ -25,7 +25,6 @@ namespace Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Arms> Arms { get; set; }
         public virtual DbSet<ArmsSection> ArmsSection { get; set; }
         public virtual DbSet<Attention> Attention { get; set; }
         public virtual DbSet<Classify> Classify { get; set; }
@@ -52,5 +51,8 @@ namespace Models
         public virtual DbSet<CommentGoods> CommentGoods { get; set; }
         public virtual DbSet<ReplyGoods> ReplyGoods { get; set; }
         public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<AFilterSection> AFilterSection { get; set; }
+        public virtual DbSet<Arms> Arms { get; set; }
     }
 }

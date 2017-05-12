@@ -44,6 +44,14 @@
 .Cart-goods div span{
     margin-top:20%;
 }
+.cart-detele a{
+   
+    line-height:100px;
+}
+.cart-detele a:hover{
+    text-decoration:none;
+    outline:none;
+}
 .Cart-goods div label{
     margin-top:20%;
 }
@@ -56,8 +64,33 @@
 }
 .Cart-goods-num input{
     margin-top:20%;
-    width:40%;
-    height:10%;
+    width:30%;
+    /*height:10%;*/
+  
+}
+.Cart-goods-num a{
+    cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.min{
+    cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.min:hover{
+    text-decoration:none;
+}
+.add{
+     cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.add:hover{
+     text-decoration:none;
+}
+.Cart-goods-num a:hover{
+    text-decoration:none;
 }
 .Cart-AllTotal{
     background-color:#dddddd;
@@ -69,18 +102,28 @@
     cursor:pointer;
 }
 .Cart-AllTotal div label{
-    margin-top:15%;
+    margin-top:5%;
+    color:red;
+   font-size:18px;
 }
 .Cart-allcheeck input{
     margin-top:10%;
 }
-.Catr-account input{
+.Catr-account{
+      background-color:red;
+}
+.cart-jeisuan{
      height:50px;
      width:100%;
      border:none;
-     background-color:red;
+   
      color:white;
      font-size:28px;
+     line-height:50px;
+}
+.cart-jeisuan:hover{
+    text-decoration:none;
+    color:white;
 }
 .Cart-AllTotal div p{
   margin-top:10%;
@@ -103,3 +146,56 @@
     top:0;
     left:0;
 }
+/*地址*/
+.address-weizhi{
+    height:60px;
+  
+}
+.address-weizhi:first-child{
+   
+    color:#778877;
+}
+.address-dhsawer img{
+      height:280px;
+     
+}
+
+.address-add{
+    border:1px solid #dddddd;
+    height:200px;
+}
+
+.address-add img{
+    
+    height:70%;
+    width:80%;
+    margin-left:10%;
+    margin-top:5%;
+}
+.address-add :nth-child(2){
+  color:black;
+   
+   margin-left:35%;
+}
+.address-tianxie{
+    display:none;
+}
+.address-wenzi{
+ 
+}
+.address-message{
+    margin:5%;
+}
+.address-message div{
+    line-height:50px;
+    text-align:center;
+    height:50px;
+}
+.address-message div input{
+    border:1px solid #000000;
+    height:50px;
+    width:100%;
+}
+
+/*地址*/
+

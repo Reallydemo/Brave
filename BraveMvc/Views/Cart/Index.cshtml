@@ -1,7 +1,7 @@
 ﻿@model ViewModels.MallsCart
 @using Models
 @{
-    ViewBag.Title = "Index";
+ 
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
 }
@@ -9,7 +9,6 @@
 @Styles.Render("~/Content/Carts.css")
 @Styles.Render("~/Content/bootstrap.css")
 
-<script src="~/Scripts/bootstrap.min.js"></script>
 
 <div class="container">
     <div class="row Cart-gouwu">
@@ -24,74 +23,99 @@
         <div class="col-xs-2 col-sm-2 col-md-2">总金额</div>
         <div class="col-xs-2 col-sm-2 col-md-2">编辑</div>
     </div>
-    <div class="row Cart-allgoods" id="cart">
-        @foreach (Cart i in Model.Carts1)
-        {
-            <div class="row Cart-goods">
-                <div class="col-xs-4 col-sm-4 col-md-4">
-                    <div class="col-xs-3 col-sm-2 col-md-2">
-                        <input type="checkbox" />
+    @using (Html.BeginForm("updatetotal", "Cart", FormMethod.Post, new { id = "jiesuan" }))
+    {
+        <div class="row Cart-allgoods" id="cart">
+            @foreach (Cart i in Model.Carts1)
+            {
+                <div class="row Cart-goods">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="col-xs-3 col-sm-2 col-md-2">
+                            <input type="checkbox" name="checked_goods" class="son"/>
+                        </div>
+                        <div class="col-xs-6 col-sm-4 col-md-4 Cart-goods-img">
+                            <img src="@i.Goods.GoodsImage1" />
+                        </div>
+                        <div class="col-xs-3 col-sm-4 col-md-4"><label>@i.Goods.GoodsName</label></div>
+                        <div class="col-sm-2 col-md-2"></div>
                     </div>
-                    <div class="col-xs-6 col-sm-4 col-md-4 Cart-goods-img">
-                        <img src="@i.Goods.GoodsImage1" />
+                    <div class="col-xs-2 col-sm-2 col-md-2"><label class="price">￥@i.Price</label></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 Cart-goods-num">
+                        @using (Ajax.BeginForm("updatecart", "Cart", new { cartid = i.Cart_id }, new AjaxOptions { UpdateTargetId = "cart", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+                        {
+                            <input type="submit" class="min" value="-" style="width:20%;height:35px;border:1px solid rgba(0,0,0,0.1);background-color:white" />
+
+                            <input type="hidden" class="cart-id" value="@i.Cart_id" />
+                            <input type="text" class="text_box" id="text_box" name="text_box" value="@i.CartCount" />
+                            <input type="submit" class="add" value="+" style="width:20%;height:35px;border:1px solid rgba(0,0,0,0.1);background-color:white" />
+
+                        }
+
                     </div>
-                    <div class="col-xs-3 col-sm-4 col-md-4"><label>@i.Goods.GoodsName</label></div>
-                    <div class="col-sm-2 col-md-2"></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">￥<label class="total_price" id="total_price">@i.Total</label></div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 cart-detele">
+                        @*@using (Ajax.BeginForm("glyphicon glyphicon-trash", "Cart", new { cartid = i.Cart_id }, new AjaxOptions { UpdateTargetId = "cart", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+                            {
+                                <input type="submit" class="glyphicon glyphicon-trash" />
+                            }*@
+                        @Ajax.ActionLink("删除", "delete", "Cart", new { id = i.Cart_id }, new AjaxOptions { UpdateTargetId = "cart", HttpMethod = "Post" })
+                        <span></span>
+
+
+                    </div>
                 </div>
-                <div class="col-xs-2 col-sm-2 col-md-2"><label>@i.Price</label></div>
-                <div class="col-xs-2 col-sm-2 col-md-2 Cart-goods-num">
-                    
-                    <a v-on:>-</a>
-                    <input type="text" value="@i.CartCount" />
-                    <a>+</a>
-                </div>
-                <div class="col-xs-2 col-sm-2 col-md-2"><label >@i.Total</label></div>
-                <div class="col-xs-2 col-sm-2 col-md-2"><span class="glyphicon glyphicon-trash"></span></div>
+            }
+
+        </div>
+        <div class="row Cart-AllTotal">
+            <div class="col-xs-2 col-sm-2 col-md-2 Cart-allcheeck">
+                <input type="checkbox" style="margin-top:13%;" id="checkAll" />全选
             </div>
-        }
-   
-    </div>
-    <div class="row Cart-AllTotal">
-        <div class="col-xs-2 col-sm-2 col-md-2 Cart-allcheeck">
-            <input type="checkbox" />全选
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                <input type="hidden" id="all_total" name="all_total" />
+
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+
+
+
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                共<label id="sdjasw2"></label>件商品
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2">
+                合计：￥<label id="allPrice"></label>
+                
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 Catr-account">
+                <a href="javascript:document.getElementById('jiesuan').submit()" class="cart-jeisuan">结算</a>
+                
+            </div>
+
         </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            <p>取消全选</p>
-        
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-        
-            <p> 删除</p>
-           
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            共<label></label>件商品
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2">
-            合计：<label></label>
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 Catr-account">
-            <input type="button" value="结算" />
-        </div>
-       
-    </div>
+    }
+  
     <div id="larg-img">
         <img src="" />
     </div>
 </div>
 <script src="~/Scripts/jquery-3.1.1.js"></script>
+
+@Scripts.Render("~/bundles/jqueryval")
+
+@*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
 <script>
     var minimg = $(".Cart-goods-img");
-    var largkuan = $("#larg-img")
+    var largkuan = $("#larg-img");
     var largimg = $("#larg-img img");
     minimg.hover(function () {
         largkuan.show();
         var imgsrcc = $(this).children('img').attr('src');
         largimg.attr('src', imgsrcc);
         childoffset = $(this).children('img').offset()
-        var _left = childoffset.left+120;
-        var _top = childoffset.top*0.4;
-       
+        var _left = childoffset.left + 120;
+        var _top = childoffset.top * 0.4;
+
         largimg.css({
             'top': _top + 'px',
             'left': _left + 'px'
@@ -100,9 +124,125 @@
     function () {
         largkuan.hide();
     }
-    )
+    );
 </script>
-<script src="~/Scripts/vue.min.js"></script>
+@*数量甲减*@
+<script>
+    $(function(){ 
+        $(".add").click(function(){ 
+            var t=$(this).parent().find('input[class*=text_box]'); 
+            var uy=$(this).parent().find('input[class*=cart-id]');
+            t.val(parseInt(t.val()) + 1)
+            //var tal = $(".total").parent().find('lable[class*=total]');
+            //var total = parseInt($(this).find('input[class*=text_box]').val()) * parseFloat($(".price").find('lable[class*=price]').val());
+            //tal.val(total.toFixed(2))
+            //$.ajax({
+            //    type: 'POST',  
+            //    url: "/Cart/updatecart",  
+            //    data:{cartid:uy,count:t},  
+            //    dataType: 'json',  
+                 
+            //    success: function (responseData) {  
+            //        $('#user').html(responseData);  
+            //    },  
+            //    error: function (XMLHttpRequest, textStatus, errorThrown) {//请求失败处理函数  
+            //        console.log("请求失败，无法获取分组数据");  
+            //    }  
+            //});  
+            //})
+            //setTotal();
+        }) 
+        $(".min").click(function(){ 
+            var t=$(this).parent().find('input[class*=text_box]'); 
+            t.val(parseInt(t.val())-1) 
+            if(parseInt(t.val())<0){ 
+                t.val(1); 
+            } 
+            //setTotal();
+        }) 
+        //function setTotal() {
+        //    var mm = 0.00;
+        //    $("input[type='checkbox'][name='checked_goods']").each(function () {
+
+
+        //        mm+= $(".total_price").text();
+
+        //    })
+          
+          
+          
+        //} 
+        //setTotal();
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        getAllPrice();
+        $("#checkAll").click(function () {
+            if (this.checked == true) {
+                $('[type=checkbox]').prop('checked', true);
+                $('[type=checkbox]').val("true");
+            } else {
+                $('[type=checkbox]').prop('checked', false);
+                $('[type=checkbox]').val("");
+            }
+            getAllPrice();
+        })
+        //var flat=true;
+        $(".son").click(function () {
+            //总的checkbox的个数
+            
+         
+            
+            if (this.checked == true) {
+                $(this).val("true");
+            }
+            else {
+                $(this).val("");
+            }
+           
+            var len = $(".son").length;
+            //已选中的checkbox的个数
+            var checkedLen = $("input[type='checkbox'][name='checked_goods']:checked").length;
+            if (len == checkedLen) {
+                $('#checkAll').prop('checked', true);
+               
+               
+            } else {
+                $('#checkAll').prop('checked', false);
+              
+            }
+           
+            getAllPrice()
+        })
+
+
+    });
+    function getAllPrice() {
+        var ss = 0.00;
+        var aa = 0;
+       
+        $("input[type='checkbox'][name='checked_goods']").each(function () {
+            if (this.checked == true) {
+               
+                var mmu ='total_price' ;
+               
+                    ss += parseInt($("."+mmu).text());
+                    aa++
+                
+                
+                
+              
+            }
+        })
+        $("#allPrice").text(ss.toFixed(2));
+        $("#sdjasw2").text(aa);
+        $("#all_total").val(ss.toFixed(2));
+
+    }
+
+</script>
+@*<script src="~/Scripts/vue.min.js"></script>
 <script>
     var im = new Vue({
         el: "#cart",
@@ -128,5 +268,5 @@
     })
 
     
-</script>
+</script>*@
 

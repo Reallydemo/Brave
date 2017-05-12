@@ -1,0 +1,223 @@
+﻿@model ViewModels.MallsCart
+@using Models
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@Styles.Render("~/Content/Carts.css")
+
+<div class="container">
+    <div class="row address-weizhi">
+        <div class="col-xs-4 col-sm-5 col-md-5" style="margin-top:7%" >当前位置>>虎贲>>铸剑为犁>>地址选取</div>
+        
+        <div class="col-xs-8 col-sm-7 col-md-7 address-dhsawer">
+            <img src="~/Images/ad1.png" />
+        </div>
+    </div>
+    <div class="row address-news" id="addresssdf">
+        @foreach (Address p in Model.Address1)
+        {
+            <div class="col-xs-6 col-sm-3 col-md-3 address-add">
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        @p.AddressName
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3"></div>
+                </div>
+              
+                    <div >
+                       
+                    </div>
+                    <div class="row" style="margin-top:5%;">
+                        @p.AddressDe
+                    </div>
+                      
+                   
+             
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        @p.Addressphone
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4" >
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 shancuadre" style="text-align:center;display:none">
+                       @Ajax.ActionLink("删除", "deleteaddre", "Cart", new { id = p.Address_id }, new AjaxOptions { UpdateTargetId = "addresssdf", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" })
+                    </div>
+                   
+                </div>
+                <div class="row xuanweiadre" style="text-align:center;margin-top:5%;display:none">
+                    @Ajax.ActionLink("选为收货地址", "seleadrd", "Cart",new { id=p.Address_id},new AjaxOptions { HttpMethod = "Post"})
+                </div>
+            </div>
+        }
+
+                <div class="col-xs-4 col-sm-3 col-md-3 address-add" id="tiajaidizhi">
+                    <img src="~/Images/jiahao.png" />
+                    <p>添加新地址</p>
+
+                </div>
+            </div>
+   
+    <div class="row address-tianxie">
+        <hr style="border:1px solid red" />
+        <div class="col-sm-3 col-md-3"></div>
+        <div class="col-xs-4 col-sm-6 col-md-6 address-wenzi">
+            @using (Ajax.BeginForm("Address","Cart",new AjaxOptions { UpdateTargetId = "addresssdf", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+            {
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        收货人姓名
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_name" id="address_name" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        地址
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_weizi" id="address_weizi" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        邮政编号
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_code" id="address_code" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        手机
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_phone" id="address_phone" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8 "></div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                        <input type="submit" value="提交" style="width:70%; height:40px; background-color:red;color:white;border:none" />
+                    </div>
+                   
+                </div>
+            }
+
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+    </div>
+</div>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        $("#form0").validate({
+            rules: {
+                address_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 8
+                },
+                address_phone: {
+                    required: true,
+                    txtaccount: true
+                },
+                address_code: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
+                address_weizi: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 100
+                }
+
+            },
+            messages: {
+                address_name: {
+                    required: "请输入收货人名",
+                    minlength: '用户名不能小于6个字符',
+                    maxlength: '用户名不能超过16个字符'
+                },
+                address_phone: {
+                    required: "请输入手机号",
+                    txtaccount: "请输入正确的手机号"
+                },
+                address_code: {
+                    required: "请输入邮政编号",
+                    minlength: '密码不能小于6个字符',
+                    maxlength: '密码不能超过6个字符'
+                },
+                address_weizi: {
+                    required: "请输入地址",
+                    minlength: "请输入地址",
+                    maxlength:"请输入有效的地址"
+                }
+
+            }
+        })
+    })
+    $().ready(function () {
+        jQuery.validator.addMethod("txtaccount", function (value, element) {
+            var length = value.length;
+
+            var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "手机号码格式错误");
+        jQuery.validator.addMethod("txtpwd", function (value, element) {
+            var ped = /^[1-9]\d{6,16}$/;
+            return this.optional(element) || (ped.test(value));
+        }, "密码的格式错误");
+        
+    })
+
+</script>
+<script type="text/javascript">
+    var dakun = $(".address-add");
+    dakun.hover(function () {
+        $(this).css({
+            'border-color': 'red'
+        })
+        $(this).find(".xuanweiadre").show();
+        $(this).find(".shancuadre").show();
+    },
+    function () {
+        $(this).css({
+            'border-color': '#dddddd'
+        })
+        $(this).find(".xuanweiadre").hide();
+        $(this).find(".shancuadre").hide();
+    }
+    )
+    var adddezhi = $("#tiajaidizhi");
+    var flat=true;
+    adddezhi.click(function () {
+        if (flat == true) {
+            $(".address-tianxie").show();
+            flat = false;
+        }
+        else {
+            $(".address-tianxie").hide();
+            flat = true;
+        }
+      
+
+
+    })
+</script>

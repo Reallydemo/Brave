@@ -352,6 +352,11 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\001国产航母.jpg" />
     <Content Include="Images\052D型导弹驱逐舰长沙舰.jpg" />
+    <Content Include="Images\ad1.png" />
+    <Content Include="Images\ad2.png" />
+    <Content Include="Images\ad3.png" />
+    <Content Include="Images\ad4.png" />
+    <Content Include="Images\address.jpg" />
     <Content Include="Images\arrow.png" />
     <Content Include="Images\bg0.jpg" />
     <Content Include="Images\bg1-2.png" />
@@ -474,6 +479,7 @@
     <Content Include="Images\hoverbtnbg1.gif" />
     <Content Include="Images\icon_big.png" />
     <Content Include="Images\icon_big_1.png" />
+    <Content Include="Images\jiahao.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logo1.jpg" />
     <Content Include="Images\logo2.jpg" />
@@ -1303,7 +1309,6 @@
     <Content Include="Views\Brave\Index.cshtml" />
     <Content Include="Views\Malls\Reply.cshtml" />
     <Content Include="Views\Malls\SelectReply.cshtml" />
-    <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Shared\_Layoutmall.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\NewsShow\ClassifyNews.cshtml" />
@@ -1316,6 +1321,8 @@
     <Content Include="Views\NewsAdd\Index.cshtml" />
     <Content Include="Views\AllNews\Index.cshtml" />
     <Content Include="Views\NewsShow\Details.cshtml" />
+    <Content Include="Views\Cart\Address.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

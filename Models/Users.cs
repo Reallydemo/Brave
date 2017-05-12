@@ -32,6 +32,7 @@ namespace Models
             this.CommentGoods = new HashSet<CommentGoods>();
             this.ReplyGoods = new HashSet<ReplyGoods>();
             this.Cart = new HashSet<Cart>();
+            this.Address = new HashSet<Address>();
         }
     
         public int User_id { get; set; }
@@ -77,5 +78,7 @@ namespace Models
         public virtual ICollection<ReplyGoods> ReplyGoods { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Address> Address { get; set; }
     }
 }

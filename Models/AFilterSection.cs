@@ -12,18 +12,13 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class AFilterSection
     {
-        public int Cart_id { get; set; }
-        public decimal Price { get; set; }
-        public decimal Total { get; set; }
-        public bool Flog { get; set; }
-        public int CartCount { get; set; }
-        public int Goods_id { get; set; }
-        public int User_id { get; set; }
-        public System.DateTime Addtime { get; set; }
+        public int AFilterSection_id { get; set; }
+        public string AFilterSectionName { get; set; }
+        public int AFfilter_id { get; set; }
+        public int ArmsSection_id { get; set; }
     
-        public virtual Goods Goods { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual ArmsSection ArmsSection { get; set; }
     }
 }

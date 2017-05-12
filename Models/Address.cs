@@ -12,18 +12,17 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class Address
     {
-        public int Cart_id { get; set; }
-        public decimal Price { get; set; }
-        public decimal Total { get; set; }
-        public bool Flog { get; set; }
-        public int CartCount { get; set; }
-        public int Goods_id { get; set; }
+        public int Address_id { get; set; }
         public int User_id { get; set; }
-        public System.DateTime Addtime { get; set; }
+        public string AddressName { get; set; }
+        public string AddressDe { get; set; }
+        public string Addressphone { get; set; }
+        public System.DateTime AddressTime { get; set; }
+        public int AddressCode { get; set; }
+        public bool flat { get; set; }
     
-        public virtual Goods Goods { get; set; }
         public virtual Users Users { get; set; }
     }
 }

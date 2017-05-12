@@ -5,19 +5,45 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BraveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_id" />
+          </Key>
+          <Property Name="Address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="AddressName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="AddressDe" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Addressphone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AddressTime" Type="datetime" Nullable="false" />
+          <Property Name="AddressCode" Type="int" Nullable="false" />
+          <Property Name="flat" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AFilterSection">
+          <Key>
+            <PropertyRef Name="AFilterSection_id" />
+          </Key>
+          <Property Name="AFilterSection_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AFilterSectionName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AFfilter_id" Type="int" Nullable="false" />
+          <Property Name="ArmsSection_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Arms">
           <Key>
             <PropertyRef Name="Arms_id" />
           </Key>
           <Property Name="Arms_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ArmsName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Model" Type="varchar" MaxLength="50" />
-          <Property Name="Brand" Type="varchar" MaxLength="50" />
-          <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
-          <Property Name="ArmsPicture" Type="text" />
+          <Property Name="ArmsPicture" Type="text" Nullable="false" />
           <Property Name="ArmsVideo" Type="text" />
           <Property Name="ArmsDes" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ArmsSection_id" Type="int" Nullable="false" />
+          <Property Name="ArmsTechnical" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BigSection_id" Type="int" Nullable="false" />
+          <Property Name="BigSection2_id" Type="int" Nullable="false" />
+          <Property Name="BigSection3_id" Type="int" Nullable="false" />
+          <Property Name="Manu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Stime" Type="datetime" />
+          <Property Name="Ctime" Type="datetime" />
         </EntityType>
         <EntityType Name="ArmsSection">
           <Key>
@@ -41,7 +67,7 @@
             <PropertyRef Name="Cart_id" />
           </Key>
           <Property Name="Cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Total" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Flog" Type="bit" Nullable="false" />
           <Property Name="CartCount" Type="int" Nullable="false" />
@@ -302,6 +328,30 @@
           <Property Name="UserMail" Type="nvarchar" MaxLength="50" />
           <Property Name="Integral" Type="int" />
         </EntityType>
+        <Association Name="FK_Address_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AFilterSection_AFilterSection">
+          <End Role="ArmsSection" Type="Self.ArmsSection" Multiplicity="1" />
+          <End Role="AFilterSection" Type="Self.AFilterSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmsSection">
+              <PropertyRef Name="ArmsSection_id" />
+            </Principal>
+            <Dependent Role="AFilterSection">
+              <PropertyRef Name="ArmsSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Arms_ArmsSection">
           <End Role="ArmsSection" Type="Self.ArmsSection" Multiplicity="1" />
           <End Role="Arms" Type="Self.Arms" Multiplicity="*" />
@@ -687,6 +737,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BraveModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AFilterSection" EntityType="Self.AFilterSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Arms" EntityType="Self.Arms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArmsSection" EntityType="Self.ArmsSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Attention" EntityType="Self.Attention" Schema="dbo" store:Type="Tables" />
@@ -714,6 +766,14 @@
           <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Address_Users" Association="Self.FK_Address_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AFilterSection_AFilterSection" Association="Self.FK_AFilterSection_AFilterSection">
+            <End Role="ArmsSection" EntitySet="ArmsSection" />
+            <End Role="AFilterSection" EntitySet="AFilterSection" />
+          </AssociationSet>
           <AssociationSet Name="FK_Arms_ArmsSection" Association="Self.FK_Arms_ArmsSection">
             <End Role="ArmsSection" EntitySet="ArmsSection" />
             <End Role="Arms" EntitySet="Arms" />
@@ -847,21 +907,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BraveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Arms">
-          <Key>
-            <PropertyRef Name="Arms_id" />
-          </Key>
-          <Property Name="Arms_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ArmsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="ArmsPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ArmsVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ArmsDes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ArmsSection_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ArmsSection" Relationship="Self.FK_Arms_ArmsSection" FromRole="Arms" ToRole="ArmsSection" />
-        </EntityType>
         <EntityType Name="ArmsSection">
           <Key>
             <PropertyRef Name="ArmsSection_id" />
@@ -869,7 +914,8 @@
           <Property Name="ArmsSection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArmsSectionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ASectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Arms" Relationship="Self.FK_Arms_ArmsSection" FromRole="ArmsSection" ToRole="Arms" />
+          <NavigationProperty Name="AFilterSection" Relationship="BraveModel.FK_AFilterSection_AFilterSection" FromRole="ArmsSection" ToRole="AFilterSection" />
+          <NavigationProperty Name="Arms" Relationship="BraveModel.FK_Arms_ArmsSection" FromRole="ArmsSection" ToRole="Arms" />
         </EntityType>
         <EntityType Name="Attention">
           <Key>
@@ -1118,19 +1164,8 @@
           <NavigationProperty Name="CommentGoods" Relationship="BraveModel.FK_CommentGoods_Users" FromRole="Users" ToRole="CommentGoods" />
           <NavigationProperty Name="ReplyGoods" Relationship="BraveModel.FK_ReplyGoods_Users" FromRole="Users" ToRole="ReplyGoods" />
           <NavigationProperty Name="Cart" Relationship="BraveModel.FK_Cart_Users" FromRole="Users" ToRole="Cart" />
+          <NavigationProperty Name="Address" Relationship="BraveModel.FK_Address_Users" FromRole="Users" ToRole="Address" />
         </EntityType>
-        <Association Name="FK_Arms_ArmsSection">
-          <End Role="ArmsSection" Type="Self.ArmsSection" Multiplicity="1" />
-          <End Role="Arms" Type="Self.Arms" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArmsSection">
-              <PropertyRef Name="ArmsSection_id" />
-            </Principal>
-            <Dependent Role="Arms">
-              <PropertyRef Name="ArmsSection_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Attention_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Attention" Type="Self.Attention" Multiplicity="*" />
@@ -1384,7 +1419,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BraveEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Arms" EntityType="Self.Arms" />
           <EntitySet Name="ArmsSection" EntityType="Self.ArmsSection" />
           <EntitySet Name="Attention" EntityType="Self.Attention" />
           <EntitySet Name="Classify" EntityType="Self.Classify" />
@@ -1405,10 +1439,6 @@
           <EntitySet Name="Site" EntityType="Self.Site" />
           <EntitySet Name="Special" EntityType="Self.Special" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Arms_ArmsSection" Association="Self.FK_Arms_ArmsSection">
-            <End Role="ArmsSection" EntitySet="ArmsSection" />
-            <End Role="Arms" EntitySet="Arms" />
-          </AssociationSet>
           <AssociationSet Name="FK_Attention_Users" Association="Self.FK_Attention_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Attention" EntitySet="Attention" />
@@ -1538,6 +1568,21 @@
           <AssociationSet Name="FK_Cart_Users" Association="BraveModel.FK_Cart_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <EntitySet Name="Address" EntityType="BraveModel.Address" />
+          <EntitySet Name="AFilterSection" EntityType="BraveModel.AFilterSection" />
+          <EntitySet Name="Arms" EntityType="BraveModel.Arms" />
+          <AssociationSet Name="FK_Address_Users" Association="BraveModel.FK_Address_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AFilterSection_AFilterSection" Association="BraveModel.FK_AFilterSection_AFilterSection">
+            <End Role="ArmsSection" EntitySet="ArmsSection" />
+            <End Role="AFilterSection" EntitySet="AFilterSection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Arms_ArmsSection" Association="BraveModel.FK_Arms_ArmsSection">
+            <End Role="ArmsSection" EntitySet="ArmsSection" />
+            <End Role="Arms" EntitySet="Arms" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Goods">
@@ -1715,7 +1760,7 @@
             <PropertyRef Name="Cart_id" />
           </Key>
           <Property Name="Cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
           <Property Name="Flog" Type="Boolean" Nullable="false" />
           <Property Name="CartCount" Type="Int32" Nullable="false" />
@@ -1749,27 +1794,91 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Address_id" />
+          </Key>
+          <Property Name="Address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="AddressName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AddressDe" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Addressphone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AddressTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddressCode" Type="Int32" Nullable="false" />
+          <Property Name="flat" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_Address_Users" FromRole="Address" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="AFilterSection">
+          <Key>
+            <PropertyRef Name="AFilterSection_id" />
+          </Key>
+          <Property Name="AFilterSection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AFilterSectionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AFfilter_id" Type="Int32" Nullable="false" />
+          <Property Name="ArmsSection_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ArmsSection" Relationship="BraveModel.FK_AFilterSection_AFilterSection" FromRole="AFilterSection" ToRole="ArmsSection" />
+        </EntityType>
+        <EntityType Name="Arms">
+          <Key>
+            <PropertyRef Name="Arms_id" />
+          </Key>
+          <Property Name="Arms_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArmsName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArmsPicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ArmsVideo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ArmsDes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArmsSection_id" Type="Int32" Nullable="false" />
+          <Property Name="ArmsTechnical" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BigSection_id" Type="Int32" Nullable="false" />
+          <Property Name="BigSection2_id" Type="Int32" Nullable="false" />
+          <Property Name="BigSection3_id" Type="Int32" Nullable="false" />
+          <Property Name="Manu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Stime" Type="DateTime" Precision="3" />
+          <Property Name="Ctime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ArmsSection" Relationship="BraveModel.FK_Arms_ArmsSection" FromRole="Arms" ToRole="ArmsSection" />
+        </EntityType>
+        <Association Name="FK_Address_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AFilterSection_AFilterSection">
+          <End Type="BraveModel.ArmsSection" Role="ArmsSection" Multiplicity="1" />
+          <End Type="BraveModel.AFilterSection" Role="AFilterSection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmsSection">
+              <PropertyRef Name="ArmsSection_id" />
+            </Principal>
+            <Dependent Role="AFilterSection">
+              <PropertyRef Name="ArmsSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Arms_ArmsSection">
+          <End Type="BraveModel.ArmsSection" Role="ArmsSection" Multiplicity="1" />
+          <End Type="BraveModel.Arms" Role="Arms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArmsSection">
+              <PropertyRef Name="ArmsSection_id" />
+            </Principal>
+            <Dependent Role="Arms">
+              <PropertyRef Name="ArmsSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BraveModelStoreContainer" CdmEntityContainer="BraveEntities">
-          <EntitySetMapping Name="Arms">
-            <EntityTypeMapping TypeName="BraveModel.Arms">
-              <MappingFragment StoreEntitySet="Arms">
-                <ScalarProperty Name="Arms_id" ColumnName="Arms_id" />
-                <ScalarProperty Name="ArmsName" ColumnName="ArmsName" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ArmsPicture" ColumnName="ArmsPicture" />
-                <ScalarProperty Name="ArmsVideo" ColumnName="ArmsVideo" />
-                <ScalarProperty Name="ArmsDes" ColumnName="ArmsDes" />
-                <ScalarProperty Name="ArmsSection_id" ColumnName="ArmsSection_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ArmsSection">
             <EntityTypeMapping TypeName="BraveModel.ArmsSection">
               <MappingFragment StoreEntitySet="ArmsSection">
@@ -2076,6 +2185,49 @@
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Cart_id" ColumnName="Cart_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="BraveModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="flat" ColumnName="flat" />
+                <ScalarProperty Name="AddressCode" ColumnName="AddressCode" />
+                <ScalarProperty Name="AddressTime" ColumnName="AddressTime" />
+                <ScalarProperty Name="Addressphone" ColumnName="Addressphone" />
+                <ScalarProperty Name="AddressDe" ColumnName="AddressDe" />
+                <ScalarProperty Name="AddressName" ColumnName="AddressName" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Address_id" ColumnName="Address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AFilterSection">
+            <EntityTypeMapping TypeName="BraveModel.AFilterSection">
+              <MappingFragment StoreEntitySet="AFilterSection">
+                <ScalarProperty Name="ArmsSection_id" ColumnName="ArmsSection_id" />
+                <ScalarProperty Name="AFfilter_id" ColumnName="AFfilter_id" />
+                <ScalarProperty Name="AFilterSectionName" ColumnName="AFilterSectionName" />
+                <ScalarProperty Name="AFilterSection_id" ColumnName="AFilterSection_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arms">
+            <EntityTypeMapping TypeName="BraveModel.Arms">
+              <MappingFragment StoreEntitySet="Arms">
+                <ScalarProperty Name="Ctime" ColumnName="Ctime" />
+                <ScalarProperty Name="Stime" ColumnName="Stime" />
+                <ScalarProperty Name="Manu" ColumnName="Manu" />
+                <ScalarProperty Name="BigSection3_id" ColumnName="BigSection3_id" />
+                <ScalarProperty Name="BigSection2_id" ColumnName="BigSection2_id" />
+                <ScalarProperty Name="BigSection_id" ColumnName="BigSection_id" />
+                <ScalarProperty Name="ArmsTechnical" ColumnName="ArmsTechnical" />
+                <ScalarProperty Name="ArmsSection_id" ColumnName="ArmsSection_id" />
+                <ScalarProperty Name="ArmsDes" ColumnName="ArmsDes" />
+                <ScalarProperty Name="ArmsVideo" ColumnName="ArmsVideo" />
+                <ScalarProperty Name="ArmsPicture" ColumnName="ArmsPicture" />
+                <ScalarProperty Name="ArmsName" ColumnName="ArmsName" />
+                <ScalarProperty Name="Arms_id" ColumnName="Arms_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
