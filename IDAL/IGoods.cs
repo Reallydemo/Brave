@@ -19,6 +19,7 @@ namespace IDAL
 
         void AddToGoods(Goods goods);
         IList<Classify> GetallClassify();
+        IQueryable<Goods> selectGoods();
              
     }
 }

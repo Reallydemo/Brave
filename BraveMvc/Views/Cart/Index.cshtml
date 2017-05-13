@@ -28,6 +28,7 @@
         <div class="row Cart-allgoods" id="cart">
             @foreach (Cart i in Model.Carts1)
             {
+                
                 <div class="row Cart-goods">
                     <div class="col-xs-4 col-sm-4 col-md-4">
                         <div class="col-xs-3 col-sm-2 col-md-2">
@@ -65,14 +66,14 @@
                     </div>
                 </div>
             }
-
+            <input type="hidden" id="all_total" name="all-total" value="0" />
         </div>
         <div class="row Cart-AllTotal">
             <div class="col-xs-2 col-sm-2 col-md-2 Cart-allcheeck">
                 <input type="checkbox" style="margin-top:13%;" id="checkAll" />全选
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2">
-                <input type="hidden" id="all_total" name="all_total" />
+             
 
             </div>
             <div class="col-xs-2 col-sm-2 col-md-2">
@@ -224,20 +225,14 @@
        
         $("input[type='checkbox'][name='checked_goods']").each(function () {
             if (this.checked == true) {
-               
-                var mmu ='total_price' ;
-               
-                    ss += parseInt($("."+mmu).text());
-                    aa++
-                
-                
-                
-              
+                var mmu = 'total_price';
+                ss += parseInt($(this).closest('.Cart-goods').children(":eq(3)").children('.' + mmu).text());
+                    aa++               
             }
         })
         $("#allPrice").text(ss.toFixed(2));
         $("#sdjasw2").text(aa);
-        $("#all_total").val(ss.toFixed(2));
+        $("#all_total").val(ss);
 
     }
 

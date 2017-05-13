@@ -247,6 +247,7 @@
     <Compile Include="ViewModels\Goodss.cs" />
     <Compile Include="ViewModels\MallsCart.cs" />
     <Compile Include="ViewModels\Paging.cs" />
+    <Compile Include="ViewModels\SelectGoods.cs" />
     <Compile Include="YZM\ValidateCode.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1323,6 +1324,7 @@
     <Content Include="Views\NewsShow\Details.cshtml" />
     <Content Include="Views\Cart\Address.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Malls\selectGood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

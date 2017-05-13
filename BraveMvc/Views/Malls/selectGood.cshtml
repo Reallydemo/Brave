@@ -1,0 +1,122 @@
+﻿@using Models
+@model ViewModels.SelectGoods
+
+@{
+    ViewBag.Title = "selectGood";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@Styles.Render("~/Content/Carts.css")
+<div class="container">
+    <div class="row setect-weizhi">
+        当前位置>>商城>>搜索
+    </div>
+   
+   <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 select-filter">
+                <p>商品筛选</p>
+
+                <div class="row select-Title">
+                    <div class="col-xs-3 col-sm-2 col-md-2 select-fliter-sdw">
+                     
+                        @Ajax.ActionLink("综合排序", "selectGood", "Malls", null)
+                    </div>
+                    <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                        @Ajax.ActionLink("价格", "selectGood", "Malls", new { SortInfoFrom = "价格降序"}, new AjaxOptions()
+                   {
+                       UpdateTargetId = "dsjdwiefDsdwe",
+                       InsertionMode = InsertionMode.Replace,
+                       HttpMethod = "GET"
+                   })
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                        @Ajax.ActionLink("价格", "selectGood", "Malls", new { SortInfoFrom = "价格升序" }, new AjaxOptions()
+           {
+               UpdateTargetId = "dsjdwiefDsdwe",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET"
+           })
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-xs-3 col-sm-2 col-md-2 classify-paixu-jiage">
+                        @Ajax.ActionLink("更新时间", "selectGood", "Malls", new { SortInfoFrom = "更新时间" }, new AjaxOptions()
+           {
+               UpdateTargetId = "dsjdwiefDsdwe",
+               InsertionMode = InsertionMode.Replace,
+               HttpMethod = "GET"
+           })
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-sm-4 col-md-4"></div>
+
+                </div>
+                <div class="row select-good">
+                    @foreach (Goods m in Model.good1)
+                    {
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <div class="select-filter-goods">
+                                <a href="@Url.Action("Detail","Malls", new { id = @m.Goods_id,classid=@m.Classify_id })">
+                                    <div class="select-goods-img">
+
+                                        <img src="@m.GoodsImage1" class="fangdatupian" />
+                                    </div>
+                                    <div class="select-goods-dect">
+                                        <p>@m.GoodsName</p>
+                                        <div class="col-xs-6 col-sm-6 col-md-6" style="color:red">￥@m.GoodsPrice</div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6"style="color:#c0c0c0;text-align:right">
+                                       师大
+                                        </div>
+                                       
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+       <div class="col-sm-3 col-md-3 select-recommend">
+           <div class="row" style="color:black;box-shadow:0 5px 4px #c6c6c6;text-align:center">平台热卖</div>
+           <div class="row select-tuijian">
+               @foreach (Goods n in Model.good2)
+               {
+                <div class="select-recommend-img">
+                    <a href="@Url.Action("Detail","Malls", new { id = @n.Goods_id,classid=@n.Classify_id })">
+                        <img src="@n.GoodsImage1" />
+                        <div class="row select-recommend-title">
+                            <h4>@n.GoodsName</h4>
+                            <div class="col-xs-6 col-sm-6 col-md-6">￥@n.GoodsPrice</div>
+                            <div class="col-xs-6 col-sm-6 col-md-6" style="color:#c6c6c6;text-align:right">已售82件</div>
+                        </div>
+                    </a>
+                </div>
+               }
+             
+           </div>
+       </div>
+             
+        </div>
+    
+
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jquery")
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<script type="text/javascript">
+    //var sdde = $(".classify-paixu-jiage")
+    //sdde.children().click(function () {
+    //    $(this).css({
+    //        'color': 'red'
+    //    })
+    //    $(this).parent().css({
+    //        'border': '1px solid #c6c6c6'
+    //    })
+    //    $(this).siblings().css({
+    //        'color': 'red'
+    //    })
+    //})
+</script>
+
+

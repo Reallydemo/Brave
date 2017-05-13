@@ -65,6 +65,7 @@
 .Cart-goods-num input{
     margin-top:20%;
     width:30%;
+    height:35px
     /*height:10%;*/
   
 }
@@ -199,3 +200,104 @@
 
 /*地址*/
 
+/*搜索*/
+.setect-weizhi{
+    margin-top:5%;
+}
+.select-filter{
+    margin-top:2%;
+}
+.select-Title{
+    background-color:#f5f5f5;
+    height:40px;
+    line-height:40px;
+}
+.select-good{
+    margin-top:2%;
+}
+.select-filter-goods{
+    width:100%;
+    height:300px;
+    margin-top:1%;
+   
+ 
+
+}
+.select-fliter-sdw{
+    border:1px solid #c6c6c6;
+}
+.select-fliter-sdw a{
+    
+    color:red;
+}
+.select-filter-goods:hover{
+    border:1px solid red;
+   
+}
+.select-goods-img{
+    width:100%;
+    height:200px;
+    overflow:hidden;
+   
+    
+    
+}
+.classify-paixu-jiage:hover{
+    border:1px solid #c6c6c6;
+}
+.classify-paixu-jiage:hover a{
+   color:red;
+}
+.classify-paixu-jiage:hover span{
+   color:red;
+}
+.select-goods-img img{
+    width:100%;
+    height:200px;
+}
+.fangdatupian:hover{
+    transform:scale(1.5,1.25);
+    
+}
+
+.select-goods-dect p{
+    text-align:center;
+    color:#000000;
+        
+}
+.select-recommend{
+    margin-top:8%;
+    height:600px;
+   
+}
+.select-recommend-img{
+    width:85%;
+    margin:auto;
+    height:380px;
+    margin-top:4%;
+    overflow:hidden;
+
+}
+.select-recommend-img:hover{
+    border:1px solid red;
+}
+
+.select-recommend-img img{
+    width:100%;
+    height:280px;
+    overflow:hidden;
+}
+.select-recommend-img img:hover{
+    transform:scale(1.5,1.2);
+} 
+.select-recommend-title h4{
+    text-align:center;
+}
+.select-recommend-title:nth-child(2){
+    color:red;
+   height:50px;
+
+}
+
+
+/*搜索*/

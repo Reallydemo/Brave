@@ -45,5 +45,9 @@ namespace BLL
         {
             return good.GetallClassify();
         }
+        public static IQueryable<Goods> selectGoods()
+        {
+            return good.selectGoods();
+        }
     }
 }

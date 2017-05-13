@@ -87,17 +87,18 @@ namespace BraveMvc.Controllers
             set { Session["Cart"] = value; }
         }
         [HttpPost]
-      public ActionResult updatetotal()
+      public ActionResult updatetotal(FormCollection formCol)
         {
             var useid = int.Parse(Session["User_id"].ToString());
-             var Carts = CartManage.Findusercart(useid);
-            //var alltotal = Request["all_total"];
-            //if (alltotal == null)
-            //{
-            //    return Content("<script>;alert('请选择商品');history.go(-1)");
-            //}
-            //else
-            //{
+            var Carts = CartManage.Findusercart(useid);
+            var alltotal =formCol["all-total"];
+            var dsdwe =Convert.ToInt32(alltotal);
+            if (dsdwe < 1)
+            {
+                return Content("<script>;alert('请选择商品');history.go(-1)");
+            }
+            else
+            {
                 foreach (var item in Carts)
                 {
                     var jisuan = Carts.FirstOrDefault(p => p.Cart_id == item.Cart_id);
@@ -121,8 +122,8 @@ namespace BraveMvc.Controllers
 
                     }
                 }
-            //}
-           
+            }
+
             return RedirectToAction("Address", "Cart");
 
         }
@@ -161,14 +162,18 @@ namespace BraveMvc.Controllers
             {
                 int userid = Convert.ToInt32(Session["User_id"]);
                 var sfdd = AddressManage.selectaaduse(userid);
-                sfdd.flat = false;
-                AddressManage.update(sfdd);
+                if (sfdd!=null)
+                {
+                    sfdd.flat = false;
+                    AddressManage.update(sfdd);
+                }
+               
                 cde.flat = true;
                 AddressManage.update(cde);
             }
 
             
-            return View();
+            return View("Address");
         }
         public ActionResult deleteaddre(int id)
         {
