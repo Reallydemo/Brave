@@ -1,10 +1,15 @@
 ﻿@model IEnumerable<Models.News>
 @{
-    ViewBag.Title = "Details";
-    Layout = null;
+    ViewBag.Title = "Details";  
 }
-
-@foreach (var item in Model)
-{
-   <p>@item.NewsTitle;</p>
-}
+<link href="~/Content/NewsDetail.css" rel="stylesheet" />
+<div class="select">
+    <h2>搜索结果：</h2>
+    <hr/>
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li> <a href="@Url.Action("Detail","NewsShow",new { id=@item.News_id})">@item.NewsTitle;</a></li>
+        }
+    </ol>
+</div>

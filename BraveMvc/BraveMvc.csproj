@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AllNewsController.cs" />
     <Compile Include="Controllers\BraveController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MallsController.cs" />
@@ -614,6 +615,32 @@
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
+    <Content Include="jwplayer-7.11.0\22.mp4" />
+    <Content Include="jwplayer-7.11.0\jwplayer.controls.js" />
+    <Content Include="jwplayer-7.11.0\jwplayer.flash.swf" />
+    <Content Include="jwplayer-7.11.0\jwplayer.js" />
+    <Content Include="jwplayer-7.11.0\jwplayer.loader.swf" />
+    <Content Include="jwplayer-7.11.0\polyfills.base64.js" />
+    <Content Include="jwplayer-7.11.0\polyfills.intersection-observer.js" />
+    <Content Include="jwplayer-7.11.0\polyfills.promise.js" />
+    <Content Include="jwplayer-7.11.0\polyfills.vttrenderer.js" />
+    <Content Include="jwplayer-7.11.0\provider.airplay.js" />
+    <Content Include="jwplayer-7.11.0\provider.cast.js" />
+    <Content Include="jwplayer-7.11.0\provider.flash.js" />
+    <Content Include="jwplayer-7.11.0\provider.hlsjs.js" />
+    <Content Include="jwplayer-7.11.0\provider.html5.js" />
+    <Content Include="jwplayer-7.11.0\provider.shaka.js" />
+    <Content Include="jwplayer-7.11.0\provider.youtube.js" />
+    <Content Include="jwplayer-7.11.0\skins\beelden.css" />
+    <Content Include="jwplayer-7.11.0\skins\bekle.css" />
+    <Content Include="jwplayer-7.11.0\skins\five.css" />
+    <Content Include="jwplayer-7.11.0\skins\glow.css" />
+    <Content Include="jwplayer-7.11.0\skins\roundster.css" />
+    <Content Include="jwplayer-7.11.0\skins\seven.css" />
+    <Content Include="jwplayer-7.11.0\skins\six.css" />
+    <Content Include="jwplayer-7.11.0\skins\stormtrooper.css" />
+    <Content Include="jwplayer-7.11.0\skins\vapor.css" />
+    <Content Include="jwplayer-7.11.0\vttparser.js" />
     <Content Include="Scripts\banner.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -631,6 +658,8 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="jwplayer-7.11.0\jw-icons.ttf" />
+    <Content Include="jwplayer-7.11.0\jw-icons.woff" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -1323,6 +1352,7 @@
     <Folder Include="ueditor\net\upload\image\20170503\" />
     <Folder Include="ueditor\net\upload\image\20170505\" />
     <Folder Include="ueditor\net\upload\image\20170507\" />
+    <Folder Include="Views\History\" />
     <Folder Include="Views\YZM\" />
   </ItemGroup>
   <ItemGroup>

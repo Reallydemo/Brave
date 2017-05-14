@@ -38,18 +38,21 @@
             </form>
            <div>
               
-               <a id="text">@{Html.RenderAction("Details");}</a>
+               <a id="text">@*@{Html.RenderAction("Details");}*@</a>
               <script type="text/javascript">
                   $(document).ready(function () {
                       $("#btn1").click(function () {
                           var kw=$("#keyword").val();
                           $.ajax({ 
-                              type:"get", //提交的类型 
-                              url: "Details",//提交地址 
+                              type:"GET", //提交的类型 
+                              url: '@Url.Action("Details","NewsShow")',//提交地址 
                               data:{keyword:kw},//参数 
-                              success: function(){ //回调方法 
-                                  $('#text').load('/Views/NewsShow/Details.cshtml'); 
-                              } 
+                              success: function(data1){ //回调方法 
+                                  //    $('#text').load('/Views/NewsShow/Details.cshtml'); 
+                                  //} 
+                                  $('#text').remove();
+                                  $('#text').append("<span id='CheckCodeResult'>" + data1 + "</span>").css('color', '#1E90FF');
+                              }
                           
                       })
                   })

@@ -230,3 +230,13 @@ background:#fff;}
 .bar-right em{ display:block; width:50px; height:100px; background:url(../images/arrow.png) -50px 0px no-repeat; margin:0 auto; margin-top:235px;}
 .bar-left .emcss{ background-position:0px -100px;}
 .bar-right .emcss{ background-position:-50px -100px;}
+.index-video{
+    height:500px;
+    width:80%;
+    margin:0 auto;
+    background-color:gray;
+}
+.index-video div{
+  
+  
+}
