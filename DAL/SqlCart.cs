@@ -47,5 +47,13 @@ namespace DAL
             db.Entry<Cart>(carts).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
+        public void AddOrder(Order order)
+        {
+            order.OrderTime = DateTime.Now;
+            order.Site_id = 1;
+            order.State = "未支付";
+            db.Order.Add(order);
+            db.SaveChanges();
+        }
     }
 }

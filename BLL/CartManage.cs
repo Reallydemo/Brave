@@ -42,5 +42,9 @@ namespace BLL
         {
             cartss.Delete(id);
         }
+        public static void AddOrder(Order order)
+        {
+            cartss.AddOrder(order);
+        }
     }
 }

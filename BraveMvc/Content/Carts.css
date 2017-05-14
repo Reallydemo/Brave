@@ -149,15 +149,18 @@
 }
 /*地址*/
 .address-weizhi{
-    height:60px;
+   
   
 }
 .address-weizhi:first-child{
    
-    color:#778877;
+    color:#808080;
+    font-size:large
 }
-.address-dhsawer img{
-      height:280px;
+.address-dhsawer{
+    background-image:url("/Images/ad1.png");
+    
+    height:180px;
      
 }
 
@@ -301,3 +304,81 @@
 
 
 /*搜索*/
+/*订单页*/
+.oreder-address{
+  
+}
+.orders-img{
+    margin-top:3%;
+    background-image:url("/Images/ad2.png");
+    height:130px;
+}
+.order-message{
+    margin-top:2%;
+    color:black;
+    font-family:FZLanTingHeiS-UL-GB;
+}
+.order-title{
+    margin-top:1%;
+}
+.order-title div{
+    text-align:center;
+    color:black;
+    border-bottom:2px solid #b2d1ff;
+}
+.order-goods{
+    margin-top:3%;
+}
+.order-goods-cart{
+    height:150px;
+    border-top:1px dotted  #80b2ff;
+    border-bottom:1px dotted  #80b2ff;
+}
+.order-goods-cart div div{
+    text-align:center;
+    
+    line-height:120px;
+    color:#c6c6c6;
+}
+.order-goods-address{
+    border:1px solid red;
+}
+.order-goods-address div{
+    text-align:right;
+    color:black;
+   font-size:large
+}
+.oreder-message{
+    margin-top:2%;
+    color:black;
+    font-size:small;
+
+}
+.oreder-message input{
+    border:1px solid #000000;
+    height:35px;
+    width:60%;
+}
+.order-caozuo{
+   
+}
+.order-caozuo div{
+    margin-top:2%;
+    text-align:right;
+}
+.order-caozuo div a{
+    color:black;
+    cursor:pointer;
+}
+.order-caozuo div a:hover{
+    color:red;
+}
+.order-caozuo div input{
+    height:40px;
+    width:50%;
+    border:none;
+    background-color:red;
+    color:white;
+}
+
+/*订单页*/

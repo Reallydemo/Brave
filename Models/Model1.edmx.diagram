@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="BraveModel.Manager" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.News" Width="1.5" PointX="3.75" PointY="29.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.NewSection" Width="1.5" PointX="1.5" PointY="30" IsExpanded="true" />
-        <EntityTypeShape EntityType="BraveModel.Order" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.ReplyForum" Width="1.5" PointX="11.25" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.ReplyHistory" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.ReplyNews" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
@@ -40,14 +39,12 @@
         <AssociationConnector Association="BraveModel.FK_History_HistorySection" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_Special_Manager" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_News_NewSection" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_Order_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyForum_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyHistory_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyNews_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_Site_Users" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BraveModel.Goods" Width="1.5" PointX="3.75" PointY="34" />
         <AssociationConnector Association="BraveModel.FK_Goods_Classify" />
-        <AssociationConnector Association="BraveModel.FK_Order_Goods" />
         <EntityTypeShape EntityType="BraveModel.RedSpots" Width="1.5" PointX="6.375" PointY="5" />
         <EntityTypeShape EntityType="BraveModel.RedShare" Width="1.5" PointX="10.625" PointY="11" />
         <AssociationConnector Association="BraveModel.FK_RedShare_RedSpots" />
@@ -65,7 +62,9 @@
         <EntityTypeShape EntityType="BraveModel.AFilterSection" Width="1.5" PointX="5.375" PointY="0.75" />
         <AssociationConnector Association="BraveModel.FK_Address_Users" />
         <EntityTypeShape EntityType="BraveModel.Arms" Width="1.5" PointX="8.375" PointY="0.75" />
-        <AssociationConnector Association="BraveModel.FK_Address_Users" />
+        <EntityTypeShape EntityType="BraveModel.Order" Width="1.5" PointX="6" PointY="28.375" />
+        <AssociationConnector Association="BraveModel.FK_Order_Goods" />
+        <AssociationConnector Association="BraveModel.FK_Order_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,8 @@ namespace IDAL
         //Cart getCart(int id);
         void Delete(int id);
         void Update(Cart carts);
+        void AddOrder(Order order);
+       
 
     }
 }

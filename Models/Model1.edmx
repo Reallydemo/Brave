@@ -219,9 +219,9 @@
           <Property Name="User_id" Type="int" Nullable="false" />
           <Property Name="Good_id" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
-          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Message" Type="nvarchar" MaxLength="100" />
-          <Property Name="TotalMoney" Type="float" Nullable="false" />
+          <Property Name="TotalMoney" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="Site_id" Type="int" Nullable="false" />
           <Property Name="State" Type="nvarchar" MaxLength="50" />
           <Property Name="OrderTime" Type="datetime" Nullable="false" />
@@ -1058,23 +1058,6 @@
           <Property Name="SectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_NewSection" FromRole="NewSection" ToRole="News" />
         </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="Order_id" />
-          </Key>
-          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_id" Type="Int32" Nullable="false" />
-          <Property Name="Good_id" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Double" Nullable="false" />
-          <Property Name="Message" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TotalMoney" Type="Double" Nullable="false" />
-          <Property Name="Site_id" Type="Int32" Nullable="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Order_Users" FromRole="Order" ToRole="Users" />
-          <NavigationProperty Name="Goods" Relationship="BraveModel.FK_Order_Goods" FromRole="Order" ToRole="Goods" />
-        </EntityType>
         <EntityType Name="ReplyForum">
           <Key>
             <PropertyRef Name="ReplyForum_id" />
@@ -1155,7 +1138,6 @@
           <NavigationProperty Name="CommentHistory" Relationship="Self.FK_CommentHistory_Users" FromRole="Users" ToRole="CommentHistory" />
           <NavigationProperty Name="CommentNews" Relationship="Self.FK_CommentNews_Users" FromRole="Users" ToRole="CommentNews" />
           <NavigationProperty Name="Forum" Relationship="Self.FK_Forum_Users" FromRole="Users" ToRole="Forum" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Users" FromRole="Users" ToRole="Order" />
           <NavigationProperty Name="ReplyForum" Relationship="Self.FK_ReplyForum_Users" FromRole="Users" ToRole="ReplyForum" />
           <NavigationProperty Name="ReplyHistory" Relationship="Self.FK_ReplyHistory_Users" FromRole="Users" ToRole="ReplyHistory" />
           <NavigationProperty Name="ReplyNews" Relationship="Self.FK_ReplyNews_Users" FromRole="Users" ToRole="ReplyNews" />
@@ -1165,6 +1147,7 @@
           <NavigationProperty Name="ReplyGoods" Relationship="BraveModel.FK_ReplyGoods_Users" FromRole="Users" ToRole="ReplyGoods" />
           <NavigationProperty Name="Cart" Relationship="BraveModel.FK_Cart_Users" FromRole="Users" ToRole="Cart" />
           <NavigationProperty Name="Address" Relationship="BraveModel.FK_Address_Users" FromRole="Users" ToRole="Address" />
+          <NavigationProperty Name="Order" Relationship="BraveModel.FK_Order_Users" FromRole="Users" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Attention_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
@@ -1358,18 +1341,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Order_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Order" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ReplyForum_Users">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="ReplyForum" Type="Self.ReplyForum" Multiplicity="*" />
@@ -1432,7 +1403,6 @@
           <EntitySet Name="Manager" EntityType="Self.Manager" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="NewSection" EntityType="Self.NewSection" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="ReplyForum" EntityType="Self.ReplyForum" />
           <EntitySet Name="ReplyHistory" EntityType="Self.ReplyHistory" />
           <EntitySet Name="ReplyNews" EntityType="Self.ReplyNews" />
@@ -1503,10 +1473,6 @@
             <End Role="NewSection" EntitySet="NewSection" />
             <End Role="News" EntitySet="News" />
           </AssociationSet>
-          <AssociationSet Name="FK_Order_Users" Association="Self.FK_Order_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
           <AssociationSet Name="FK_ReplyForum_Users" Association="Self.FK_ReplyForum_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="ReplyForum" EntitySet="ReplyForum" />
@@ -1527,10 +1493,6 @@
           <AssociationSet Name="FK_Goods_Classify" Association="BraveModel.FK_Goods_Classify">
             <End Role="Classify" EntitySet="Classify" />
             <End Role="Goods" EntitySet="Goods" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Goods" Association="BraveModel.FK_Order_Goods">
-            <End Role="Goods" EntitySet="Goods" />
-            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <EntitySet Name="RedSpots" EntityType="BraveModel.RedSpots" />
           <EntitySet Name="RedShare" EntityType="BraveModel.RedShare" />
@@ -1584,6 +1546,15 @@
             <End Role="ArmsSection" EntitySet="ArmsSection" />
             <End Role="Arms" EntitySet="Arms" />
           </AssociationSet>
+          <EntitySet Name="Order" EntityType="BraveModel.Order" />
+          <AssociationSet Name="FK_Order_Goods" Association="BraveModel.FK_Order_Goods">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Users" Association="BraveModel.FK_Order_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Goods">
           <Key>
@@ -1602,9 +1573,9 @@
           <Property Name="Classify_id" Type="Int32" />
           <Property Name="Company" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Classify" Relationship="BraveModel.FK_Goods_Classify" FromRole="Goods" ToRole="Classify" />
-          <NavigationProperty Name="Order" Relationship="BraveModel.FK_Order_Goods" FromRole="Goods" ToRole="Order" />
           <NavigationProperty Name="CommentGoods" Relationship="BraveModel.FK_CommentGoods_Goods" FromRole="Goods" ToRole="CommentGoods" />
           <NavigationProperty Name="Cart" Relationship="BraveModel.FK_Cart_Goods" FromRole="Goods" ToRole="Cart" />
+          <NavigationProperty Name="Order" Relationship="BraveModel.FK_Order_Goods" FromRole="Goods" ToRole="Order" />
         </EntityType>
         <Association Name="FK_Goods_Classify">
           <End Type="BraveModel.Classify" Role="Classify" Multiplicity="0..1" />
@@ -1615,18 +1586,6 @@
             </Principal>
             <Dependent Role="Goods">
               <PropertyRef Name="Classify_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Order_Goods">
-          <End Type="BraveModel.Goods" Role="Goods" Multiplicity="1" />
-          <End Type="BraveModel.Order" Role="Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Goods">
-              <PropertyRef Name="Goods_id" />
-            </Principal>
-            <Dependent Role="Order">
-              <PropertyRef Name="Good_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1873,6 +1832,47 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Good_id" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Message" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TotalMoney" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Site_id" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Goods" Relationship="BraveModel.FK_Order_Goods" FromRole="Order" ToRole="Goods" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_Order_Users" FromRole="Order" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Order_Goods">
+          <End Type="BraveModel.Goods" Role="Goods" Multiplicity="1" />
+          <End Type="BraveModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Goods_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Good_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2015,22 +2015,6 @@
                 <ScalarProperty Name="Section_id" ColumnName="Section_id" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
                 <ScalarProperty Name="SectionDes" ColumnName="SectionDes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="BraveModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
-                <ScalarProperty Name="Good_id" ColumnName="Good_id" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
-                <ScalarProperty Name="Site_id" ColumnName="Site_id" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2228,6 +2212,22 @@
                 <ScalarProperty Name="ArmsPicture" ColumnName="ArmsPicture" />
                 <ScalarProperty Name="ArmsName" ColumnName="ArmsName" />
                 <ScalarProperty Name="Arms_id" ColumnName="Arms_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="BraveModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Site_id" ColumnName="Site_id" />
+                <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Good_id" ColumnName="Good_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,104 @@
+﻿@model ViewModels.MallsCart
+@using Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@Styles.Render("~/Content/Carts.css")
+<div class="container">
+    <div class="row oreder-address ">
+        <div class="col-xs-4 col-sm-5 col-md-5" style="margin-top:7%; color:#808080;font-size:large">当前位置>>虎贲>>铸剑为犁>>订单</div>
+        <div class="col-xs-8 col-sm-7 col-md-7 orders-img">
+            
+        </div>
+        
+    </div>
+    <div class="row order-message">
+        确认订单信息
+    </div>
+    <div class="row order-title">
+        <div class="col-xs-4 col-sm-4 col-md-4">商品信息</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">单价</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">数量</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">优惠</div>
+        <div class="col-xs-2 col-sm-2 col-md-2">小计</div>
+    </div>
+    <div class="row order-goods">
+        @foreach (Cart p in Model.Carts2)
+        {
+            <div class="row order-goods-cart">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <img src="@p.Goods.GoodsImage1" />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2" style="color:black">
+                        @p.Goods.GoodsName
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2" style="color:red">
+                        ￥@p.Price
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2" style="color:black">
+                        @p.CartCount
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">无优惠</div>
+                    <div class="col-xs-2 col-sm-2 col-md-2" style="color:red">
+                        ￥@p.Total
+                    </div>
+                </div>
+               
+            </div>
+           
+       
+       
+        }
+    </div>
+   
+    @using (Ajax.BeginForm("Addorder", "Order", new AjaxOptions { HttpMethod = "post" }))
+    {
+        <div class="row">
+            <div class="col-sm-1 col-md-1"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6 oreder-message">
+                给买家留言<input type="text" name="order-messagessss" id="order-messagessss" placeholder="选填：对本次交易的说明" value="" />
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-5 order-goods-address">
+                <div class="row">
+                    实付款:<span style="color:red; font-size:x-large">￥@ViewBag.count</span>
+                </div>
+                <div class="row">
+                    寄送至:<span style="color:#808080;font-size:16px">@Model.Address2.AddressDe</span>
+                </div>
+                <div class="row">
+                    收货人：<Span style="color:#808080;font-size:16px">@Model.Address2.AddressName@Model.Address2.Addressphone</Span>
+                </div>
+            </div>
+        </div>
+        <div class="row order-caozuo">
+            <div class="col-sm-6 col-md-6"></div>
+            <div class="col-xs-6 col-sm-3 col-md-3"><a href="@Url.Content("~/Cart/Address")">返回上一页</a> </div>
+            <div class="col-xs-6 col-sm-3 col-md-3">
+                <input type="submit" value="提交订单" />
+            </div>
+        </div>
+    }
+   
+</div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script>
+    var dsfdsf = $(".oreder-message");
+    dsfdsf.children().focusin(function () {
+        $(this).css({
+            'border':'1px solid red',
+            'height':'50px',
+           
+        })
+
+    })
+    dsfdsf.children().focusout(function () {
+        $(this).css({
+            'border': '1px solid #000000',
+            'height': '35px',
+
+        })
+    })
+
+</script>

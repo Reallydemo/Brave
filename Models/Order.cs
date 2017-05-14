@@ -18,14 +18,14 @@ namespace Models
         public int User_id { get; set; }
         public int Good_id { get; set; }
         public int Amount { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public string Message { get; set; }
-        public double TotalMoney { get; set; }
+        public decimal TotalMoney { get; set; }
         public int Site_id { get; set; }
         public string State { get; set; }
         public System.DateTime OrderTime { get; set; }
     
-        public virtual Users Users { get; set; }
         public virtual Goods Goods { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

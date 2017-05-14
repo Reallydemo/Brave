@@ -14,9 +14,9 @@ namespace BraveMvc.Controllers
     {
         public ActionResult Index()
         {
-            var userid = Convert.ToInt32(Session["User_id"]);
+            var userid = int.Parse((Session["User_id"]).ToString());
             var carts = CartManage.Findusercart(userid);
-            MallsCart inde = new MallsCart();
+            ViewModels.MallsCart inde = new MallsCart();
             inde.Carts1 = carts;
 
             return View(inde);
@@ -95,7 +95,7 @@ namespace BraveMvc.Controllers
             var dsdwe =Convert.ToInt32(alltotal);
             if (dsdwe < 1)
             {
-                return Content("<script>;alert('请选择商品');history.go(-1)");
+                return Content("<script>;alert('请选择商品');history.go(-1)</script>");
             }
             else
             {
@@ -143,13 +143,16 @@ namespace BraveMvc.Controllers
         {
             int  userid = Convert.ToInt32(Session["User_id"]);
             string name = Request["address_name"];
-            string dizhi = Request["address_weizi"];
-            int code = Convert.ToInt32(Request["address_code"]);
+            string dizhi = Request["s_province"];
+            string city = Request["s_city"];
+            string county = Request["s_county"];
+            string zhuque = Request["address_weizi"];
             string phone =Request["address_phone"];
+            int code = Convert.ToInt32(Request["address_code"]);
             addre.User_id = userid;
             addre.AddressName = name;
-            addre.AddressDe = dizhi;
-            addre.AddressCode =code;
+            addre.AddressDe = dizhi+city+county+zhuque;
+            addre.AddressCode = code;
             addre.Addressphone = phone;
             AddressManage.Addaddre(addre);
             return Content("<script>;alert('提交成功');history.go(-1)</script>");
@@ -172,8 +175,8 @@ namespace BraveMvc.Controllers
                 AddressManage.update(cde);
             }
 
-            
-            return View("Address");
+            return RedirectToAction("Index", "Order");
+
         }
         public ActionResult deleteaddre(int id)
         {

@@ -23,7 +23,6 @@ namespace Models
             this.CommentHistory = new HashSet<CommentHistory>();
             this.CommentNews = new HashSet<CommentNews>();
             this.Forum = new HashSet<Forum>();
-            this.Order = new HashSet<Order>();
             this.ReplyForum = new HashSet<ReplyForum>();
             this.ReplyHistory = new HashSet<ReplyHistory>();
             this.ReplyNews = new HashSet<ReplyNews>();
@@ -33,6 +32,7 @@ namespace Models
             this.ReplyGoods = new HashSet<ReplyGoods>();
             this.Cart = new HashSet<Cart>();
             this.Address = new HashSet<Address>();
+            this.Order = new HashSet<Order>();
         }
     
         public int User_id { get; set; }
@@ -61,8 +61,6 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Forum> Forum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReplyForum> ReplyForum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReplyHistory> ReplyHistory { get; set; }
@@ -80,5 +78,7 @@ namespace Models
         public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Address> Address { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

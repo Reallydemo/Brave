@@ -38,7 +38,6 @@ namespace Models
         public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewSection> NewSection { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<ReplyForum> ReplyForum { get; set; }
         public virtual DbSet<ReplyHistory> ReplyHistory { get; set; }
         public virtual DbSet<ReplyNews> ReplyNews { get; set; }
@@ -54,5 +53,6 @@ namespace Models
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<AFilterSection> AFilterSection { get; set; }
         public virtual DbSet<Arms> Arms { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
     }
 }
