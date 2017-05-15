@@ -294,6 +294,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Carts.css" />
     <Content Include="Content\ClassifyNews.css" />
+    <Content Include="Content\IndexFloat.css" />
     <Content Include="Content\Malls.css" />
     <Content Include="Content\NewsDetail.css" />
     <Content Include="Content\NewsShow.css" />
@@ -387,6 +388,9 @@
     <Content Include="Images\erweima.jpg" />
     <Content Include="Images\F-22拦截图95.jpg" />
     <Content Include="Images\F-35.jpg" />
+    <Content Include="Images\float\1441956938.png" />
+    <Content Include="Images\float\icon.png" />
+    <Content Include="Images\float\index_cy.png" />
     <Content Include="Images\goods\1.jpg" />
     <Content Include="Images\goods\2.jpg" />
     <Content Include="Images\goods\3.jpg" />

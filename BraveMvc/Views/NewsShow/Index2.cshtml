@@ -12,6 +12,7 @@
 <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 <script src="~/jwplayer-7.11.0/jwplayer.js"></script>
+<link href="~/Content/IndexFloat.css" rel="stylesheet" />
 <script>jwplayer.key = "6IwDqDmiTQKsWuNFfds1jDJE4AueI7VgBbaNjQ==";</script>
 <script>
     $(function(){
@@ -25,7 +26,56 @@
     })
 </script>
 
-<body>
+<body><div class="slide">
+    <ul class="icon">
+        <li class="up" title="上一页"></li>
+        <li class="qq"></li>
+        <li class="tel"></li>
+        <li class="wx"></li>
+        <li class="down" title="下一页"></li>
+    </ul>
+    <ul class="info">
+        <li class="qq">
+            <p>在线沟通，请点我<a href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" target="_blank">在线咨询</a></p>
+        </li>
+        <li class="tel">
+            <p>咨询热线：<br>400-800-8888<br>客服qq：<br>123456789</p>
+        </li>
+        <li class="wx">
+            <div class="img">
+                <img src="~/Images/float/1441956938.png" />
+            </div>
+        </li>
+    </ul>
+</div>
+<div id="btn" class="index_cy"></div>
+
+<script type="text/javascript">
+$(function(){
+
+	$('.slide .icon li').not('.up,.down').mouseenter(function(){
+		$('.slide .info').addClass('hover');
+		$('.slide .info li').hide();
+		$('.slide .info li.'+$(this).attr('class')).show();//.slide .info li.qq
+	});
+	$('.slide').mouseleave(function(){
+		$('.slide .info').removeClass('hover');
+	});
+
+	$('#btn').click(function(){
+		$('.slide').toggle();
+		if($(this).hasClass('index_cy')){
+			$(this).removeClass('index_cy');
+			$(this).addClass('index_cy2');
+		}else{
+			$(this).removeClass('index_cy2');
+			$(this).addClass('index_cy');
+		}
+
+	});
+
+});
+</script>
     <div class="all">
         <div class="pictureShow">
             <div class="banner">
@@ -135,6 +185,8 @@
             </div>
 
         </div>
+        
+
     </div>
     <div class="index-video">
     <div id="player"></div>    
@@ -148,7 +200,7 @@
 	"type":"mp4",//播放文件类型（可选）
 	"title": "测试标题",//标题（可选）
 	"description": "测试视频描述",//描述（可选）
-	"image": "http://ww4.sinaimg.cn/large/b6839357jw1e3val80tknj20dw099jsb.jpg",//视频封面（可选）
+	"image": "/Images/001国产航母.jpg",//视频封面（可选）
 	"repeat":"true",//重复播放（留空则不重复播放）
 	"autostart":"true",//自动播放（留空则不启用自动播放）
 });
