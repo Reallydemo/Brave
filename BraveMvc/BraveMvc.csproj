@@ -1349,6 +1349,7 @@
     <Content Include="Views\NewsAdd\Index.cshtml" />
     <Content Include="Views\AllNews\Index.cshtml" />
     <Content Include="Views\NewsShow\Details.cshtml" />
+    <Content Include="Views\History\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1356,7 +1357,6 @@
     <Folder Include="ueditor\net\upload\image\20170503\" />
     <Folder Include="ueditor\net\upload\image\20170505\" />
     <Folder Include="ueditor\net\upload\image\20170507\" />
-    <Folder Include="Views\History\" />
     <Folder Include="Views\YZM\" />
   </ItemGroup>
   <ItemGroup>

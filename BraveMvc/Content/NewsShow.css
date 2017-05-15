@@ -27,7 +27,7 @@
 }
 .pictureWorld{
     
-    height:35%;
+    height:37%;
     width:100%;
     overflow:hidden; 
 
@@ -58,7 +58,7 @@
 }
 .box .box-img img{
     width: 100%;
-    height: 48%;
+    height: 270px;
 }
 .box .box-content{
     width: 100%;
@@ -187,7 +187,7 @@ background:#fff;}
     margin: 0; }
 .bellows__content {
   padding: 20px;
-  height:20%;
+  height:200px;
   border: 1px solid #ecf0f1; 
 }
 .bellows__content a{
