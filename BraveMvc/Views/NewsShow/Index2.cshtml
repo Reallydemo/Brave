@@ -187,7 +187,14 @@ $(function(){
 
     </div>
     <div class="index-video">
-   
+   @foreach (var item in Model.FindHotNews)
+   {
+       <div>
+           <a href="http://tv.cctv.com/2017/05/06/VIDECcM8XahvQ1XsrrtmvN1Y170506.shtml"><h4>@item.NewsTitle</h4>
+               <img src="@item.NewsPicture" /></a>
+           
+       </div>
+   }
     </div>
 
    

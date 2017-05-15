@@ -234,9 +234,27 @@ background:#fff;}
     height:500px;
     width:80%;
     margin:0 auto;
-    background-color:gray;
+    background-color:#3498db;
+    overflow:hidden
 }
 .index-video div{
-  
-  
+    height:230px;
+    width:22%;
+    margin:10px 2% 10px 1%;
+    float:left;     
+    
+}
+.index-video div h4{
+    color:white;
+    text-decoration:none;
+}
+.index-video div h4:hover{
+     color:red;
+ }
+.index-video div img{
+    height:190px;
+    width:100%;
+}
+.index-video div:hover{
+    box-shadow:2px 1px 1px 2px black;
 }

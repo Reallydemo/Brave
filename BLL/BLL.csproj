@@ -44,6 +44,7 @@
     <Compile Include="CartManage.cs" />
     <Compile Include="ClassifyManage.cs" />
     <Compile Include="CommentGoodsManage.cs" />
+    <Compile Include="CommentNewsManage.cs" />
     <Compile Include="GoodsManage.cs" />
     <Compile Include="NewsManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

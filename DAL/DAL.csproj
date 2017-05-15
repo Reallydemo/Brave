@@ -56,6 +56,7 @@
     <Compile Include="SqlCart.cs" />
     <Compile Include="SqlClassify.cs" />
     <Compile Include="SqlCommentGoods.cs" />
+    <Compile Include="SqlCommentNews.cs" />
     <Compile Include="SqlGoods.cs" />
     <Compile Include="SqlNews.cs" />
     <Compile Include="SqlUsers.cs" />

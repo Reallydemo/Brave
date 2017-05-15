@@ -1,6 +1,6 @@
 ﻿
 .bigbox{
-    height:1000px;
+    height:1200px;
     width:70%;
     margin:0 auto;
 }
@@ -31,6 +31,57 @@
 }
 .content p{
     margin-top:80px;
+}
+/*评论框架*/
+.detail-comment{
+    height:400px;
+    width:100%;
+    border:1px solid black;
+    float:left;
+}
+.detail-commentHead{
+    height:50px;
+    width:100%;
+    border:1px solid black;
+}
+.detail-commentHead h3{
+    font-style:italic; 
+}
+.detail-commentTxt{
+    height:100px;
+    width:100%;
+    border:1px solid black;
+}
+.detail-commentTxtLeft{
+    height:100px;
+    width:100px;
+    border-right:solid 1px black;
+}
+.detail-commentSubmit{
+    height:30px;
+    width:100%;
+    border:1px solid black;
+}
+.detail-commentSubmitDiv{
+    height:23px;
+    width:60px;
+    float:right;
+   margin:3px 15px 2px 5px;
+    border:1px solid black;
+}
+.detail-commentList{
+    height:20px;
+    width:100%;
+    border:1px solid black;
+}
+.detail-commentShow{
+    height:200px; 
+    width:100%;
+    border:1px solid black;
+}
+.detail-commentShowDiv{
+    height:150px;
+    width:100%;
 }
 .contentBottom
 {

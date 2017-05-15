@@ -50,5 +50,10 @@ namespace DALFactory
             string className = AssemblyName + "." + db + "News";
             return (INews)Assembly.Load(AssemblyName).CreateInstance(className);
         }
+        public static ICommentNews Createcommentnews()
+        {
+            string className = AssemblyName + "." + db + "CommentNews";
+            return (ICommentNews)Assembly.Load(AssemblyName).CreateInstance(className);
+        }
     }
 }

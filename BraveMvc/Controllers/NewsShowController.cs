@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using BLL;
 using PagedList;
 using ViewModels;
+using Models;
 
 namespace BraveMvc.NewsControllers
 {
@@ -49,5 +50,27 @@ namespace BraveMvc.NewsControllers
             var classify = NewsManage.FindClassifyNews().Where(p => p.Section_id == 1).OrderByDescending(p => p.News_id);                                                     
             return View(classify);
         }
+        [HttpPost]
+        public ActionResult Comment(CommentNews commentnews)
+        {
+            string content = Request["Newscomment"];
+            int newsid = int.Parse(Request["Newsid"].ToString());
+            int userid = int.Parse(Request["Userid"].ToString());
+          
+            if (content == null||content.Length==0)
+           {
+               return Content("<script>;alert('评论内容不能为空!');history.go(-1)</script>");
     }
+            else if (ModelState.IsValid)
+              {
+                    commentnews.User_id = userid;
+                    commentnews.News_id = newsid;
+                    commentnews.Content = content;
+                    commentnews.CommentTime = DateTime.Now;                 
+                    CommentNewsManage.AddCommentNews(commentnews);
+                    return Content("<script>;alert('评论成功!');history.go(-1)</script>");
+                }
+                     return RedirectToAction("Detail", "NewsShow");
+           }
+        }
 }

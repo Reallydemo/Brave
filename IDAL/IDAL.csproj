@@ -43,6 +43,7 @@
     <Compile Include="IBrave.cs" />
     <Compile Include="ICart.cs" />
     <Compile Include="ICommentGoods.cs" />
+    <Compile Include="ICommentNews.cs" />
     <Compile Include="IGoods.cs" />
     <Compile Include="IClassify.cs" />
     <Compile Include="INews.cs" />
