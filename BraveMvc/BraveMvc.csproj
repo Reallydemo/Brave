@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AllNewsController.cs" />
     <Compile Include="Controllers\BraveController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MallsController.cs" />
@@ -226,7 +227,9 @@
     <Compile Include="Controllers\Models\AccountViewModels.cs" />
     <Compile Include="Controllers\Models\IdentityModels.cs" />
     <Compile Include="Controllers\Models\ManageViewModels.cs" />
+    <Compile Include="ManagerControllers\ForaController.cs" />
     <Compile Include="ManagerControllers\GoodsController.cs" />
+    <Compile Include="ManagerControllers\MilitaryVideosController.cs" />
     <Compile Include="ManagerControllers\NewsAddController.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -297,6 +300,8 @@
     <Content Include="Content\ClassifyNews.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\forum\flexslider.css" />
+    <Content Include="Content\forum\style.css" />
     <Content Include="Content\Malls.css" />
     <Content Include="Content\NewsDetail.css" />
     <Content Include="Content\NewsShow.css" />
@@ -626,6 +631,9 @@
     <Content Include="js\main.js" />
     <Content Include="Scripts\area.js" />
     <Content Include="Scripts\banner.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.fr.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-hover-dropdown.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -643,6 +651,12 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\Froum\classie.js" />
+    <Content Include="Scripts\Froum\easing.js" />
+    <Content Include="Scripts\Froum\jquery.flexisel.js" />
+    <Content Include="Scripts\Froum\move-top.js" />
+    <Content Include="Scripts\Froum\responsiveslides.min.js" />
+    <Content Include="Scripts\Froum\uisearch.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -660,6 +674,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\photo-gallery.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -1331,6 +1348,18 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Malls\selectGood.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Fora\Create.cshtml" />
+    <Content Include="Views\Fora\Delete.cshtml" />
+    <Content Include="Views\Fora\Details.cshtml" />
+    <Content Include="Views\Fora\Edit.cshtml" />
+    <Content Include="Views\Fora\Index.cshtml" />
+    <Content Include="Views\MilitaryVideos\Create.cshtml" />
+    <Content Include="Views\MilitaryVideos\Delete.cshtml" />
+    <Content Include="Views\MilitaryVideos\Details.cshtml" />
+    <Content Include="Views\MilitaryVideos\Edit.cshtml" />
+    <Content Include="Views\MilitaryVideos\Index.cshtml" />
+    <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

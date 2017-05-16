@@ -157,7 +157,7 @@ namespace BraveMvc.Controllers
                     comgoods.Content = content;
                     comgoods.CommentTime = DateTime.Now;
                     CommentGoodsManage.AddCommentGoods(comgoods);
-                    return Content("<script>;alert('评论成功!');window.location.href='/Malls/Detail'</script>");
+                    return Content("<script>;alert('评论成功!');history.go(-1)</script>");
                }
            
           
@@ -187,7 +187,7 @@ namespace BraveMvc.Controllers
                 repgoods.Content = reply;
                 repgoods.ReplyTime = DateTime.Now;
                 CommentGoodsManage.addReplyGoods(repgoods);
-                return Content("<script>;alert('回复成功!');window.location.href='/Malls/Detail'</script>");
+                return Content("<script>;alert('回复成功!');history.go(-1)</script>");
             }
                 return RedirectToAction("Detail", "Malls");
         }

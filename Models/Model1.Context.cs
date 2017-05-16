@@ -26,19 +26,14 @@ namespace Models
         }
     
         public virtual DbSet<ArmsSection> ArmsSection { get; set; }
-        public virtual DbSet<Attention> Attention { get; set; }
         public virtual DbSet<Classify> Classify { get; set; }
-        public virtual DbSet<CommentForum> CommentForum { get; set; }
         public virtual DbSet<CommentHistory> CommentHistory { get; set; }
         public virtual DbSet<CommentNews> CommentNews { get; set; }
-        public virtual DbSet<Forum> Forum { get; set; }
-        public virtual DbSet<ForumSection> ForumSection { get; set; }
         public virtual DbSet<History> History { get; set; }
         public virtual DbSet<HistorySection> HistorySection { get; set; }
         public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewSection> NewSection { get; set; }
-        public virtual DbSet<ReplyForum> ReplyForum { get; set; }
         public virtual DbSet<ReplyHistory> ReplyHistory { get; set; }
         public virtual DbSet<ReplyNews> ReplyNews { get; set; }
         public virtual DbSet<Site> Site { get; set; }
@@ -54,5 +49,14 @@ namespace Models
         public virtual DbSet<AFilterSection> AFilterSection { get; set; }
         public virtual DbSet<Arms> Arms { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Attention> Attention { get; set; }
+        public virtual DbSet<Collection> Collection { get; set; }
+        public virtual DbSet<CommendMilitaryVideo> CommendMilitaryVideo { get; set; }
+        public virtual DbSet<CommentForum> CommentForum { get; set; }
+        public virtual DbSet<Forum> Forum { get; set; }
+        public virtual DbSet<ForumSection> ForumSection { get; set; }
+        public virtual DbSet<MilitaryVideo> MilitaryVideo { get; set; }
+        public virtual DbSet<ReplyForum> ReplyForum { get; set; }
+        public virtual DbSet<ReplyMilitaryVideo> ReplyMilitaryVideo { get; set; }
     }
 }

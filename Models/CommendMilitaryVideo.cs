@@ -12,22 +12,23 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ForumSection
+    public partial class CommendMilitaryVideo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ForumSection()
+        public CommendMilitaryVideo()
         {
-            this.Forum = new HashSet<Forum>();
-            this.MilitaryVideo = new HashSet<MilitaryVideo>();
+            this.ReplyMilitaryVideo = new HashSet<ReplyMilitaryVideo>();
         }
     
-        public int ForumSection_id { get; set; }
-        public string ForumSectionName { get; set; }
-        public string FSectionDes { get; set; }
+        public int CommendMilitaryVideo_id { get; set; }
+        public int User_id { get; set; }
+        public int MilitaryVideo_id { get; set; }
+        public string Content { get; set; }
+        public System.DateTime CommendMilitaryVideoTime { get; set; }
     
+        public virtual MilitaryVideo MilitaryVideo { get; set; }
+        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Forum> Forum { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MilitaryVideo> MilitaryVideo { get; set; }
+        public virtual ICollection<ReplyMilitaryVideo> ReplyMilitaryVideo { get; set; }
     }
 }

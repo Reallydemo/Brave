@@ -1,0 +1,80 @@
+﻿@model Models.Forum
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Forum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumTopic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumTopic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumClicks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumClicks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumSection.ForumSectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumSection.ForumSectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.UserAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.UserAccount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

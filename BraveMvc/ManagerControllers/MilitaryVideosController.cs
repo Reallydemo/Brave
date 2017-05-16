@@ -10,114 +10,112 @@ using Models;
 
 namespace BraveMvc.ManagerControllers
 {
-    public class GoodsController : Controller
+    public class MilitaryVideosController : Controller
     {
         private BraveEntities db = new BraveEntities();
 
-        // GET: Goods
+        // GET: MilitaryVideos
         public ActionResult Index()
         {
-            var goods = db.Goods.Include(g => g.Classify);
-            return View(goods.ToList());
+            var militaryVideo = db.MilitaryVideo.Include(m => m.ForumSection);
+            return View(militaryVideo.ToList());
         }
 
-        // GET: Goods/Details/5
+        // GET: MilitaryVideos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = db.Goods.Find(id);
-            if (goods == null)
+            MilitaryVideo militaryVideo = db.MilitaryVideo.Find(id);
+            if (militaryVideo == null)
             {
                 return HttpNotFound();
             }
-            return View(goods);
+            return View(militaryVideo);
         }
 
-        // GET: Goods/Create
+        // GET: MilitaryVideos/Create
         public ActionResult Create()
         {
-            ViewBag.Classify_id = new SelectList(db.Classify, "Classify_id", "ClassifyName");
+            ViewBag.ForumSection_id = new SelectList(db.ForumSection, "ForumSection_id", "ForumSectionName");
             return View();
         }
 
-        // POST: Goods/Create
+        // POST: MilitaryVideos/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Goods_id,GoodsName,GoodsImage1,GoodsImage2,GoodsImage3,Grounding,Undercarriage,GoodsPrice,GoodsDes,Numbers,Classify_id,Company")] Goods goods)
+        public ActionResult Create([Bind(Include = "MilitaryVideo_id,MilitaryVideoName,MilitaryVideoDecride,MilitaryVideo_Ways,ForumSection_id,MilitaryVideoTime")] MilitaryVideo militaryVideo)
         {
             if (ModelState.IsValid)
             {
-                
-                db.Goods.Add(goods);
+                db.MilitaryVideo.Add(militaryVideo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Classify_id = new SelectList(db.Classify, "Classify_id", "ClassifyName", goods.Classify_id);
-            return View(goods);
+            ViewBag.ForumSection_id = new SelectList(db.ForumSection, "ForumSection_id", "ForumSectionName", militaryVideo.ForumSection_id);
+            return View(militaryVideo);
         }
 
-        // GET: Goods/Edit/5
+        // GET: MilitaryVideos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = db.Goods.Find(id);
-            if (goods == null) 
+            MilitaryVideo militaryVideo = db.MilitaryVideo.Find(id);
+            if (militaryVideo == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Classify_id = new SelectList(db.Classify, "Classify_id", "ClassifyName", goods.Classify_id);
-            return View(goods);
+            ViewBag.ForumSection_id = new SelectList(db.ForumSection, "ForumSection_id", "ForumSectionName", militaryVideo.ForumSection_id);
+            return View(militaryVideo);
         }
 
-        // POST: Goods/Edit/5
+        // POST: MilitaryVideos/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "Goods_id,GoodsName,GoodsImage1,GoodsImage2,GoodsImage3,Grounding,Undercarriage,GoodsPrice,GoodsDes,Numbers,Classify_id,Company")] Goods goods)
+        public ActionResult Edit([Bind(Include = "MilitaryVideo_id,MilitaryVideoName,MilitaryVideoDecride,MilitaryVideo_Ways,ForumSection_id,MilitaryVideoTime")] MilitaryVideo militaryVideo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(goods).State = EntityState.Modified;
+                db.Entry(militaryVideo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Classify_id = new SelectList(db.Classify, "Classify_id", "ClassifyName", goods.Classify_id);
-            return View(goods);
+            ViewBag.ForumSection_id = new SelectList(db.ForumSection, "ForumSection_id", "ForumSectionName", militaryVideo.ForumSection_id);
+            return View(militaryVideo);
         }
 
-        // GET: Goods/Delete/5
+        // GET: MilitaryVideos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Goods goods = db.Goods.Find(id);
-            if (goods == null)
+            MilitaryVideo militaryVideo = db.MilitaryVideo.Find(id);
+            if (militaryVideo == null)
             {
                 return HttpNotFound();
             }
-            return View(goods);
+            return View(militaryVideo);
         }
 
-        // POST: Goods/Delete/5
+        // POST: MilitaryVideos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Goods goods = db.Goods.Find(id);
-            db.Goods.Remove(goods);
+            MilitaryVideo militaryVideo = db.MilitaryVideo.Find(id);
+            db.MilitaryVideo.Remove(militaryVideo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

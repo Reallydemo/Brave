@@ -12,30 +12,23 @@ namespace Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Forum
+    public partial class MilitaryVideo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Forum()
+        public MilitaryVideo()
         {
-            this.Collection = new HashSet<Collection>();
-            this.CommentForum = new HashSet<CommentForum>();
+            this.CommendMilitaryVideo = new HashSet<CommendMilitaryVideo>();
         }
     
-        public int Forum_id { get; set; }
-        public string ForumName { get; set; }
-        public string ForumContent { get; set; }
-        public System.DateTime ForumTime { get; set; }
-        public int User_id { get; set; }
+        public int MilitaryVideo_id { get; set; }
+        public string MilitaryVideoName { get; set; }
+        public string MilitaryVideoDecride { get; set; }
+        public string MilitaryVideo_Ways { get; set; }
         public int ForumSection_id { get; set; }
-        public string ForumImage { get; set; }
-        public Nullable<int> ForumClicks { get; set; }
-        public string ForumDec { get; set; }
+        public System.DateTime MilitaryVideoTime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Collection> Collection { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CommentForum> CommentForum { get; set; }
+        public virtual ICollection<CommendMilitaryVideo> CommendMilitaryVideo { get; set; }
         public virtual ForumSection ForumSection { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

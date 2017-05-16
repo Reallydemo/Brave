@@ -2,7 +2,7 @@
 @model ViewModels.GoodsDetail
 @{
     ViewBag.Title = "Detail";
-  
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 
 
 }
@@ -257,7 +257,7 @@
                   <div class="col-xs-12 col-sm-9 col-md-9 comment-qunbu">
                       @foreach (CommentGoods l in Model.Comment1)
                       {
-                        <div class="row baohanall">
+                      <div class="row baohanall">
                             <div class="row comment-qunbu-mouren">
                                 <img src="@l.Users.UserImage" />
 
@@ -308,7 +308,7 @@
                         <div class="row reply-detail-comment" id="chakangeng">
 
                         </div>
-                        <div class="row">
+                        <div class="row reply-detail-reply">
                             @Ajax.ActionLink("查看回复", "SelectReply","Malls",new { commendid=l.CommentGoods_id}, new AjaxOptions {
                          UpdateTargetId= "chakangeng",
                          InsertionMode = InsertionMode.Replace,
@@ -334,7 +334,7 @@
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/jquery")
+
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
@@ -610,4 +610,17 @@
        
     })
 </script>
-
+@*回复展示*@
+<script type="text/javascript">
+    var reply = $(".reply-detail-reply")
+    reply.children().click(function () {
+        var replycoment = $(this).closest(".baohanall").children(":eq(2)")
+        var recdsde = $(this).closest(".comment-qunbu").find("#chakangeng")
+        if (replycoment.children().html() == null) {
+            replycoment.append(recdsde.html())
+        }
+        $(this).closest(".comment-qunbu").find("#chakangeng").toggle();
+        $(this).closest(".baohanall").siblings().children(":eq(2)").hide();
+        $(this).closest(".baohanall").children(":eq(2)").toggle();
+    })
+</script>

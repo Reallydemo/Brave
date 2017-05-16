@@ -1,0 +1,74 @@
+﻿@model Models.Forum
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Forum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumTopic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumTopic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumClicks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumClicks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ForumSection.ForumSectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ForumSection.ForumSectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Users.UserAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Users.UserAccount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Forum_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -83,6 +83,25 @@
           <Property Name="ClassifyName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ClassifyDes" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Collector_id" />
+          </Key>
+          <Property Name="Collector_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Forum_id" Type="int" Nullable="false" />
+          <Property Name="CollectorTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommendMilitaryVideo">
+          <Key>
+            <PropertyRef Name="CommendMilitaryVideo_id" />
+          </Key>
+          <Property Name="CommendMilitaryVideo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="MilitaryVideo_id" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CommendMilitaryVideoTime" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="CommentForum">
           <Key>
             <PropertyRef Name="CommentForum_id" />
@@ -128,13 +147,14 @@
             <PropertyRef Name="Forum_id" />
           </Key>
           <Property Name="Forum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ForumTopic" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ForumName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ForumContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ForumTime" Type="datetime" Nullable="false" />
           <Property Name="User_id" Type="int" Nullable="false" />
           <Property Name="ForumSection_id" Type="int" Nullable="false" />
           <Property Name="ForumImage" Type="text" Nullable="false" />
           <Property Name="ForumClicks" Type="int" />
+          <Property Name="ForumDec" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ForumSection">
           <Key>
@@ -187,6 +207,17 @@
           <Property Name="Manager_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ManagerName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ManagerPassword" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MilitaryVideo">
+          <Key>
+            <PropertyRef Name="MilitaryVideo_id" />
+          </Key>
+          <Property Name="MilitaryVideo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MilitaryVideoName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MilitaryVideoDecride" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MilitaryVideo_Ways" Type="text" Nullable="false" />
+          <Property Name="ForumSection_id" Type="int" Nullable="false" />
+          <Property Name="MilitaryVideoTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -256,10 +287,10 @@
             <PropertyRef Name="ReplyForum_id" />
           </Key>
           <Property Name="ReplyForum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CommentForum_id" Type="int" />
-          <Property Name="ReplyTime" Type="datetime" />
-          <Property Name="Content" Type="nvarchar(max)" />
-          <Property Name="User_id" Type="int" />
+          <Property Name="CommentForum_id" Type="int" Nullable="false" />
+          <Property Name="ReplyTime" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReplyGoods">
           <Key>
@@ -280,6 +311,16 @@
           <Property Name="ReplyTime" Type="datetime" />
           <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="User_id" Type="int" />
+        </EntityType>
+        <EntityType Name="ReplyMilitaryVideo">
+          <Key>
+            <PropertyRef Name="ReplyMilitaryVideo_id" />
+          </Key>
+          <Property Name="ReplyMilitaryVideo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CommentMilitaryVideo_id" Type="int" Nullable="false" />
+          <Property Name="User_id" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ReplyMilitaryVideoTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ReplyNews">
           <Key>
@@ -408,6 +449,54 @@
               <PropertyRef Name="User_id" />
             </Principal>
             <Dependent Role="Cart">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_Forum">
+          <End Role="Forum" Type="Self.Forum" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forum">
+              <PropertyRef Name="Forum_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="Forum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Collection" Type="Self.Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommendMilitaryVideo_MilitaryVideo">
+          <End Role="MilitaryVideo" Type="Self.MilitaryVideo" Multiplicity="1" />
+          <End Role="CommendMilitaryVideo" Type="Self.CommendMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MilitaryVideo">
+              <PropertyRef Name="MilitaryVideo_id" />
+            </Principal>
+            <Dependent Role="CommendMilitaryVideo">
+              <PropertyRef Name="MilitaryVideo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommendMilitaryVideo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="CommendMilitaryVideo" Type="Self.CommendMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="CommendMilitaryVideo">
               <PropertyRef Name="User_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -556,6 +645,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MilitaryVideo_ForumSection">
+          <End Role="ForumSection" Type="Self.ForumSection" Multiplicity="1" />
+          <End Role="MilitaryVideo" Type="Self.MilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForumSection">
+              <PropertyRef Name="ForumSection_id" />
+            </Principal>
+            <Dependent Role="MilitaryVideo">
+              <PropertyRef Name="ForumSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_News_NewSection">
           <End Role="NewSection" Type="Self.NewSection" Multiplicity="1" />
           <End Role="News" Type="Self.News" Multiplicity="*" />
@@ -617,7 +718,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReplyForum_CommentForum">
-          <End Role="CommentForum" Type="Self.CommentForum" Multiplicity="0..1" />
+          <End Role="CommentForum" Type="Self.CommentForum" Multiplicity="1" />
           <End Role="ReplyForum" Type="Self.ReplyForum" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CommentForum">
@@ -629,7 +730,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReplyForum_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="ReplyForum" Type="Self.ReplyForum" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -684,6 +785,30 @@
               <PropertyRef Name="User_id" />
             </Principal>
             <Dependent Role="ReplyHistory">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyMilitaryVideo_CommendMilitaryVideo">
+          <End Role="CommendMilitaryVideo" Type="Self.CommendMilitaryVideo" Multiplicity="1" />
+          <End Role="ReplyMilitaryVideo" Type="Self.ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommendMilitaryVideo">
+              <PropertyRef Name="CommendMilitaryVideo_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
+              <PropertyRef Name="CommentMilitaryVideo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyMilitaryVideo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ReplyMilitaryVideo" Type="Self.ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
               <PropertyRef Name="User_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -744,6 +869,8 @@
           <EntitySet Name="Attention" EntityType="Self.Attention" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classify" EntityType="Self.Classify" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommendMilitaryVideo" EntityType="Self.CommendMilitaryVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentForum" EntityType="Self.CommentForum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentGoods" EntityType="Self.CommentGoods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CommentHistory" EntityType="Self.CommentHistory" Schema="dbo" store:Type="Tables" />
@@ -754,6 +881,7 @@
           <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HistorySection" EntityType="Self.HistorySection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MilitaryVideo" EntityType="Self.MilitaryVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NewSection" EntityType="Self.NewSection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
@@ -762,6 +890,7 @@
           <EntitySet Name="ReplyForum" EntityType="Self.ReplyForum" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReplyGoods" EntityType="Self.ReplyGoods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReplyHistory" EntityType="Self.ReplyHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyMilitaryVideo" EntityType="Self.ReplyMilitaryVideo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReplyNews" EntityType="Self.ReplyNews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Special" EntityType="Self.Special" Schema="dbo" store:Type="Tables" />
@@ -793,6 +922,22 @@
           <AssociationSet Name="FK_Cart_Users" Association="Self.FK_Cart_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_Forum" Association="Self.FK_Collection_Forum">
+            <End Role="Forum" EntitySet="Forum" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_Users" Association="Self.FK_Collection_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommendMilitaryVideo_MilitaryVideo" Association="Self.FK_CommendMilitaryVideo_MilitaryVideo">
+            <End Role="MilitaryVideo" EntitySet="MilitaryVideo" />
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommendMilitaryVideo_Users" Association="Self.FK_CommendMilitaryVideo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
           </AssociationSet>
           <AssociationSet Name="FK_CommentForum_Forum" Association="Self.FK_CommentForum_Forum">
             <End Role="Forum" EntitySet="Forum" />
@@ -842,6 +987,10 @@
             <End Role="HistorySection" EntitySet="HistorySection" />
             <End Role="History" EntitySet="History" />
           </AssociationSet>
+          <AssociationSet Name="FK_MilitaryVideo_ForumSection" Association="Self.FK_MilitaryVideo_ForumSection">
+            <End Role="ForumSection" EntitySet="ForumSection" />
+            <End Role="MilitaryVideo" EntitySet="MilitaryVideo" />
+          </AssociationSet>
           <AssociationSet Name="FK_News_NewSection" Association="Self.FK_News_NewSection">
             <End Role="NewSection" EntitySet="NewSection" />
             <End Role="News" EntitySet="News" />
@@ -886,6 +1035,14 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="ReplyHistory" EntitySet="ReplyHistory" />
           </AssociationSet>
+          <AssociationSet Name="FK_ReplyMilitaryVideo_CommendMilitaryVideo" Association="Self.FK_ReplyMilitaryVideo_CommendMilitaryVideo">
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
+            <End Role="ReplyMilitaryVideo" EntitySet="ReplyMilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyMilitaryVideo_Users" Association="Self.FK_ReplyMilitaryVideo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReplyMilitaryVideo" EntitySet="ReplyMilitaryVideo" />
+          </AssociationSet>
           <AssociationSet Name="FK_ReplyNews_CommentNews" Association="Self.FK_ReplyNews_CommentNews">
             <End Role="CommentNews" EntitySet="CommentNews" />
             <End Role="ReplyNews" EntitySet="ReplyNews" />
@@ -917,17 +1074,6 @@
           <NavigationProperty Name="AFilterSection" Relationship="BraveModel.FK_AFilterSection_AFilterSection" FromRole="ArmsSection" ToRole="AFilterSection" />
           <NavigationProperty Name="Arms" Relationship="BraveModel.FK_Arms_ArmsSection" FromRole="ArmsSection" ToRole="Arms" />
         </EntityType>
-        <EntityType Name="Attention">
-          <Key>
-            <PropertyRef Name="Attention_id" />
-          </Key>
-          <Property Name="Attention_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_id" Type="Int32" Nullable="false" />
-          <Property Name="BUser_id" Type="Int32" Nullable="false" />
-          <Property Name="AttentionTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Attention_Users" FromRole="Attention" ToRole="Users" />
-          <NavigationProperty Name="Users1" Relationship="Self.FK_Attention_Users1" FromRole="Attention" ToRole="Users" />
-        </EntityType>
         <EntityType Name="Classify">
           <Key>
             <PropertyRef Name="Classify_id" />
@@ -936,19 +1082,6 @@
           <Property Name="ClassifyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ClassifyDes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Goods" Relationship="BraveModel.FK_Goods_Classify" FromRole="Classify" ToRole="Goods" />
-        </EntityType>
-        <EntityType Name="CommentForum">
-          <Key>
-            <PropertyRef Name="CommentForum_id" />
-          </Key>
-          <Property Name="CommentForum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Forum_id" Type="Int32" Nullable="false" />
-          <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="User_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Forum" Relationship="Self.FK_CommentForum_Forum" FromRole="CommentForum" ToRole="Forum" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_CommentForum_Users" FromRole="CommentForum" ToRole="Users" />
-          <NavigationProperty Name="ReplyForum" Relationship="Self.FK_ReplyForum_CommentForum" FromRole="CommentForum" ToRole="ReplyForum" />
         </EntityType>
         <EntityType Name="CommentHistory">
           <Key>
@@ -975,31 +1108,6 @@
           <NavigationProperty Name="News" Relationship="Self.FK_CommentNews_News" FromRole="CommentNews" ToRole="News" />
           <NavigationProperty Name="Users" Relationship="Self.FK_CommentNews_Users" FromRole="CommentNews" ToRole="Users" />
           <NavigationProperty Name="ReplyNews" Relationship="Self.FK_ReplyNews_CommentNews" FromRole="CommentNews" ToRole="ReplyNews" />
-        </EntityType>
-        <EntityType Name="Forum">
-          <Key>
-            <PropertyRef Name="Forum_id" />
-          </Key>
-          <Property Name="Forum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ForumTopic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ForumContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ForumTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="User_id" Type="Int32" Nullable="false" />
-          <Property Name="ForumSection_id" Type="Int32" Nullable="false" />
-          <Property Name="ForumImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ForumClicks" Type="Int32" />
-          <NavigationProperty Name="CommentForum" Relationship="Self.FK_CommentForum_Forum" FromRole="Forum" ToRole="CommentForum" />
-          <NavigationProperty Name="ForumSection" Relationship="Self.FK_Forum_ForumSection" FromRole="Forum" ToRole="ForumSection" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Forum_Users" FromRole="Forum" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="ForumSection">
-          <Key>
-            <PropertyRef Name="ForumSection_id" />
-          </Key>
-          <Property Name="ForumSection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ForumSectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FSectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Forum" Relationship="Self.FK_Forum_ForumSection" FromRole="ForumSection" ToRole="Forum" />
         </EntityType>
         <EntityType Name="History">
           <Key>
@@ -1057,18 +1165,6 @@
           <Property Name="SectionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="News" Relationship="Self.FK_News_NewSection" FromRole="NewSection" ToRole="News" />
-        </EntityType>
-        <EntityType Name="ReplyForum">
-          <Key>
-            <PropertyRef Name="ReplyForum_id" />
-          </Key>
-          <Property Name="ReplyForum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CommentForum_id" Type="Int32" />
-          <Property Name="ReplyTime" Type="DateTime" Precision="3" />
-          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="User_id" Type="Int32" />
-          <NavigationProperty Name="CommentForum" Relationship="Self.FK_ReplyForum_CommentForum" FromRole="ReplyForum" ToRole="CommentForum" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_ReplyForum_Users" FromRole="ReplyForum" ToRole="Users" />
         </EntityType>
         <EntityType Name="ReplyHistory">
           <Key>
@@ -1132,13 +1228,8 @@
           <Property Name="LockCause" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Integral" Type="Int32" />
-          <NavigationProperty Name="Attention" Relationship="Self.FK_Attention_Users" FromRole="Users" ToRole="Attention" />
-          <NavigationProperty Name="Attention1" Relationship="Self.FK_Attention_Users1" FromRole="Users" ToRole="Attention" />
-          <NavigationProperty Name="CommentForum" Relationship="Self.FK_CommentForum_Users" FromRole="Users" ToRole="CommentForum" />
           <NavigationProperty Name="CommentHistory" Relationship="Self.FK_CommentHistory_Users" FromRole="Users" ToRole="CommentHistory" />
           <NavigationProperty Name="CommentNews" Relationship="Self.FK_CommentNews_Users" FromRole="Users" ToRole="CommentNews" />
-          <NavigationProperty Name="Forum" Relationship="Self.FK_Forum_Users" FromRole="Users" ToRole="Forum" />
-          <NavigationProperty Name="ReplyForum" Relationship="Self.FK_ReplyForum_Users" FromRole="Users" ToRole="ReplyForum" />
           <NavigationProperty Name="ReplyHistory" Relationship="Self.FK_ReplyHistory_Users" FromRole="Users" ToRole="ReplyHistory" />
           <NavigationProperty Name="ReplyNews" Relationship="Self.FK_ReplyNews_Users" FromRole="Users" ToRole="ReplyNews" />
           <NavigationProperty Name="Site" Relationship="Self.FK_Site_Users" FromRole="Users" ToRole="Site" />
@@ -1148,67 +1239,15 @@
           <NavigationProperty Name="Cart" Relationship="BraveModel.FK_Cart_Users" FromRole="Users" ToRole="Cart" />
           <NavigationProperty Name="Address" Relationship="BraveModel.FK_Address_Users" FromRole="Users" ToRole="Address" />
           <NavigationProperty Name="Order" Relationship="BraveModel.FK_Order_Users" FromRole="Users" ToRole="Order" />
+          <NavigationProperty Name="Attention" Relationship="BraveModel.FK_Attention_Users" FromRole="Users" ToRole="Attention" />
+          <NavigationProperty Name="Attention1" Relationship="BraveModel.FK_Attention_Users1" FromRole="Users" ToRole="Attention" />
+          <NavigationProperty Name="Collection" Relationship="BraveModel.FK_Collection_Users" FromRole="Users" ToRole="Collection" />
+          <NavigationProperty Name="CommendMilitaryVideo" Relationship="BraveModel.FK_CommendMilitaryVideo_Users" FromRole="Users" ToRole="CommendMilitaryVideo" />
+          <NavigationProperty Name="CommentForum" Relationship="BraveModel.FK_CommentForum_Users" FromRole="Users" ToRole="CommentForum" />
+          <NavigationProperty Name="Forum" Relationship="BraveModel.FK_Forum_Users" FromRole="Users" ToRole="Forum" />
+          <NavigationProperty Name="ReplyForum" Relationship="BraveModel.FK_ReplyForum_Users" FromRole="Users" ToRole="ReplyForum" />
+          <NavigationProperty Name="ReplyMilitaryVideo" Relationship="BraveModel.FK_ReplyMilitaryVideo_Users" FromRole="Users" ToRole="ReplyMilitaryVideo" />
         </EntityType>
-        <Association Name="FK_Attention_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Attention" Type="Self.Attention" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="Attention">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Attention_Users1">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Attention" Type="Self.Attention" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="Attention">
-              <PropertyRef Name="BUser_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CommentForum_Forum">
-          <End Role="Forum" Type="Self.Forum" Multiplicity="1" />
-          <End Role="CommentForum" Type="Self.CommentForum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Forum">
-              <PropertyRef Name="Forum_id" />
-            </Principal>
-            <Dependent Role="CommentForum">
-              <PropertyRef Name="Forum_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CommentForum_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="CommentForum" Type="Self.CommentForum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="CommentForum">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReplyForum_CommentForum">
-          <End Role="CommentForum" Type="Self.CommentForum" Multiplicity="0..1" />
-          <End Role="ReplyForum" Type="Self.ReplyForum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CommentForum">
-              <PropertyRef Name="CommentForum_id" />
-            </Principal>
-            <Dependent Role="ReplyForum">
-              <PropertyRef Name="CommentForum_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CommentHistory_History">
           <End Role="History" Type="Self.History" Multiplicity="1" />
           <End Role="CommentHistory" Type="Self.CommentHistory" Multiplicity="*" />
@@ -1281,30 +1320,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Forum_ForumSection">
-          <End Role="ForumSection" Type="Self.ForumSection" Multiplicity="1" />
-          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ForumSection">
-              <PropertyRef Name="ForumSection_id" />
-            </Principal>
-            <Dependent Role="Forum">
-              <PropertyRef Name="ForumSection_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Forum_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Forum" Type="Self.Forum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="Forum">
-              <PropertyRef Name="User_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_History_HistorySection">
           <End Role="HistorySection" Type="Self.HistorySection" Multiplicity="1" />
           <End Role="History" Type="Self.History" Multiplicity="*" />
@@ -1338,18 +1353,6 @@
             </Principal>
             <Dependent Role="News">
               <PropertyRef Name="Section_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReplyForum_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="ReplyForum" Type="Self.ReplyForum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="User_id" />
-            </Principal>
-            <Dependent Role="ReplyForum">
-              <PropertyRef Name="User_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1391,44 +1394,19 @@
         </Association>
         <EntityContainer Name="BraveEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ArmsSection" EntityType="Self.ArmsSection" />
-          <EntitySet Name="Attention" EntityType="Self.Attention" />
           <EntitySet Name="Classify" EntityType="Self.Classify" />
-          <EntitySet Name="CommentForum" EntityType="Self.CommentForum" />
           <EntitySet Name="CommentHistory" EntityType="Self.CommentHistory" />
           <EntitySet Name="CommentNews" EntityType="Self.CommentNews" />
-          <EntitySet Name="Forum" EntityType="Self.Forum" />
-          <EntitySet Name="ForumSection" EntityType="Self.ForumSection" />
           <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="HistorySection" EntityType="Self.HistorySection" />
           <EntitySet Name="Manager" EntityType="Self.Manager" />
           <EntitySet Name="News" EntityType="Self.News" />
           <EntitySet Name="NewSection" EntityType="Self.NewSection" />
-          <EntitySet Name="ReplyForum" EntityType="Self.ReplyForum" />
           <EntitySet Name="ReplyHistory" EntityType="Self.ReplyHistory" />
           <EntitySet Name="ReplyNews" EntityType="Self.ReplyNews" />
           <EntitySet Name="Site" EntityType="Self.Site" />
           <EntitySet Name="Special" EntityType="Self.Special" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Attention_Users" Association="Self.FK_Attention_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Attention" EntitySet="Attention" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Attention_Users1" Association="Self.FK_Attention_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Attention" EntitySet="Attention" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CommentForum_Forum" Association="Self.FK_CommentForum_Forum">
-            <End Role="Forum" EntitySet="Forum" />
-            <End Role="CommentForum" EntitySet="CommentForum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CommentForum_Users" Association="Self.FK_CommentForum_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="CommentForum" EntitySet="CommentForum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReplyForum_CommentForum" Association="Self.FK_ReplyForum_CommentForum">
-            <End Role="CommentForum" EntitySet="CommentForum" />
-            <End Role="ReplyForum" EntitySet="ReplyForum" />
-          </AssociationSet>
           <AssociationSet Name="FK_CommentHistory_History" Association="Self.FK_CommentHistory_History">
             <End Role="History" EntitySet="History" />
             <End Role="CommentHistory" EntitySet="CommentHistory" />
@@ -1453,14 +1431,6 @@
             <End Role="CommentNews" EntitySet="CommentNews" />
             <End Role="ReplyNews" EntitySet="ReplyNews" />
           </AssociationSet>
-          <AssociationSet Name="FK_Forum_ForumSection" Association="Self.FK_Forum_ForumSection">
-            <End Role="ForumSection" EntitySet="ForumSection" />
-            <End Role="Forum" EntitySet="Forum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Forum_Users" Association="Self.FK_Forum_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Forum" EntitySet="Forum" />
-          </AssociationSet>
           <AssociationSet Name="FK_History_HistorySection" Association="Self.FK_History_HistorySection">
             <End Role="HistorySection" EntitySet="HistorySection" />
             <End Role="History" EntitySet="History" />
@@ -1472,10 +1442,6 @@
           <AssociationSet Name="FK_News_NewSection" Association="Self.FK_News_NewSection">
             <End Role="NewSection" EntitySet="NewSection" />
             <End Role="News" EntitySet="News" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReplyForum_Users" Association="Self.FK_ReplyForum_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="ReplyForum" EntitySet="ReplyForum" />
           </AssociationSet>
           <AssociationSet Name="FK_ReplyHistory_Users" Association="Self.FK_ReplyHistory_Users">
             <End Role="Users" EntitySet="Users" />
@@ -1554,6 +1520,75 @@
           <AssociationSet Name="FK_Order_Users" Association="BraveModel.FK_Order_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <EntitySet Name="Attention" EntityType="BraveModel.Attention" />
+          <EntitySet Name="Collection" EntityType="BraveModel.Collection" />
+          <EntitySet Name="CommendMilitaryVideo" EntityType="BraveModel.CommendMilitaryVideo" />
+          <EntitySet Name="CommentForum" EntityType="BraveModel.CommentForum" />
+          <EntitySet Name="Forum" EntityType="BraveModel.Forum" />
+          <EntitySet Name="ForumSection" EntityType="BraveModel.ForumSection" />
+          <EntitySet Name="MilitaryVideo" EntityType="BraveModel.MilitaryVideo" />
+          <EntitySet Name="ReplyForum" EntityType="BraveModel.ReplyForum" />
+          <EntitySet Name="ReplyMilitaryVideo" EntityType="BraveModel.ReplyMilitaryVideo" />
+          <AssociationSet Name="FK_Attention_Users" Association="BraveModel.FK_Attention_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Attention" EntitySet="Attention" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attention_Users1" Association="BraveModel.FK_Attention_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Attention" EntitySet="Attention" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_Forum" Association="BraveModel.FK_Collection_Forum">
+            <End Role="Forum" EntitySet="Forum" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Collection_Users" Association="BraveModel.FK_Collection_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Collection" EntitySet="Collection" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommendMilitaryVideo_MilitaryVideo" Association="BraveModel.FK_CommendMilitaryVideo_MilitaryVideo">
+            <End Role="MilitaryVideo" EntitySet="MilitaryVideo" />
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommendMilitaryVideo_Users" Association="BraveModel.FK_CommendMilitaryVideo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyMilitaryVideo_CommendMilitaryVideo" Association="BraveModel.FK_ReplyMilitaryVideo_CommendMilitaryVideo">
+            <End Role="CommendMilitaryVideo" EntitySet="CommendMilitaryVideo" />
+            <End Role="ReplyMilitaryVideo" EntitySet="ReplyMilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentForum_Forum" Association="BraveModel.FK_CommentForum_Forum">
+            <End Role="Forum" EntitySet="Forum" />
+            <End Role="CommentForum" EntitySet="CommentForum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommentForum_Users" Association="BraveModel.FK_CommentForum_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="CommentForum" EntitySet="CommentForum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyForum_CommentForum" Association="BraveModel.FK_ReplyForum_CommentForum">
+            <End Role="CommentForum" EntitySet="CommentForum" />
+            <End Role="ReplyForum" EntitySet="ReplyForum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forum_ForumSection" Association="BraveModel.FK_Forum_ForumSection">
+            <End Role="ForumSection" EntitySet="ForumSection" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forum_Users" Association="BraveModel.FK_Forum_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Forum" EntitySet="Forum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MilitaryVideo_ForumSection" Association="BraveModel.FK_MilitaryVideo_ForumSection">
+            <End Role="ForumSection" EntitySet="ForumSection" />
+            <End Role="MilitaryVideo" EntitySet="MilitaryVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyForum_Users" Association="BraveModel.FK_ReplyForum_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReplyForum" EntitySet="ReplyForum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyMilitaryVideo_Users" Association="BraveModel.FK_ReplyMilitaryVideo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ReplyMilitaryVideo" EntitySet="ReplyMilitaryVideo" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Goods">
@@ -1873,6 +1908,299 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Attention">
+          <Key>
+            <PropertyRef Name="Attention_id" />
+          </Key>
+          <Property Name="Attention_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="BUser_id" Type="Int32" Nullable="false" />
+          <Property Name="AttentionTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_Attention_Users" FromRole="Attention" ToRole="Users" />
+          <NavigationProperty Name="Users1" Relationship="BraveModel.FK_Attention_Users1" FromRole="Attention" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="Collector_id" />
+          </Key>
+          <Property Name="Collector_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Forum_id" Type="Int32" Nullable="false" />
+          <Property Name="CollectorTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Forum" Relationship="BraveModel.FK_Collection_Forum" FromRole="Collection" ToRole="Forum" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_Collection_Users" FromRole="Collection" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="CommendMilitaryVideo">
+          <Key>
+            <PropertyRef Name="CommendMilitaryVideo_id" />
+          </Key>
+          <Property Name="CommendMilitaryVideo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="MilitaryVideo_id" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CommendMilitaryVideoTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="MilitaryVideo" Relationship="BraveModel.FK_CommendMilitaryVideo_MilitaryVideo" FromRole="CommendMilitaryVideo" ToRole="MilitaryVideo" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_CommendMilitaryVideo_Users" FromRole="CommendMilitaryVideo" ToRole="Users" />
+          <NavigationProperty Name="ReplyMilitaryVideo" Relationship="BraveModel.FK_ReplyMilitaryVideo_CommendMilitaryVideo" FromRole="CommendMilitaryVideo" ToRole="ReplyMilitaryVideo" />
+        </EntityType>
+        <EntityType Name="CommentForum">
+          <Key>
+            <PropertyRef Name="CommentForum_id" />
+          </Key>
+          <Property Name="CommentForum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Forum_id" Type="Int32" Nullable="false" />
+          <Property Name="CommentTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Forum" Relationship="BraveModel.FK_CommentForum_Forum" FromRole="CommentForum" ToRole="Forum" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_CommentForum_Users" FromRole="CommentForum" ToRole="Users" />
+          <NavigationProperty Name="ReplyForum" Relationship="BraveModel.FK_ReplyForum_CommentForum" FromRole="CommentForum" ToRole="ReplyForum" />
+        </EntityType>
+        <EntityType Name="Forum">
+          <Key>
+            <PropertyRef Name="Forum_id" />
+          </Key>
+          <Property Name="Forum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForumName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ForumContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ForumTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="ForumSection_id" Type="Int32" Nullable="false" />
+          <Property Name="ForumImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ForumClicks" Type="Int32" />
+          <Property Name="ForumDec" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Collection" Relationship="BraveModel.FK_Collection_Forum" FromRole="Forum" ToRole="Collection" />
+          <NavigationProperty Name="CommentForum" Relationship="BraveModel.FK_CommentForum_Forum" FromRole="Forum" ToRole="CommentForum" />
+          <NavigationProperty Name="ForumSection" Relationship="BraveModel.FK_Forum_ForumSection" FromRole="Forum" ToRole="ForumSection" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_Forum_Users" FromRole="Forum" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ForumSection">
+          <Key>
+            <PropertyRef Name="ForumSection_id" />
+          </Key>
+          <Property Name="ForumSection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ForumSectionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FSectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Forum" Relationship="BraveModel.FK_Forum_ForumSection" FromRole="ForumSection" ToRole="Forum" />
+          <NavigationProperty Name="MilitaryVideo" Relationship="BraveModel.FK_MilitaryVideo_ForumSection" FromRole="ForumSection" ToRole="MilitaryVideo" />
+        </EntityType>
+        <EntityType Name="MilitaryVideo">
+          <Key>
+            <PropertyRef Name="MilitaryVideo_id" />
+          </Key>
+          <Property Name="MilitaryVideo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MilitaryVideoName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MilitaryVideoDecride" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MilitaryVideo_Ways" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ForumSection_id" Type="Int32" Nullable="false" />
+          <Property Name="MilitaryVideoTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CommendMilitaryVideo" Relationship="BraveModel.FK_CommendMilitaryVideo_MilitaryVideo" FromRole="MilitaryVideo" ToRole="CommendMilitaryVideo" />
+          <NavigationProperty Name="ForumSection" Relationship="BraveModel.FK_MilitaryVideo_ForumSection" FromRole="MilitaryVideo" ToRole="ForumSection" />
+        </EntityType>
+        <EntityType Name="ReplyForum">
+          <Key>
+            <PropertyRef Name="ReplyForum_id" />
+          </Key>
+          <Property Name="ReplyForum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentForum_id" Type="Int32" Nullable="false" />
+          <Property Name="ReplyTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommentForum" Relationship="BraveModel.FK_ReplyForum_CommentForum" FromRole="ReplyForum" ToRole="CommentForum" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_ReplyForum_Users" FromRole="ReplyForum" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="ReplyMilitaryVideo">
+          <Key>
+            <PropertyRef Name="ReplyMilitaryVideo_id" />
+          </Key>
+          <Property Name="ReplyMilitaryVideo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CommentMilitaryVideo_id" Type="Int32" Nullable="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReplyMilitaryVideoTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CommendMilitaryVideo" Relationship="BraveModel.FK_ReplyMilitaryVideo_CommendMilitaryVideo" FromRole="ReplyMilitaryVideo" ToRole="CommendMilitaryVideo" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_ReplyMilitaryVideo_Users" FromRole="ReplyMilitaryVideo" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Attention_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Attention" Role="Attention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Attention">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attention_Users1">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Attention" Role="Attention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Attention">
+              <PropertyRef Name="BUser_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_Forum">
+          <End Type="BraveModel.Forum" Role="Forum" Multiplicity="1" />
+          <End Type="BraveModel.Collection" Role="Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forum">
+              <PropertyRef Name="Forum_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="Forum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Collection_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Collection" Role="Collection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Collection">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommendMilitaryVideo_MilitaryVideo">
+          <End Type="BraveModel.MilitaryVideo" Role="MilitaryVideo" Multiplicity="1" />
+          <End Type="BraveModel.CommendMilitaryVideo" Role="CommendMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MilitaryVideo">
+              <PropertyRef Name="MilitaryVideo_id" />
+            </Principal>
+            <Dependent Role="CommendMilitaryVideo">
+              <PropertyRef Name="MilitaryVideo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommendMilitaryVideo_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.CommendMilitaryVideo" Role="CommendMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="CommendMilitaryVideo">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyMilitaryVideo_CommendMilitaryVideo">
+          <End Type="BraveModel.CommendMilitaryVideo" Role="CommendMilitaryVideo" Multiplicity="1" />
+          <End Type="BraveModel.ReplyMilitaryVideo" Role="ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommendMilitaryVideo">
+              <PropertyRef Name="CommendMilitaryVideo_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
+              <PropertyRef Name="CommentMilitaryVideo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentForum_Forum">
+          <End Type="BraveModel.Forum" Role="Forum" Multiplicity="1" />
+          <End Type="BraveModel.CommentForum" Role="CommentForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forum">
+              <PropertyRef Name="Forum_id" />
+            </Principal>
+            <Dependent Role="CommentForum">
+              <PropertyRef Name="Forum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommentForum_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.CommentForum" Role="CommentForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="CommentForum">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyForum_CommentForum">
+          <End Type="BraveModel.CommentForum" Role="CommentForum" Multiplicity="1" />
+          <End Type="BraveModel.ReplyForum" Role="ReplyForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommentForum">
+              <PropertyRef Name="CommentForum_id" />
+            </Principal>
+            <Dependent Role="ReplyForum">
+              <PropertyRef Name="CommentForum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forum_ForumSection">
+          <End Type="BraveModel.ForumSection" Role="ForumSection" Multiplicity="1" />
+          <End Type="BraveModel.Forum" Role="Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForumSection">
+              <PropertyRef Name="ForumSection_id" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="ForumSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forum_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.Forum" Role="Forum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Forum">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MilitaryVideo_ForumSection">
+          <End Type="BraveModel.ForumSection" Role="ForumSection" Multiplicity="1" />
+          <End Type="BraveModel.MilitaryVideo" Role="MilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ForumSection">
+              <PropertyRef Name="ForumSection_id" />
+            </Principal>
+            <Dependent Role="MilitaryVideo">
+              <PropertyRef Name="ForumSection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyForum_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.ReplyForum" Role="ReplyForum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ReplyForum">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyMilitaryVideo_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.ReplyMilitaryVideo" Role="ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1888,33 +2216,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Attention">
-            <EntityTypeMapping TypeName="BraveModel.Attention">
-              <MappingFragment StoreEntitySet="Attention">
-                <ScalarProperty Name="Attention_id" ColumnName="Attention_id" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
-                <ScalarProperty Name="BUser_id" ColumnName="BUser_id" />
-                <ScalarProperty Name="AttentionTime" ColumnName="AttentionTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Classify">
             <EntityTypeMapping TypeName="BraveModel.Classify">
               <MappingFragment StoreEntitySet="Classify">
                 <ScalarProperty Name="Classify_id" ColumnName="Classify_id" />
                 <ScalarProperty Name="ClassifyName" ColumnName="ClassifyName" />
                 <ScalarProperty Name="ClassifyDes" ColumnName="ClassifyDes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CommentForum">
-            <EntityTypeMapping TypeName="BraveModel.CommentForum">
-              <MappingFragment StoreEntitySet="CommentForum">
-                <ScalarProperty Name="CommentForum_id" ColumnName="CommentForum_id" />
-                <ScalarProperty Name="Forum_id" ColumnName="Forum_id" />
-                <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1937,29 +2244,6 @@
                 <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Forum">
-            <EntityTypeMapping TypeName="BraveModel.Forum">
-              <MappingFragment StoreEntitySet="Forum">
-                <ScalarProperty Name="Forum_id" ColumnName="Forum_id" />
-                <ScalarProperty Name="ForumTopic" ColumnName="ForumTopic" />
-                <ScalarProperty Name="ForumContent" ColumnName="ForumContent" />
-                <ScalarProperty Name="ForumTime" ColumnName="ForumTime" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
-                <ScalarProperty Name="ForumSection_id" ColumnName="ForumSection_id" />
-                <ScalarProperty Name="ForumImage" ColumnName="ForumImage" />
-                <ScalarProperty Name="ForumClicks" ColumnName="ForumClicks" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ForumSection">
-            <EntityTypeMapping TypeName="BraveModel.ForumSection">
-              <MappingFragment StoreEntitySet="ForumSection">
-                <ScalarProperty Name="ForumSection_id" ColumnName="ForumSection_id" />
-                <ScalarProperty Name="ForumSectionName" ColumnName="ForumSectionName" />
-                <ScalarProperty Name="FSectionDes" ColumnName="FSectionDes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2015,17 +2299,6 @@
                 <ScalarProperty Name="Section_id" ColumnName="Section_id" />
                 <ScalarProperty Name="SectionName" ColumnName="SectionName" />
                 <ScalarProperty Name="SectionDes" ColumnName="SectionDes" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReplyForum">
-            <EntityTypeMapping TypeName="BraveModel.ReplyForum">
-              <MappingFragment StoreEntitySet="ReplyForum">
-                <ScalarProperty Name="ReplyForum_id" ColumnName="ReplyForum_id" />
-                <ScalarProperty Name="CommentForum_id" ColumnName="CommentForum_id" />
-                <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="User_id" ColumnName="User_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2228,6 +2501,106 @@
                 <ScalarProperty Name="Good_id" ColumnName="Good_id" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
                 <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attention">
+            <EntityTypeMapping TypeName="BraveModel.Attention">
+              <MappingFragment StoreEntitySet="Attention">
+                <ScalarProperty Name="AttentionTime" ColumnName="AttentionTime" />
+                <ScalarProperty Name="BUser_id" ColumnName="BUser_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Attention_id" ColumnName="Attention_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collection">
+            <EntityTypeMapping TypeName="BraveModel.Collection">
+              <MappingFragment StoreEntitySet="Collection">
+                <ScalarProperty Name="CollectorTime" ColumnName="CollectorTime" />
+                <ScalarProperty Name="Forum_id" ColumnName="Forum_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Collector_id" ColumnName="Collector_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommendMilitaryVideo">
+            <EntityTypeMapping TypeName="BraveModel.CommendMilitaryVideo">
+              <MappingFragment StoreEntitySet="CommendMilitaryVideo">
+                <ScalarProperty Name="CommendMilitaryVideoTime" ColumnName="CommendMilitaryVideoTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="MilitaryVideo_id" ColumnName="MilitaryVideo_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="CommendMilitaryVideo_id" ColumnName="CommendMilitaryVideo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommentForum">
+            <EntityTypeMapping TypeName="BraveModel.CommentForum">
+              <MappingFragment StoreEntitySet="CommentForum">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
+                <ScalarProperty Name="Forum_id" ColumnName="Forum_id" />
+                <ScalarProperty Name="CommentForum_id" ColumnName="CommentForum_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forum">
+            <EntityTypeMapping TypeName="BraveModel.Forum">
+              <MappingFragment StoreEntitySet="Forum">
+                <ScalarProperty Name="ForumDec" ColumnName="ForumDec" />
+                <ScalarProperty Name="ForumClicks" ColumnName="ForumClicks" />
+                <ScalarProperty Name="ForumImage" ColumnName="ForumImage" />
+                <ScalarProperty Name="ForumSection_id" ColumnName="ForumSection_id" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="ForumTime" ColumnName="ForumTime" />
+                <ScalarProperty Name="ForumContent" ColumnName="ForumContent" />
+                <ScalarProperty Name="ForumName" ColumnName="ForumName" />
+                <ScalarProperty Name="Forum_id" ColumnName="Forum_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForumSection">
+            <EntityTypeMapping TypeName="BraveModel.ForumSection">
+              <MappingFragment StoreEntitySet="ForumSection">
+                <ScalarProperty Name="FSectionDes" ColumnName="FSectionDes" />
+                <ScalarProperty Name="ForumSectionName" ColumnName="ForumSectionName" />
+                <ScalarProperty Name="ForumSection_id" ColumnName="ForumSection_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MilitaryVideo">
+            <EntityTypeMapping TypeName="BraveModel.MilitaryVideo">
+              <MappingFragment StoreEntitySet="MilitaryVideo">
+                <ScalarProperty Name="MilitaryVideoTime" ColumnName="MilitaryVideoTime" />
+                <ScalarProperty Name="ForumSection_id" ColumnName="ForumSection_id" />
+                <ScalarProperty Name="MilitaryVideo_Ways" ColumnName="MilitaryVideo_Ways" />
+                <ScalarProperty Name="MilitaryVideoDecride" ColumnName="MilitaryVideoDecride" />
+                <ScalarProperty Name="MilitaryVideoName" ColumnName="MilitaryVideoName" />
+                <ScalarProperty Name="MilitaryVideo_id" ColumnName="MilitaryVideo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyForum">
+            <EntityTypeMapping TypeName="BraveModel.ReplyForum">
+              <MappingFragment StoreEntitySet="ReplyForum">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ReplyTime" ColumnName="ReplyTime" />
+                <ScalarProperty Name="CommentForum_id" ColumnName="CommentForum_id" />
+                <ScalarProperty Name="ReplyForum_id" ColumnName="ReplyForum_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyMilitaryVideo">
+            <EntityTypeMapping TypeName="BraveModel.ReplyMilitaryVideo">
+              <MappingFragment StoreEntitySet="ReplyMilitaryVideo">
+                <ScalarProperty Name="ReplyMilitaryVideoTime" ColumnName="ReplyMilitaryVideoTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="CommentMilitaryVideo_id" ColumnName="CommentMilitaryVideo_id" />
+                <ScalarProperty Name="ReplyMilitaryVideo_id" ColumnName="ReplyMilitaryVideo_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

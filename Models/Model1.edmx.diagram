@@ -5,41 +5,28 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="43c159a0b733465ea58ed0a116d99282" Name="Diagram1">
-        <EntityTypeShape EntityType="BraveModel.Attention" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.Classify" Width="1.5" PointX="1.5" PointY="26" IsExpanded="true" />
-        <EntityTypeShape EntityType="BraveModel.CommentForum" Width="1.5" PointX="6" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.CommentHistory" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.CommentNews" Width="1.5" PointX="6" PointY="19.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BraveModel.Forum" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BraveModel.ForumSection" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.History" Width="1.5" PointX="3.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.HistorySection" Width="1.5" PointX="1.5" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.Manager" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.News" Width="1.5" PointX="3.75" PointY="29.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.NewSection" Width="1.5" PointX="1.5" PointY="30" IsExpanded="true" />
-        <EntityTypeShape EntityType="BraveModel.ReplyForum" Width="1.5" PointX="11.25" PointY="15.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.ReplyHistory" Width="1.5" PointX="8.25" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.ReplyNews" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.Site" Width="1.5" PointX="3" PointY="41.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.Special" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BraveModel.Users" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
-        <AssociationConnector Association="BraveModel.FK_Attention_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_Attention_Users1" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_CommentForum_Forum" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_CommentForum_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_ReplyForum_CommentForum" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_CommentHistory_History" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_CommentHistory_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyHistory_CommentHistory" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_CommentNews_News" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_CommentNews_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyNews_CommentNews" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_Forum_ForumSection" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_Forum_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_History_HistorySection" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_Special_Manager" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_News_NewSection" ManuallyRouted="false" />
-        <AssociationConnector Association="BraveModel.FK_ReplyForum_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyHistory_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_ReplyNews_Users" ManuallyRouted="false" />
         <AssociationConnector Association="BraveModel.FK_Site_Users" ManuallyRouted="false" />
@@ -65,6 +52,30 @@
         <EntityTypeShape EntityType="BraveModel.Order" Width="1.5" PointX="6" PointY="28.375" />
         <AssociationConnector Association="BraveModel.FK_Order_Goods" />
         <AssociationConnector Association="BraveModel.FK_Order_Users" />
+        <EntityTypeShape EntityType="BraveModel.Attention" Width="1.5" PointX="3" PointY="22.875" />
+        <EntityTypeShape EntityType="BraveModel.Collection" Width="1.5" PointX="5.25" PointY="15.25" />
+        <EntityTypeShape EntityType="BraveModel.CommendMilitaryVideo" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="BraveModel.CommentForum" Width="1.5" PointX="8.25" PointY="9.125" />
+        <EntityTypeShape EntityType="BraveModel.Forum" Width="1.5" PointX="3" PointY="11.75" />
+        <EntityTypeShape EntityType="BraveModel.ForumSection" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="BraveModel.MilitaryVideo" Width="1.5" PointX="0.75" PointY="22.25" />
+        <EntityTypeShape EntityType="BraveModel.ReplyForum" Width="1.5" PointX="10.5" PointY="14.875" />
+        <EntityTypeShape EntityType="BraveModel.ReplyMilitaryVideo" Width="1.5" PointX="11.25" PointY="23.375" />
+        <AssociationConnector Association="BraveModel.FK_Attention_Users" />
+        <AssociationConnector Association="BraveModel.FK_Attention_Users1" />
+        <AssociationConnector Association="BraveModel.FK_Collection_Forum" />
+        <AssociationConnector Association="BraveModel.FK_Collection_Users" />
+        <AssociationConnector Association="BraveModel.FK_CommendMilitaryVideo_MilitaryVideo" />
+        <AssociationConnector Association="BraveModel.FK_CommendMilitaryVideo_Users" />
+        <AssociationConnector Association="BraveModel.FK_ReplyMilitaryVideo_CommendMilitaryVideo" />
+        <AssociationConnector Association="BraveModel.FK_CommentForum_Forum" />
+        <AssociationConnector Association="BraveModel.FK_CommentForum_Users" />
+        <AssociationConnector Association="BraveModel.FK_ReplyForum_CommentForum" />
+        <AssociationConnector Association="BraveModel.FK_Forum_ForumSection" />
+        <AssociationConnector Association="BraveModel.FK_Forum_Users" />
+        <AssociationConnector Association="BraveModel.FK_MilitaryVideo_ForumSection" />
+        <AssociationConnector Association="BraveModel.FK_ReplyForum_Users" />
+        <AssociationConnector Association="BraveModel.FK_ReplyMilitaryVideo_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
