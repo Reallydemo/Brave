@@ -55,7 +55,7 @@ namespace BraveMvc.NewsControllers
         {
             string content = Request["Newscomment"];
             int newsid = int.Parse(Request["Newsid"].ToString());
-            int userid = int.Parse(Request["Userid"].ToString());
+            int userid = int.Parse(Session["User_id"].ToString());
           
             if (content == null||content.Length==0)
            {

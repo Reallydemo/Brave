@@ -27,10 +27,37 @@
                     <h3>你想说点什么？</h3>                  
                     </div>
                 <div class="detail-commentTxt">
-                  <div class="detail-commentTxtLeft"></div>
+                  <div class="detail-commentTxtLeft">
+                      @if (Session["User_id"] != null)
+                      {
+                          <img src="@Session["Image"]" />
+
+                      }
+                      else
+                      {
+                          <img src="~/Images/tc_login_yonghu.jpg" />
+                      }
+                  </div>
+@using (Html.BeginForm("Comment", "NewsShow", FormMethod.Post))
+{
+    <input type="text" name="Newscomment" id="Newscomment" />
+    <input type="hidden" value="@Model.FindDetailNews.News_id" name="Newsid" />
+
                 <div class="detail-commentSubmit">
-                  <div class="detail-commentSubmitDiv"></div>
+                  <div class="detail-commentSubmitDiv">
+                      @if (Session["User_id"] != null)
+                      {
+                          <input type="submit" value="发表"/>
+                          <a href="javascript:document.getElementById('Comment').submit()">发表</a>
+                      }
+                      else
+                      {
+                          <a class="woyadengruaheahe">发表</a>
+                      }
+                  </div>
               </div>
+}
+
               <div class="detail-commentShow">
                 <div class="detail-commentShowDiv"></div>
               </div>

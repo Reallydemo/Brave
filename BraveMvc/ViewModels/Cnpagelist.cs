@@ -15,9 +15,10 @@ namespace ViewModels
         public News FindNext { get; set; }
         public News FindBefore { get; set; }
         public IEnumerable<News> FindClassifyNews { get; set; }
-        public IEnumerable<News> SelectNews { get; set; }   
-     
+        public IEnumerable<News> SelectNews { get; set; }  
        
-     
+
+
+
     }
 }
