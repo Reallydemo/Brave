@@ -58,6 +58,7 @@
     <Compile Include="SqlCommentGoods.cs" />
     <Compile Include="SqlCommentNews.cs" />
     <Compile Include="SqlGoods.cs" />
+    <Compile Include="SqlHistorySection.cs" />
     <Compile Include="SqlNews.cs" />
     <Compile Include="SqlUsers.cs" />
   </ItemGroup>

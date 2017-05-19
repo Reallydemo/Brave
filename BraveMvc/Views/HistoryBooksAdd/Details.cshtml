@@ -1,0 +1,98 @@
+﻿@model Models.HistoryBook
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HistoryBook</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_route)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Upload_time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Upload_time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keyword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookClassify_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookClassify_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistorySection.HistorySectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Book_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

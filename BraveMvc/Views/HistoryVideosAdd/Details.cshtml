@@ -1,0 +1,106 @@
+﻿@model Models.HistoryVideo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HistoryVideo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_route)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keyword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoClassify_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoClassify_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistorySection.HistorySectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Video_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

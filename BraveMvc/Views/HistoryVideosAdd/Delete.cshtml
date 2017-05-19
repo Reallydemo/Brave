@@ -1,0 +1,112 @@
+﻿@model Models.HistoryVideo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>HistoryVideo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_route)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_route)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Keyword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Video_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoClassify_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoClassify_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Actor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistorySection.HistorySectionName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

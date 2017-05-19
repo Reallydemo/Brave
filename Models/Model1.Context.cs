@@ -25,32 +25,43 @@ namespace Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Arms> Arms { get; set; }
-        public virtual DbSet<ArmsSection> ArmsSection { get; set; }
         public virtual DbSet<Attention> Attention { get; set; }
         public virtual DbSet<Classify> Classify { get; set; }
-        public virtual DbSet<CommentForum> CommentForum { get; set; }
         public virtual DbSet<CommentHistory> CommentHistory { get; set; }
         public virtual DbSet<CommentNews> CommentNews { get; set; }
-        public virtual DbSet<Forum> Forum { get; set; }
-        public virtual DbSet<ForumSection> ForumSection { get; set; }
-        public virtual DbSet<History> History { get; set; }
         public virtual DbSet<HistorySection> HistorySection { get; set; }
         public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<NewSection> NewSection { get; set; }
-        public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<ReplyForum> ReplyForum { get; set; }
         public virtual DbSet<ReplyHistory> ReplyHistory { get; set; }
         public virtual DbSet<ReplyNews> ReplyNews { get; set; }
         public virtual DbSet<Site> Site { get; set; }
         public virtual DbSet<Special> Special { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Goods> Goods { get; set; }
-        public virtual DbSet<RedSpots> RedSpots { get; set; }
-        public virtual DbSet<RedShare> RedShare { get; set; }
         public virtual DbSet<CommentGoods> CommentGoods { get; set; }
         public virtual DbSet<ReplyGoods> ReplyGoods { get; set; }
         public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<Collection> Collection { get; set; }
+        public virtual DbSet<CommendMilitaryVideo> CommendMilitaryVideo { get; set; }
+        public virtual DbSet<HistoryBook> HistoryBook { get; set; }
+        public virtual DbSet<HistoryVideo> HistoryVideo { get; set; }
+        public virtual DbSet<MilitaryVideo> MilitaryVideo { get; set; }
+        public virtual DbSet<ReplyMilitaryVideo> ReplyMilitaryVideo { get; set; }
+        public virtual DbSet<CommentForum> CommentForum { get; set; }
+        public virtual DbSet<Forum> Forum { get; set; }
+        public virtual DbSet<ForumSection> ForumSection { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<ReplyForum> ReplyForum { get; set; }
+        public virtual DbSet<AFilterSection> AFilterSection { get; set; }
+        public virtual DbSet<Arms> Arms { get; set; }
+        public virtual DbSet<ArmsSection> ArmsSection { get; set; }
+        public virtual DbSet<RedSection> RedSection { get; set; }
+        public virtual DbSet<RedShare> RedShare { get; set; }
+        public virtual DbSet<RedSpots> RedSpots { get; set; }
+        public virtual DbSet<CommentRedSpots> CommentRedSpots { get; set; }
+        public virtual DbSet<History> History { get; set; }
+        public virtual DbSet<ReplyRedSpots> ReplyRedSpots { get; set; }
     }
 }

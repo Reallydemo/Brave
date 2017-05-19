@@ -54,8 +54,18 @@
 }
 .detail-commentTxtLeft{
     height:100px;
-    width:100px;
+    width:15%;
     border-right:solid 1px black;
+    float:left;
+}
+.detail-commentTxtRight{
+    height:100px;
+    width:85%;
+    float:left
+}
+.detail-commentTxtRight input{
+    height:100px;
+    width:100%;
 }
 .detail-commentSubmit{
     height:30px;
@@ -63,11 +73,18 @@
     border:1px solid black;
 }
 .detail-commentSubmitDiv{
-    height:23px;
-    width:60px;
+    height:30px;
+    width:80px;
     float:right;
-   margin:3px 15px 2px 5px;
-    border:1px solid black;
+    margin-right:20px;
+   
+}
+.detail-commentSubmitDiv input{
+    height:30px;
+    width:80px;
+     font-weight:bold;
+     background-color:burlywood;
+     border-style:none;
 }
 .detail-commentList{
     height:20px;

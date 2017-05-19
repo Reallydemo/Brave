@@ -18,6 +18,7 @@ namespace Models
         public ForumSection()
         {
             this.Forum = new HashSet<Forum>();
+            this.MilitaryVideo = new HashSet<MilitaryVideo>();
         }
     
         public int ForumSection_id { get; set; }
@@ -26,5 +27,7 @@ namespace Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Forum> Forum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MilitaryVideo> MilitaryVideo { get; set; }
     }
 }

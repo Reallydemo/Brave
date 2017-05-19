@@ -15,7 +15,7 @@ namespace Models
     public partial class Cart
     {
         public int Cart_id { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public decimal Price { get; set; }
         public decimal Total { get; set; }
         public bool Flog { get; set; }
         public int CartCount { get; set; }

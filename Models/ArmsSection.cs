@@ -17,6 +17,7 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ArmsSection()
         {
+            this.AFilterSection = new HashSet<AFilterSection>();
             this.Arms = new HashSet<Arms>();
         }
     
@@ -24,6 +25,8 @@ namespace Models
         public string ArmsSectionName { get; set; }
         public string ASectionDes { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AFilterSection> AFilterSection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Arms> Arms { get; set; }
     }

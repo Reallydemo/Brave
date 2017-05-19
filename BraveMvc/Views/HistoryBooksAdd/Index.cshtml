@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Models.HistoryBook>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Book_route)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Upload_time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Book_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookClassify_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthorCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Book_route)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Upload_time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Book_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookClassify_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistorySection.HistorySectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Book_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Book_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Book_id })
+        </td>
+    </tr>
+}
+
+</table>
