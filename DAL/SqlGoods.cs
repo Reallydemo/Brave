@@ -58,6 +58,11 @@ namespace DAL
         {
             return db.Classify.ToList();
         }
-        
+        public IQueryable<Goods> selectGoods()
+        {
+           return from n in db.Goods select n;
+        }
+
+
     }
 }

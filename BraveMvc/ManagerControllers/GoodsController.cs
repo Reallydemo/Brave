@@ -52,6 +52,7 @@ namespace BraveMvc.ManagerControllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Goods.Add(goods);
                 db.SaveChanges();
                 return RedirectToAction("Index");

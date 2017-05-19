@@ -1,0 +1,440 @@
+﻿@model ViewModels.MallsCart
+@using Models
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@Styles.Render("~/Content/Carts.css")
+@Styles.Render("~/Content/css/style.css")
+@Styles.Render("~/Content/css/font-awesome.min.css")
+<script src="~/Scripts/area.js"></script>
+<style type="text/css">
+   
+
+    .address_addnav {
+        height: 44px;
+        width: 94%;
+        padding: 0 3%;
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 14px;
+        line-height: 42px;
+        color: #666;
+        background: #fff;
+    }
+
+    .address_list {
+        height: 80px;
+        padding: 0 10px;
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 14px;
+        background: #fff;
+    }
+
+        .address_list .ico {
+            height: 80px;
+            width: 30px;
+            float: left;
+            color: #999;
+            margin-right: -30px;
+            z-index: 2;
+        }
+
+            .address_list .ico i {
+                font-size: 24px;
+                margin-top: 15px;
+                margin-left: 10px;
+                z-index: 2;
+                position: relative;
+            }
+
+        .address_list .info {
+            height: 50px;
+            width: 100%;
+            float: left;
+            position: relative;
+        }
+
+            .address_list .info .inner {
+                margin-left: 40px;
+                margin-right: 50px;
+            }
+
+                .address_list .info .inner .addr {
+                    height: 20px;
+                    width: 100%;
+                    color: #999;
+                    line-height: 26px;
+                    font-size: 14px;
+                    overflow: hidden;
+                }
+
+                .address_list .info .inner .user {
+                    height: 30px;
+                    width: 100%;
+                    color: #666;
+                    line-height: 30px;
+                    font-size: 16px;
+                    overflow: hidden;
+                }
+
+                    .address_list .info .inner .user span {
+                        color: #444;
+                        font-size: 16px;
+                    }
+
+        .address_list .btn {
+            width: 45px;
+            float: right;
+            margin-left: -45px;
+            z-index: 2;
+            position: relative;
+        }
+
+            .address_list .btn .edit, .address_list .btn .remove {
+                height: 50px;
+                float: right;
+                color: #999;
+                font-size: 18px;
+                margin-top: 5px;
+            }
+
+            .address_list .btn .edit {
+                margin-right: 10px;
+            }
+
+    .address_addnav {
+        height: 40px;
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 14px;
+        line-height: 40px;
+        color: #666;
+    }
+
+    .address_main {
+        height: auto;
+        width: 94%;
+        padding: 0px 3%;
+        border-bottom: 1px solid #f0f0f0;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 14px;
+        background: #fff;
+    }
+
+        .address_main .line {
+            height: 44px;
+            width: 100%;
+            border-bottom: 1px solid #f0f0f0;
+            line-height: 44px;
+        }
+
+            .address_main .line input {
+                float: left;
+                height: 44px;
+                width: 100%;
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
+                outline: none;
+                font-size: 16px;
+                color: #666;
+                padding-left: 5px;
+            }
+
+            .address_main .line select {
+                border: none;
+                height: 50px;
+                width: 100%;
+                color: #666;
+                font-size: 16px;
+            }
+
+    .address_sub1 {
+        height: 44px;
+        margin: 14px 10px;
+        background: #ff4f4f;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 44px;
+        color: #fff;
+        width:100%;
+        border:none
+    }
+
+    .address_sub2 {
+        height: 44px;
+        margin: 14px 10px;
+        background: #ddd;
+        border-radius: 4px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 44px;
+        color: #666;
+        border: 1px solid #d4d4d4;
+    }
+
+    
+</style>
+<div class="container">
+    <div class="row address-weizhi">
+        <div class="col-xs-4 col-sm-5 col-md-5" style="margin-top:7%" >当前位置>>虎贲>>铸剑为犁>>地址选取</div>
+        
+        <div class="col-xs-8 col-sm-7 col-md-7 address-dhsawer">
+           
+        </div>
+    </div>
+    <div class="row address-news" id="addresssdf">
+        @foreach (Address p in Model.Address1)
+        {
+            <div class="col-xs-6 col-sm-3 col-md-3 address-add">
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        @p.AddressName
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3"></div>
+                </div>
+              
+                    <div >
+                       
+                    </div>
+                    <div class="row" style="margin-top:5%;">
+                        @p.AddressDe
+                    </div>
+                      
+                   
+             
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-xs-8 col-sm-8 col-md-8">
+                        @p.Addressphone
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4" >
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 shancuadre" style="text-align:center;display:none">
+                       @Ajax.ActionLink("删除", "deleteaddre", "Cart", new { id = p.Address_id }, new AjaxOptions { UpdateTargetId = "addresssdf", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" })
+                    </div>
+                   
+                </div>
+                <div class="row xuanweiadre" style="text-align:center;margin-top:5%;display:none">
+                    @Ajax.ActionLink("选为收货地址", "seleadrd", "Cart",new { id=p.Address_id},new AjaxOptions { HttpMethod = "Post"})
+                </div>
+            </div>
+        }
+
+                <div class="col-xs-4 col-sm-3 col-md-3 address-add" id="tiajaidizhi">
+                    <img src="~/Images/jiahao.png" />
+                    <p>添加新地址</p>
+
+                </div>
+            </div>
+   
+    @*<div class="row address-tianxie">
+        <hr style="border:1px solid red" />
+        <div class="col-sm-3 col-md-3"></div>
+        <div class="col-xs-4 col-sm-6 col-md-6 address-wenzi">
+            @using (Ajax.BeginForm("Address","Cart",new AjaxOptions { UpdateTargetId = "addresssdf", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+            {
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        收货人姓名
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_name" id="address_name" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        地址
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_weizi" id="address_weizi" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        邮政编号
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_code" id="address_code" />
+                    </div>
+
+                </div>
+                <div class="row address-message">
+                    <div class="col-xs-4 col-sm-4 col-md-4 ">
+                        手机
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 ">
+                        <input type="text" name="address_phone" id="address_phone" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8 "></div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+
+                        <input type="submit" value="提交" style="width:70%; height:40px; background-color:red;color:white;border:none" />
+                    </div>
+                   
+                </div>
+            }
+
+        </div>
+        <div class="col-sm-3 col-md-3"></div>
+    </div>*@
+    <div class="row address-tianxie">
+
+    
+        <div id="container">
+            <div class="page_topbar">
+
+                <div class="title">填写信息</div>
+            </div>
+            <div id="container">
+                @using (Ajax.BeginForm("Address", "Cart", new AjaxOptions { UpdateTargetId = "addresssdf", InsertionMode = InsertionMode.Replace, HttpMethod = "Post" }))
+            {
+                    <div class="address_main">
+
+                        <input type="hidden" id="addressid" value="">
+                        <input type="hidden" id="spuid" value="3074">
+                        <div class="line"><input type="text" placeholder="收件人" name="address_name" id="realname" value=""></div>
+                        <div class="line"><input type="text" placeholder="联系电话" name="address_phone" id="mobile" value=""></div>
+                        <div class="line"><input type="text" placeholder="邮政编号" name="address_code" id="address_code" value=""></div>
+                        <div class="line">
+                            <!-- sel-provance -->
+                            <select id="s_province" name="s_province"></select><br>
+                        </div>
+                        <div class="line">
+                            <select id="s_city" name="s_city"></select><br><!-- sel -->
+                        </div>
+                        <div class="line">
+                            <!-- sel-area -->
+                            <select id="s_county" name="s_county"></select><br>
+                        </div>
+                        <script type="text/javascript" src="js/area.js"></script>
+                        <script type="text/javascript">_init_area();</script>
+
+                        <div class="line"><input type="text" name="" placeholder="详细地址" id="address" value=""></div>
+                    </div>
+                    <input type="submit" value="确认" class="address_sub1" />
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.gcjs.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        $("#form0").validate({
+            rules: {
+                address_name: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 8
+                },
+                address_phone: {
+                    required: true,
+                    txtaccount: true
+                },
+                address_code: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 6
+                },
+                address_weizi: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 100
+                }
+
+            },
+            messages: {
+                address_name: {
+                    required: "请输入收货人名",
+                    minlength: '用户名不能小于6个字符',
+                    maxlength: '用户名不能超过16个字符'
+                },
+                address_phone: {
+                    required: "请输入手机号",
+                    txtaccount: "请输入正确的手机号"
+                },
+                address_code: {
+                    required: "请输入邮政编号",
+                    minlength: '密码不能小于6个字符',
+                    maxlength: '密码不能超过6个字符'
+                },
+                address_weizi: {
+                    required: "请输入地址",
+                    minlength: "请输入地址",
+                    maxlength:"请输入有效的地址"
+                }
+
+            }
+        })
+    })
+    $().ready(function () {
+        jQuery.validator.addMethod("txtaccount", function (value, element) {
+            var length = value.length;
+
+            var mobile = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+            return this.optional(element) || (length == 11 && mobile.test(value));
+        }, "手机号码格式错误");
+        jQuery.validator.addMethod("txtpwd", function (value, element) {
+            var ped = /^[1-9]\d{6,16}$/;
+            return this.optional(element) || (ped.test(value));
+        }, "密码的格式错误");
+        
+    })
+
+</script>
+<script type="text/javascript">
+    var dakun = $(".address-add");
+    dakun.hover(function () {
+        $(this).css({
+            'border-color': 'red'
+        })
+        $(this).find(".xuanweiadre").show();
+        $(this).find(".shancuadre").show();
+    },
+    function () {
+        $(this).css({
+            'border-color': '#dddddd'
+        })
+        $(this).find(".xuanweiadre").hide();
+        $(this).find(".shancuadre").hide();
+    }
+    )
+    var adddezhi = $("#tiajaidizhi");
+    var flat=true;
+    adddezhi.click(function () {
+        if (flat == true) {
+            $(".address-tianxie").show();
+            flat = false;
+        }
+        else {
+            $(".address-tianxie").hide();
+            flat = true;
+        }
+      
+
+
+    })
+</script>

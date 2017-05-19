@@ -44,6 +44,14 @@
 .Cart-goods div span{
     margin-top:20%;
 }
+.cart-detele a{
+   
+    line-height:100px;
+}
+.cart-detele a:hover{
+    text-decoration:none;
+    outline:none;
+}
 .Cart-goods div label{
     margin-top:20%;
 }
@@ -56,8 +64,34 @@
 }
 .Cart-goods-num input{
     margin-top:20%;
-    width:40%;
-    height:10%;
+    width:30%;
+    height:35px
+    /*height:10%;*/
+  
+}
+.Cart-goods-num a{
+    cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.min{
+    cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.min:hover{
+    text-decoration:none;
+}
+.add{
+     cursor:pointer;
+    width:20%;
+    font-size:large;
+}
+.add:hover{
+     text-decoration:none;
+}
+.Cart-goods-num a:hover{
+    text-decoration:none;
 }
 .Cart-AllTotal{
     background-color:#dddddd;
@@ -69,18 +103,28 @@
     cursor:pointer;
 }
 .Cart-AllTotal div label{
-    margin-top:15%;
+    margin-top:5%;
+    color:red;
+   font-size:18px;
 }
 .Cart-allcheeck input{
     margin-top:10%;
 }
-.Catr-account input{
+.Catr-account{
+      background-color:red;
+}
+.cart-jeisuan{
      height:50px;
      width:100%;
      border:none;
-     background-color:red;
+   
      color:white;
      font-size:28px;
+     line-height:50px;
+}
+.cart-jeisuan:hover{
+    text-decoration:none;
+    color:white;
 }
 .Cart-AllTotal div p{
   margin-top:10%;
@@ -103,3 +147,238 @@
     top:0;
     left:0;
 }
+/*地址*/
+.address-weizhi{
+   
+  
+}
+.address-weizhi:first-child{
+   
+    color:#808080;
+    font-size:large
+}
+.address-dhsawer{
+    background-image:url("/Images/ad1.png");
+    
+    height:180px;
+     
+}
+
+.address-add{
+    border:1px solid #dddddd;
+    height:200px;
+}
+
+.address-add img{
+    
+    height:70%;
+    width:80%;
+    margin-left:10%;
+    margin-top:5%;
+}
+.address-add :nth-child(2){
+  color:black;
+   
+   margin-left:35%;
+}
+.address-tianxie{
+    display:none;
+}
+.address-wenzi{
+ 
+}
+.address-message{
+    margin:5%;
+}
+.address-message div{
+    line-height:50px;
+    text-align:center;
+    height:50px;
+}
+.address-message div input{
+    border:1px solid #000000;
+    height:50px;
+    width:100%;
+}
+
+/*地址*/
+
+/*搜索*/
+.setect-weizhi{
+    margin-top:5%;
+}
+.select-filter{
+    margin-top:2%;
+}
+.select-Title{
+    background-color:#f5f5f5;
+    height:40px;
+    line-height:40px;
+}
+.select-good{
+    margin-top:2%;
+}
+.select-filter-goods{
+    width:100%;
+    height:300px;
+    margin-top:1%;
+   
+ 
+
+}
+.select-fliter-sdw{
+    border:1px solid #c6c6c6;
+}
+.select-fliter-sdw a{
+    
+    color:red;
+}
+.select-filter-goods:hover{
+    border:1px solid red;
+   
+}
+.select-goods-img{
+    width:100%;
+    height:200px;
+    overflow:hidden;
+   
+    
+    
+}
+.classify-paixu-jiage:hover{
+    border:1px solid #c6c6c6;
+}
+.classify-paixu-jiage:hover a{
+   color:red;
+}
+.classify-paixu-jiage:hover span{
+   color:red;
+}
+.select-goods-img img{
+    width:100%;
+    height:200px;
+}
+.fangdatupian:hover{
+    transform:scale(1.5,1.25);
+    
+}
+
+.select-goods-dect p{
+    text-align:center;
+    color:#000000;
+        
+}
+.select-recommend{
+    margin-top:8%;
+    height:600px;
+   
+}
+.select-recommend-img{
+    width:85%;
+    margin:auto;
+    height:380px;
+    margin-top:4%;
+    overflow:hidden;
+
+}
+.select-recommend-img:hover{
+    border:1px solid red;
+}
+
+.select-recommend-img img{
+    width:100%;
+    height:280px;
+    overflow:hidden;
+}
+.select-recommend-img img:hover{
+    transform:scale(1.5,1.2);
+} 
+.select-recommend-title h4{
+    text-align:center;
+}
+.select-recommend-title:nth-child(2){
+    color:red;
+   height:50px;
+
+}
+
+
+/*搜索*/
+/*订单页*/
+.oreder-address{
+  
+}
+.orders-img{
+    margin-top:3%;
+    background-image:url("/Images/ad2.png");
+    height:130px;
+}
+.order-message{
+    margin-top:2%;
+    color:black;
+    font-family:FZLanTingHeiS-UL-GB;
+}
+.order-title{
+    margin-top:1%;
+}
+.order-title div{
+    text-align:center;
+    color:black;
+    border-bottom:2px solid #b2d1ff;
+}
+.order-goods{
+    margin-top:3%;
+}
+.order-goods-cart{
+    height:150px;
+    border-top:1px dotted  #80b2ff;
+    border-bottom:1px dotted  #80b2ff;
+}
+.order-goods-cart div div{
+    text-align:center;
+    
+    line-height:120px;
+    color:#c6c6c6;
+}
+.order-goods-address{
+    border:1px solid red;
+}
+.order-goods-address div{
+    text-align:right;
+    color:black;
+   font-size:large
+}
+.oreder-message{
+    margin-top:2%;
+    color:black;
+    font-size:small;
+
+}
+.oreder-message input{
+    border:1px solid #000000;
+    height:35px;
+    width:60%;
+}
+.order-caozuo{
+   
+}
+.order-caozuo div{
+    margin-top:2%;
+    text-align:right;
+}
+.order-caozuo div a{
+    color:black;
+    cursor:pointer;
+}
+.order-caozuo div a:hover{
+    color:red;
+}
+.order-caozuo div input{
+    height:40px;
+    width:50%;
+    border:none;
+    background-color:red;
+    color:white;
+}
+
+/*订单页*/

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Models.MilitaryVideo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MilitaryVideoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilitaryVideoDecride)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilitaryVideo_Ways)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilitaryVideoTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumSection.ForumSectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilitaryVideoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilitaryVideoDecride)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilitaryVideo_Ways)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilitaryVideoTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumSection.ForumSectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MilitaryVideo_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MilitaryVideo_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MilitaryVideo_id })
+        </td>
+    </tr>
+}
+
+</table>

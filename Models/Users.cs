@@ -38,6 +38,25 @@ namespace Models
             this.RedShare = new HashSet<RedShare>();
             this.CommentRedSpots = new HashSet<CommentRedSpots>();
             this.ReplyRedSpots = new HashSet<ReplyRedSpots>();
+            this.Address = new HashSet<Address>();
+            this.Collection = new HashSet<Collection>();
+            this.CommendMilitaryVideo = new HashSet<CommendMilitaryVideo>();
+            this.ReplyMilitaryVideo = new HashSet<ReplyMilitaryVideo>();
+            this.CommentForum = new HashSet<CommentForum>();
+            this.Forum = new HashSet<Forum>();
+            this.Order = new HashSet<Order>();
+            this.ReplyForum = new HashSet<ReplyForum>();
+            this.RedShare = new HashSet<RedShare>();
+            this.Address = new HashSet<Address>();
+            this.Order = new HashSet<Order>();
+            this.Attention = new HashSet<Attention>();
+            this.Attention1 = new HashSet<Attention>();
+            this.Collection = new HashSet<Collection>();
+            this.CommendMilitaryVideo = new HashSet<CommendMilitaryVideo>();
+            this.CommentForum = new HashSet<CommentForum>();
+            this.Forum = new HashSet<Forum>();
+            this.ReplyForum = new HashSet<ReplyForum>();
+            this.ReplyMilitaryVideo = new HashSet<ReplyMilitaryVideo>();
         }
     
         public int User_id { get; set; }
@@ -71,6 +90,46 @@ namespace Models
         public virtual ICollection<CommentGoods> CommentGoods { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReplyGoods> ReplyGoods { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Address> Address { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attention> Attention { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attention> Attention1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Collection> Collection { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommendMilitaryVideo> CommendMilitaryVideo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentForum> CommentForum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Forum> Forum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReplyForum> ReplyForum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReplyMilitaryVideo> ReplyMilitaryVideo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Address> Address { get; set; }
+        public virtual ICollection<ReplyHistory> ReplyHistory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Collection> Collection { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommendMilitaryVideo> CommendMilitaryVideo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReplyMilitaryVideo> ReplyMilitaryVideo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentForum> CommentForum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommentGoods> CommentGoods { get; set; }
+        public virtual ICollection<Forum> Forum { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReplyForum> ReplyForum { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
