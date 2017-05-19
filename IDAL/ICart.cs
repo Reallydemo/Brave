@@ -13,10 +13,13 @@ namespace IDAL
         IList<Cart> Findusercart(int id);
        int Findgoodscart(int userid,int goodsid);
         Cart findsusergoodcart(int userid, int goodsid);
+        Cart findcartid(int cartid);
         void AddCart(Cart carts);
         //Cart getCart(int id);
-        //void Delete(int id);
+        void Delete(int id);
         void Update(Cart carts);
+        void AddOrder(Order order);
+       
 
     }
 }

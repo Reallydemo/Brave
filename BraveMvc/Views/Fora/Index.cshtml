@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Models.Forum>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumTopic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumClicks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForumSection.ForumSectionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.UserAccount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumTopic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumClicks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ForumSection.ForumSectionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.UserAccount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Forum_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Forum_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Forum_id })
+        </td>
+    </tr>
+}
+
+</table>

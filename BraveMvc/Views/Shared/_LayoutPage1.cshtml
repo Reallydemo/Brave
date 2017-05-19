@@ -13,7 +13,7 @@
 
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="header-sticky page-loading ">
+<body class="header-sticky page-loading " id="dsjdwiefDsdwe">
 
     <div class="boxed">
         <div class="site-header header-v2">
@@ -92,10 +92,15 @@
                                         <a href="#search" class="flat-search"><i class="fa fa-search"></i></a>
                                         <div class="submenu top-search">
                                             <div class="widget widget_search">
-                                                <form class="search-form">
-                                                    <input type="search" class="search-field" placeholder="Search …">
-                                                    <input type="submit" class="search-submit">
-                                                </form>
+                                                @using (Html.BeginForm("selectGood", "Malls", FormMethod.Get,new { @class = "search-form" }))
+                                                {
+                                                  
+                                                    @Html.TextBox("searchString")<br />
+                                                        @*<input type="search" class="search-field" placeholder="Search …">*@
+                                                        <input type="submit" class="search-submit">
+                                                   
+                                                }
+                                               
                                             </div>
                                         </div>
                                     </li>

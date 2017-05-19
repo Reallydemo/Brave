@@ -25,6 +25,10 @@ namespace DAL
             Cart crts = db.Cart.Where(p => p.User_id == userid).Where(l => l.Goods_id == goodsid).FirstOrDefault();
             return crts;
         }
+        public Cart findcartid(int cartid)
+        {
+            return db.Cart.Where(p => p.Cart_id == cartid).FirstOrDefault();
+        }
         public void AddCart(Cart carts)
         {
             carts.Addtime = DateTime.Now;
@@ -32,9 +36,23 @@ namespace DAL
             db.Cart.Add(carts);
             db.SaveChanges();
         }
+        public void Delete(int id)
+        {
+            Cart cart = db.Cart.Single(p => p.Cart_id == id);
+            db.Cart.Remove(cart);
+            db.SaveChanges();
+        }
         public void Update(Cart carts)
         {
             db.Entry<Cart>(carts).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void AddOrder(Order order)
+        {
+            order.OrderTime = DateTime.Now;
+            order.Site_id = 1;
+            order.State = "未支付";
+            db.Order.Add(order);
             db.SaveChanges();
         }
     }

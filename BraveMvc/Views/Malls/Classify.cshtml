@@ -2,7 +2,7 @@
 @model ViewModels.Clasaifymenu
 
 @using X.PagedList
-@using X.PagedList.Mvc
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Classify";
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
@@ -84,7 +84,9 @@
 </div>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
-@Scripts.Render("~/bundles/jquery")
+
+
+
 <script type="text/javascript">
     //$(".classify-wuping-img").hover(function () {
     //    $("#largeimg").addClass("imgmaclarge")

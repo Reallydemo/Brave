@@ -199,5 +199,37 @@ namespace BraveMvc.Controllers
             der.Reply1 = replydf;
             return View(der);
         }
+
+
+        public ActionResult selectGood(string searchString,string SortInfoFrom)
+        {
+            var good = GoodsManage.selectGoods();
+            var tugood = GoodsManage.FindGoods().Take(3);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                good = good.Where(s => s.GoodsDes.Contains(searchString));
+            }
+            if (!String.IsNullOrEmpty(SortInfoFrom))
+            {
+                if (SortInfoFrom == "价格降序")
+                {
+                    good = good.OrderByDescending(p => p.GoodsPrice);
+                }
+                else if (SortInfoFrom == "价格升序")
+                {
+                    good = good.OrderBy(p => p.GoodsPrice);
+                }
+
+                else if (SortInfoFrom == "更新时间")
+                {
+                    good = good.OrderByDescending(p => p.Grounding);
+                }
+
+            }
+                SelectGoods inde = new SelectGoods();
+            inde.good1 = good;
+            inde.good2 = tugood;
+            return View(inde);
+        }
     }
 }

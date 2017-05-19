@@ -892,6 +892,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ReplyMilitaryVideo_CommendMilitaryVideo">
+          <End Role="CommendMilitaryVideo" Type="Self.CommendMilitaryVideo" Multiplicity="1" />
+          <End Role="ReplyMilitaryVideo" Type="Self.ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommendMilitaryVideo">
+              <PropertyRef Name="CommendMilitaryVideo_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
+              <PropertyRef Name="CommentMilitaryVideo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyMilitaryVideo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="ReplyMilitaryVideo" Type="Self.ReplyMilitaryVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="ReplyMilitaryVideo">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ReplyNews_CommentNews">
           <End Role="CommentNews" Type="Self.CommentNews" Multiplicity="1" />
           <End Role="ReplyNews" Type="Self.ReplyNews" Multiplicity="*" />
@@ -1169,6 +1193,16 @@
           <NavigationProperty Name="Users" Relationship="Self.FK_Attention_Users" FromRole="Attention" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="Self.FK_Attention_Users1" FromRole="Attention" ToRole="Users" />
         </EntityType>
+        <EntityType Name="ArmsSection">
+          <Key>
+            <PropertyRef Name="ArmsSection_id" />
+          </Key>
+          <Property Name="ArmsSection_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArmsSectionName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ASectionDes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AFilterSection" Relationship="BraveModel.FK_AFilterSection_AFilterSection" FromRole="ArmsSection" ToRole="AFilterSection" />
+          <NavigationProperty Name="Arms" Relationship="BraveModel.FK_Arms_ArmsSection" FromRole="ArmsSection" ToRole="Arms" />
+        </EntityType>
         <EntityType Name="Classify">
           <Key>
             <PropertyRef Name="Classify_id" />
@@ -1203,6 +1237,19 @@
           <NavigationProperty Name="News" Relationship="Self.FK_CommentNews_News" FromRole="CommentNews" ToRole="News" />
           <NavigationProperty Name="Users" Relationship="Self.FK_CommentNews_Users" FromRole="CommentNews" ToRole="Users" />
           <NavigationProperty Name="ReplyNews" Relationship="Self.FK_ReplyNews_CommentNews" FromRole="CommentNews" ToRole="ReplyNews" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="History_id" />
+          </Key>
+          <Property Name="History_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HistoryTopic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HistoryContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HistoryTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HistorySection_id" Type="Int32" Nullable="false" />
+          <Property Name="HistoryPicture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CommentHistory" Relationship="Self.FK_CommentHistory_History" FromRole="History" ToRole="CommentHistory" />
+          <NavigationProperty Name="HistorySection" Relationship="Self.FK_History_HistorySection" FromRole="History" ToRole="HistorySection" />
         </EntityType>
         <EntityType Name="HistorySection">
           <Key>
@@ -1416,6 +1463,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_History_HistorySection">
+          <End Role="HistorySection" Type="Self.HistorySection" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistorySection">
+              <PropertyRef Name="HistorySection_id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="HistorySection_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Special_Manager">
           <End Role="Manager" Type="Self.Manager" Multiplicity="1" />
           <End Role="Special" Type="Self.Special" Multiplicity="*" />
@@ -1477,10 +1536,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BraveEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Attention" EntityType="Self.Attention" />
+          <EntitySet Name="ArmsSection" EntityType="Self.ArmsSection" />
           <EntitySet Name="Classify" EntityType="Self.Classify" />
           <EntitySet Name="CommentHistory" EntityType="Self.CommentHistory" />
           <EntitySet Name="CommentNews" EntityType="Self.CommentNews" />
+          <EntitySet Name="History" EntityType="Self.History" />
           <EntitySet Name="HistorySection" EntityType="Self.HistorySection" />
           <EntitySet Name="Manager" EntityType="Self.Manager" />
           <EntitySet Name="News" EntityType="Self.News" />
@@ -1518,6 +1578,10 @@
             <End Role="CommentNews" EntitySet="CommentNews" />
             <End Role="ReplyNews" EntitySet="ReplyNews" />
           </AssociationSet>
+          <AssociationSet Name="FK_History_HistorySection" Association="Self.FK_History_HistorySection">
+            <End Role="HistorySection" EntitySet="HistorySection" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
           <AssociationSet Name="FK_Special_Manager" Association="Self.FK_Special_Manager">
             <End Role="Manager" EntitySet="Manager" />
             <End Role="Special" EntitySet="Special" />
@@ -1542,6 +1606,16 @@
           <AssociationSet Name="FK_Goods_Classify" Association="BraveModel.FK_Goods_Classify">
             <End Role="Classify" EntitySet="Classify" />
             <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <EntitySet Name="RedSpots" EntityType="BraveModel.RedSpots" />
+          <EntitySet Name="RedShare" EntityType="BraveModel.RedShare" />
+          <AssociationSet Name="FK_RedShare_RedSpots" Association="BraveModel.FK_RedShare_RedSpots">
+            <End Role="RedSpots" EntitySet="RedSpots" />
+            <End Role="RedShare" EntitySet="RedShare" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RedShare_Users" Association="BraveModel.FK_RedShare_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="RedShare" EntitySet="RedShare" />
           </AssociationSet>
           <EntitySet Name="CommentGoods" EntityType="BraveModel.CommentGoods" />
           <EntitySet Name="ReplyGoods" EntityType="BraveModel.ReplyGoods" />
@@ -1720,6 +1794,58 @@
             </Principal>
             <Dependent Role="Goods">
               <PropertyRef Name="Classify_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RedSpots">
+          <Key>
+            <PropertyRef Name="RedSpots_id" />
+          </Key>
+          <Property Name="RedSpots_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RedSpotsName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RedSpotsDes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RedSpotsClick" Type="Int32" />
+          <Property Name="RedImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RedAbstract" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RedShare" Relationship="BraveModel.FK_RedShare_RedSpots" FromRole="RedSpots" ToRole="RedShare" />
+        </EntityType>
+        <EntityType Name="RedShare">
+          <Key>
+            <PropertyRef Name="RedShare_id" />
+          </Key>
+          <Property Name="RedShare_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RedShareName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RedShareDes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RedShareTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RedSpots_id" Type="Int32" Nullable="false" />
+          <Property Name="RedShareImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="Int32" Nullable="false" />
+          <Property Name="RedShareD" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RedSpots" Relationship="BraveModel.FK_RedShare_RedSpots" FromRole="RedShare" ToRole="RedSpots" />
+          <NavigationProperty Name="Users" Relationship="BraveModel.FK_RedShare_Users" FromRole="RedShare" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_RedShare_RedSpots">
+          <End Type="BraveModel.RedSpots" Role="RedSpots" Multiplicity="1" />
+          <End Type="BraveModel.RedShare" Role="RedShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RedSpots">
+              <PropertyRef Name="RedSpots_id" />
+            </Principal>
+            <Dependent Role="RedShare">
+              <PropertyRef Name="RedSpots_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RedShare_Users">
+          <End Type="BraveModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="BraveModel.RedShare" Role="RedShare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="RedShare">
+              <PropertyRef Name="User_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2439,6 +2565,18 @@
                 <ScalarProperty Name="CommentTime" ColumnName="CommentTime" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="BraveModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="History_id" ColumnName="History_id" />
+                <ScalarProperty Name="HistoryTopic" ColumnName="HistoryTopic" />
+                <ScalarProperty Name="HistoryContent" ColumnName="HistoryContent" />
+                <ScalarProperty Name="HistoryTime" ColumnName="HistoryTime" />
+                <ScalarProperty Name="HistorySection_id" ColumnName="HistorySection_id" />
+                <ScalarProperty Name="HistoryPicture" ColumnName="HistoryPicture" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
