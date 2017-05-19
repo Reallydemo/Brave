@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Models.HistoryVideo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Video_route)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoClassify_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Actor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VideoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video_route)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoClassify_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Director)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VideoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistorySection.HistorySectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Video_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Video_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Video_id })
+        </td>
+    </tr>
+}
+
+</table>

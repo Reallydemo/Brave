@@ -46,6 +46,7 @@
     <Compile Include="CommentGoodsManage.cs" />
     <Compile Include="CommentNewsManage.cs" />
     <Compile Include="GoodsManage.cs" />
+    <Compile Include="HistorySectionManage.cs" />
     <Compile Include="NewsManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersManage.cs" />

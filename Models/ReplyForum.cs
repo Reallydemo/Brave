@@ -15,10 +15,10 @@ namespace Models
     public partial class ReplyForum
     {
         public int ReplyForum_id { get; set; }
-        public Nullable<int> CommentForum_id { get; set; }
-        public Nullable<System.DateTime> ReplyTime { get; set; }
+        public int CommentForum_id { get; set; }
+        public System.DateTime ReplyTime { get; set; }
         public string Content { get; set; }
-        public Nullable<int> User_id { get; set; }
+        public int User_id { get; set; }
     
         public virtual CommentForum CommentForum { get; set; }
         public virtual Users Users { get; set; }

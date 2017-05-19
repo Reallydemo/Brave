@@ -23,9 +23,10 @@ namespace Models
         public int History_id { get; set; }
         public string HistoryTopic { get; set; }
         public string HistoryContent { get; set; }
-        public System.DateTime HistoryTime { get; set; }
+        public string HistoryTime { get; set; }
         public int HistorySection_id { get; set; }
         public string HistoryPicture { get; set; }
+        public Nullable<int> HistoryClassify_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommentHistory> CommentHistory { get; set; }

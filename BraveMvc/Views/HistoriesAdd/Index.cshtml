@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Models.History>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryTopic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryPicture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoryClassify_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryTopic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryPicture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoryClassify_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistorySection.HistorySectionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.History_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.History_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.History_id })
+        </td>
+    </tr>
+}
+
+</table>

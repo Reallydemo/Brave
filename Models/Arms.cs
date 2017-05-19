@@ -16,13 +16,17 @@ namespace Models
     {
         public int Arms_id { get; set; }
         public string ArmsName { get; set; }
-        public string Model { get; set; }
-        public string Brand { get; set; }
-        public Nullable<decimal> Price { get; set; }
         public string ArmsPicture { get; set; }
         public string ArmsVideo { get; set; }
         public string ArmsDes { get; set; }
         public int ArmsSection_id { get; set; }
+        public string ArmsTechnical { get; set; }
+        public int BigSection_id { get; set; }
+        public int BigSection2_id { get; set; }
+        public int BigSection3_id { get; set; }
+        public string Manu { get; set; }
+        public Nullable<System.DateTime> Stime { get; set; }
+        public Nullable<System.DateTime> Ctime { get; set; }
     
         public virtual ArmsSection ArmsSection { get; set; }
     }

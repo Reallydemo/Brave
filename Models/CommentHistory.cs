@@ -26,9 +26,9 @@ namespace Models
         public string Content { get; set; }
         public int User_id { get; set; }
     
-        public virtual History History { get; set; }
         public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReplyHistory> ReplyHistory { get; set; }
+        public virtual History History { get; set; }
     }
 }

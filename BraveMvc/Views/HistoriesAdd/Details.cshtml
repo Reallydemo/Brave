@@ -1,0 +1,66 @@
+﻿@model Models.History
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>History</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoryTopic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoryTopic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoryContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoryContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoryTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoryTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoryPicture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoryPicture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoryClassify_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoryClassify_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistorySection.HistorySectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistorySection.HistorySectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.History_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

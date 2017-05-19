@@ -46,6 +46,7 @@
     <Compile Include="ICommentNews.cs" />
     <Compile Include="IGoods.cs" />
     <Compile Include="IClassify.cs" />
+    <Compile Include="IHistorySection.cs" />
     <Compile Include="INews.cs" />
     <Compile Include="IUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

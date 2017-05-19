@@ -27,7 +27,10 @@ namespace Models
         public Nullable<int> RedSpotsClick { get; set; }
         public string RedImage { get; set; }
         public string RedAbstract { get; set; }
+        public string RedArea { get; set; }
+        public int RedSection_id { get; set; }
     
+        public virtual RedSection RedSection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RedShare> RedShare { get; set; }
     }

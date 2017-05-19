@@ -17,18 +17,22 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Forum()
         {
+            this.Collection = new HashSet<Collection>();
             this.CommentForum = new HashSet<CommentForum>();
         }
     
         public int Forum_id { get; set; }
-        public string ForumTopic { get; set; }
+        public string ForumName { get; set; }
         public string ForumContent { get; set; }
         public System.DateTime ForumTime { get; set; }
         public int User_id { get; set; }
         public int ForumSection_id { get; set; }
         public string ForumImage { get; set; }
         public Nullable<int> ForumClicks { get; set; }
+        public string ForumDec { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Collection> Collection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommentForum> CommentForum { get; set; }
         public virtual ForumSection ForumSection { get; set; }
